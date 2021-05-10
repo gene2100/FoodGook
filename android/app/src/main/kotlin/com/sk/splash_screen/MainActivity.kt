@@ -1,4 +1,4 @@
-package com.sk.splash_screen
+package com.fg.foodgook
 
 import io.flutter.embedding.android.FlutterActivity
 
