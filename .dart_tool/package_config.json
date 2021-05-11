@@ -86,6 +86,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "file",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "firebase_auth",
       "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.20.1",
       "packageUri": "lib/",
@@ -152,6 +164,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "google_fonts",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_fonts-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
       "name": "http_parser",
       "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
       "packageUri": "lib/",
@@ -200,16 +224,64 @@
       "languageVersion": "1.19"
     },
     {
+      "name": "path_provider",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.28",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_macos",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+8",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.11"
+    },
+    {
+      "name": "pedantic",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.11.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "petitparser",
       "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-3.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
     {
+      "name": "platform",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "plugin_platform_interface",
       "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "process",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "quiver",
@@ -278,6 +350,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "win32",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "xml",
       "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/xml-3.7.0",
       "packageUri": "lib/",
@@ -290,7 +374,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-05-11T22:24:51.336739Z",
+  "generated": "2021-05-11T22:37:09.508823Z",
   "generator": "pub",
   "generatorVersion": "2.12.1"
 }
