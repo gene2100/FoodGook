@@ -2,7 +2,7 @@ import 'package:country_pickers/country.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
 import 'package:intl/intl.dart';
 import 'package:country_pickers/country_pickers.dart';
@@ -22,9 +22,9 @@ enum _registerStatus { success, emailAlreadyUse }
 
 _registerStatus registerStatus = _registerStatus.success;
 
-void register() async {
+Future<void> register() async {
   try {
-    UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+    await _auth.createUserWithEmailAndPassword(
         email: _emailController.text, password: _passwordController.text);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'email-already-in-use') {
@@ -37,7 +37,7 @@ void register() async {
   if (_auth.currentUser != null) {
     registerStatus = _registerStatus.success;
     CollectionReference users =
-        FirebaseFirestore.instance.collection('User_Profile');
+    _firestore.collection('User_Profile');
     await users
         .doc(_auth.currentUser.uid)
         .set({
