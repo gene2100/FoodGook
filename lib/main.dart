@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'screens/signin.dart';
-import 'screens/signup.dart';
+import 'views/signin.dart';
+import 'views/signup.dart';
 //import 'screens/feeds.dart';
 
 void main() {
@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
       backgroundColor: Color(0xffff6240),
     );
 
-
     return MaterialApp(
       title: 'FoodGook',
       home: splash,
@@ -45,8 +44,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Loading extends StatelessWidget
-{
+class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,8 +53,7 @@ class Loading extends StatelessWidget
   }
 }
 
-class ErrorLoading extends StatelessWidget
-{
+class ErrorLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,8 +62,7 @@ class ErrorLoading extends StatelessWidget
   }
 }
 
-class FBinit extends StatelessWidget
-{
+class FBinit extends StatelessWidget {
   Widget build(BuildContext context) {
     final Future<FirebaseApp> _initialization = Firebase.initializeApp();
     return FutureBuilder(
@@ -91,6 +87,4 @@ class FBinit extends StatelessWidget
       },
     );
   }
-
 }
-
