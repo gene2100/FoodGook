@@ -32,6 +32,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "cloud_firestore",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.16.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_platform_interface-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "cloud_firestore_web",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.3.0+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "collection",
       "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0",
       "packageUri": "lib/",
@@ -42,6 +60,12 @@
       "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "1.17"
+    },
+    {
+      "name": "country_pickers",
+      "rootUri": "file:///Users/mookch/development/flutter/.pub-cache/hosted/pub.dartlang.org/country_pickers-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "cupertino_icons",
@@ -266,7 +290,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-05-11T05:34:18.225066Z",
+  "generated": "2021-05-11T21:11:04.931362Z",
   "generator": "pub",
   "generatorVersion": "2.12.1"
 }
