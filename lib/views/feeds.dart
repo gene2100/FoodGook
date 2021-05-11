@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import 'nestedTabBarView.dart';
-import 'package:foodgook/screens/recipes_view.dart';
+import 'package:foodgook/views/recipes_view.dart';
 // import 'package:foodgook/constant.dart';
 // import 'signin.dart';
 
@@ -34,7 +34,7 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
     // final size = MediaQuery.of(context).size;
     Color _notiIconColor = Colors.grey;
     return Scaffold(
-      resizeToAvoidBottomInset : false,
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: Material(
         color: Colors.white,
         child: TabBar(
@@ -94,7 +94,8 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
                                       filled: true,
                                       hintText: 'Search for people, recipes...',
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(15.0),
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
                                         borderSide: BorderSide.none,
                                       ),
                                       suffixIcon: Icon(Icons.search),
