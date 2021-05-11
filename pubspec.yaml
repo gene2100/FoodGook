@@ -33,3 +33,4 @@ flutter:
   assets:
     - logo.png
     - facebook.png
+    - assets/images
