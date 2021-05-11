@@ -68,6 +68,7 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
       body: TabBarView(
         children: <Widget>[
           Column(
+            //safe area and nested tab
             children: [
               Container(
                 child: SafeArea(
@@ -127,19 +128,6 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              // appBar: AppBar(
-              //   backgroundColor: Color(0xffff6240),
-              //   // title: Text("Home"),
-              //   // centerTitle: true,
-              //   actions: <Widget>[
-              //     IconButton(
-              //       icon: Icon(
-              //         Icons.notifications_none,
-              //       ),
-              //       onPressed: () {},
-              //     ),
-              //   ],
-              // ),
               NestedTabBar(),
             ],
           ),
@@ -183,13 +171,18 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
             onTap: () => print('Second'),
           ),
           SpeedDialChild(
-            child: Icon(Icons.logout),
-            label: 'Log out',
-            backgroundColor: Color(0xffff6240),
-            onTap: () => print('Third'),
-          )
+              child: Icon(Icons.logout),
+              label: 'Log out',
+              backgroundColor: Color(0xffff6240),
+              onTap: () {
+                print('Third');
+                Navigator.pop(context);
+              })
         ],
       ),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {}
 }

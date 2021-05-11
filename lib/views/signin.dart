@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 import 'feeds.dart';
 // class SecondScreen extends StatelessWidget {
 //   @override
@@ -89,6 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       alignment: Alignment(1.0, 0.0),
                       padding: EdgeInsets.only(top: 15.0, left: 20.0),
                       child: InkWell(
+                        onTap: () {
+                          // Navigator.of(context).pushNamed('/forgotpass');
+                        },
                         child: Text(
                           'Forgot Password',
                           style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodgook/views/feeds_view.dart';
 
 class NestedTabBar extends StatefulWidget {
   @override
@@ -50,10 +51,11 @@ class _NestedTabBarState extends State<NestedTabBar>
             controller: _nestedTabController,
             children: <Widget>[
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.orange[50],
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(8.0),
+                //   color: Colors.orange[50],
+                // ),
+                child: FeedsView(),
               ),
               Container(
                 decoration: BoxDecoration(
