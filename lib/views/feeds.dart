@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:foodgook/views/recipes_view.dart';
 
 import 'nestedTabBarView.dart';
 // import 'package:foodgook/views/recipes_view.dart';
@@ -132,7 +133,8 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
             ],
           ),
           Center(
-            child: Text("Recipes"),
+            // child: Text("Recipes"),
+            child: RecipesView(),
             // RecipesPage(),
             //Add page route
           ),
