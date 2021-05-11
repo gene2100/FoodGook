@@ -181,6 +181,12 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
             label: 'Live show',
             backgroundColor: Color(0xffff6240),
             onTap: () => print('Second'),
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.logout),
+            label: 'Log out',
+            backgroundColor: Color(0xffff6240),
+            onTap: () => print('Third'),
           )
         ],
       ),
