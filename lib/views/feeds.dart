@@ -87,28 +87,35 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
                             children: <Widget>[
                               Expanded(
                                 child: Container(
-                                  decoration: BoxDecoration(
-                                    // boxShadow: [BoxShadow(color: Colors.black45)],
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
+                                  // decoration: BoxDecoration(
+                                  //   boxShadow: [BoxShadow(color: Colors.black45)],
+                                  //   borderRadius: BorderRadius.circular(15.0),
+                                  // ),
                                   child: TextField(
                                     decoration: InputDecoration(
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              vertical: 10.0, horizontal: 10.0),
                                       fillColor: Color(0xfff2f2f2),
                                       filled: true,
                                       hintText: 'Search for people, recipes...',
                                       border: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                            BorderRadius.circular(24.0),
                                         borderSide: BorderSide.none,
                                       ),
-                                      suffixIcon: Icon(Icons.search),
+                                      prefixIcon: Icon(
+                                        Icons.search,
+                                        size: 24,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                               IconButton(
                                 icon: Icon(Icons.notifications_none),
-                                color: _notiIconColor,
+                                color: Colors.grey,
+                                iconSize: 24,
                                 tooltip: 'Show all notifications',
                                 //Still can't change color when clicked
                                 onPressed: () {

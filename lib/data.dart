@@ -29,6 +29,34 @@ List foodnames = [
   "Chocolate Pudding",
 ];
 
+List descriptions = [
+  "Hi salmon fans! Here’s another one to tuck in...",
+  "What better way to enjoy a weekend night than...",
+  "Hola salmon fans! Here’s another one to tuck in...",
+  "Sawasdee better way to enjoy a weekend night than...",
+  "Hey salmon fans! Here’s another one to tuck in...",
+  "Anyeong better way to enjoy a weekend night than...",
+  "My better way to enjoy a weekend night than...",
+  "Bye salmon fans! Here’s another one to tuck in...",
+  "Nani better way to enjoy a weekend night than...",
+  "See salmon fans! Here’s another one to tuck in...",
+  "Hola better way to enjoy a weekend night than...",
+];
+
+List tags = [
+  "#salmon  #sauce  #dinner",
+  "#strawberry  #dessert ",
+  "#appetizer  #bread  #snack",
+  "#salad  #lunch",
+  "#curry",
+  "#healthy",
+  "#hommade  #sandwich",
+  "#beef",
+  "#turkey  #pasta  #meal",
+  "#seafood  #shrimp",
+  "#cocktail",
+];
+
 // List notifs = [
 //   "${names[random.nextInt(10)]} and ${random.nextInt(100)} others liked your post",
 //   "${names[random.nextInt(10)]} mentioned you in a comment",
@@ -60,6 +88,8 @@ List posts = List.generate(
           "time": "${random.nextInt(50)} min ago",
           "img": "assets/images/em${random.nextInt(10)}.jpeg",
           "foodname": foodnames[random.nextInt(10)],
+          "description": descriptions[random.nextInt(10)],
+          "tag": tags[random.nextInt(10)],
         });
 
 List types = ["text", "image"];

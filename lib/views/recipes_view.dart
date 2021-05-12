@@ -24,10 +24,10 @@ class _RecipesViewState extends State<RecipesView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Recipe',
+                      'Recipes',
                       style: TextStyle(
                         // fontFamily: GoogleFonts.openSans ,
-                        fontSize: 25,
+                        fontSize: 36,
                         fontWeight: FontWeight.w800,
                         color: Colors.black,
                         fontFamily: 'Rublik',

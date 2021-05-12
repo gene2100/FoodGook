@@ -6,6 +6,8 @@ class PostItem extends StatefulWidget {
   final String time;
   final String img;
   final String foodname;
+  final String description;
+  final String tag;
   // final int index;
 
   PostItem({
@@ -15,6 +17,8 @@ class PostItem extends StatefulWidget {
     @required this.time,
     @required this.img,
     @required this.foodname,
+    @required this.description,
+    @required this.tag,
   }) : super(key: key);
   @override
   _PostItemState createState() => _PostItemState();
@@ -69,7 +73,7 @@ class _PostItemState extends State<PostItem> {
     //   ),
     // );
     return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Wrap(
           children: [
             Row(
@@ -143,6 +147,31 @@ class _PostItemState extends State<PostItem> {
                           SizedBox(width: 10),
                           Icon(Icons.favorite, color: Colors.red),
                         ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${widget.description}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${widget.tag}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0XFF5D6890),
+                        ),
                       ),
                     ],
                   ),

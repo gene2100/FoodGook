@@ -14,7 +14,7 @@ class _FeedsViewState extends State<FeedsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         itemCount: posts.length,
         itemBuilder: (BuildContext context, int index) {
           Map post = posts[index];
@@ -24,6 +24,8 @@ class _FeedsViewState extends State<FeedsView> {
             dp: post['dp'], //profile pic
             time: post['time'],
             foodname: post['foodname'],
+            description: post['description'],
+            tag: post['tag'],
           );
         },
       ),
