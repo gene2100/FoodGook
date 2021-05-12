@@ -38,7 +38,8 @@ class _PostItemState extends State<PostItem> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              trailing: Text(
+              subtitle: Text(
+                //from trailing
                 "${widget.time}",
                 style: TextStyle(
                   fontWeight: FontWeight.w300,

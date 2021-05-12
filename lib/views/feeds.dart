@@ -153,8 +153,8 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
       ),
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Colors.white,
-        foregroundColor: Color(0xffff6240),
+        backgroundColor: Color(0xffff6240),
+        foregroundColor: Colors.white,
         overlayColor: Colors.grey,
         overlayOpacity: 0.4,
         curve: Curves.easeIn,
@@ -164,18 +164,21 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
           SpeedDialChild(
               child: Icon(Icons.add),
               label: 'Add recipe',
-              backgroundColor: Color(0xffff6240),
+              backgroundColor: Colors.white,
+              foregroundColor: Color(0xffff6240),
               onTap: () => print('First')),
           SpeedDialChild(
             child: Icon(Icons.live_tv),
             label: 'Live show',
-            backgroundColor: Color(0xffff6240),
+            backgroundColor: Colors.white,
+            foregroundColor: Color(0xffff6240),
             onTap: () => print('Second'),
           ),
           SpeedDialChild(
               child: Icon(Icons.logout),
               label: 'Log out',
-              backgroundColor: Color(0xffff6240),
+              backgroundColor: Colors.white,
+              foregroundColor: Color(0xffff6240),
               onTap: () {
                 print('Third');
                 Navigator.pop(context);
