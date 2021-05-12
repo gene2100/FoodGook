@@ -30,6 +30,7 @@ class _RecipesViewState extends State<RecipesView> {
                         fontSize: 25,
                         fontWeight: FontWeight.w800,
                         color: Colors.black,
+                        fontFamily: 'Rublik',
                       ),
                     ),
                   ],
@@ -67,9 +68,9 @@ class _RecipesViewState extends State<RecipesView> {
                   Positioned(
                     top: 8,
                     right: 9,
-                    child:
-                        SvgPicture.asset('assets/icons/icon_search_white.svg'),
-                  )
+                    child: Icon(Icons.search),
+                    // SvgPicture.asset('assets/icons/icon_search_white.svg'),
+                  ),
                 ],
               ),
             ),
@@ -85,10 +86,14 @@ class _RecipesViewState extends State<RecipesView> {
                     isScrollable: true,
                     labelColor: Colors.black,
                     unselectedLabelColor: Colors.grey,
-                    labelStyle: GoogleFonts.openSans(
-                        fontSize: 14, fontWeight: FontWeight.w700),
-                    unselectedLabelStyle: GoogleFonts.openSans(
-                        fontSize: 14, fontWeight: FontWeight.w600),
+                    labelStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Rublik'),
+                    unselectedLabelStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Rublik'),
                     indicator: RoundedRectangleTabIndicator(
                         weight: 2, width: 10, color: Colors.black),
                     tabs: [
