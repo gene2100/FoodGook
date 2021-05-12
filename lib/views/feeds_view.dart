@@ -21,8 +21,9 @@ class _FeedsViewState extends State<FeedsView> {
           return PostItem(
             img: post['img'],
             name: post['name'],
-            dp: post['dp'],
+            dp: post['dp'], //profile pic
             time: post['time'],
+            foodname: post['foodname'],
           );
         },
       ),

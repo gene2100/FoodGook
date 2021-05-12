@@ -5,14 +5,17 @@ class PostItem extends StatefulWidget {
   final String name;
   final String time;
   final String img;
+  final String foodname;
+  // final int index;
 
-  PostItem(
-      {Key key,
-      @required this.dp,
-      @required this.name,
-      @required this.time,
-      @required this.img})
-      : super(key: key);
+  PostItem({
+    Key key,
+    @required this.dp,
+    @required this.name,
+    @required this.time,
+    @required this.img,
+    @required this.foodname,
+  }) : super(key: key);
   @override
   _PostItemState createState() => _PostItemState();
 }
@@ -66,7 +69,7 @@ class _PostItemState extends State<PostItem> {
     //   ),
     // );
     return Padding(
-        padding: EdgeInsets.symmetric(vertical: 5),
+        padding: EdgeInsets.symmetric(vertical: 10),
         child: Wrap(
           children: [
             Row(
@@ -106,7 +109,7 @@ class _PostItemState extends State<PostItem> {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(top: 8),
+              padding: EdgeInsets.only(top: 10),
               child: Column(
                 children: [
                   "${widget.img}" != null
@@ -122,10 +125,30 @@ class _PostItemState extends State<PostItem> {
                           ),
                         )
                       : SizedBox.shrink(),
-                  SizedBox(height: 8.0),
-                  // Text(nf.content,
-                  //     style: myStyle(
-                  //         color: Colors.grey, fontWeight: FontWeight.w400)),
+                  // SizedBox(height: 8.0),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "${widget.foodname}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.remove_red_eye_rounded,
+                              color: Colors.grey),
+                          SizedBox(width: 10),
+                          Icon(Icons.favorite, color: Colors.red),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
                 ],
               ),
             ),

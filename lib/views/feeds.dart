@@ -50,6 +50,7 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
               ),
               Tab(
                 icon: Icon(Icons.receipt),
+                // icon: Icon(Icons.local_restaurant),
                 text: 'Recipes',
               ),
               Tab(
