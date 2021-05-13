@@ -98,6 +98,7 @@ class _PostItemState extends State<PostItem> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        SizedBox(height: 2),
                         Text(
                           "${widget.time}",
                           style: TextStyle(
@@ -144,10 +145,21 @@ class _PostItemState extends State<PostItem> {
                         children: [
                           Icon(Icons.remove_red_eye_rounded,
                               color: Colors.grey),
+                          SizedBox(width: 3),
+                          Text("14.1k"),
                           SizedBox(width: 10),
-                          Icon(Icons.favorite, color: Colors.red),
+                          Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
+                          SizedBox(width: 3),
+                          Text("259"),
                         ],
                       ),
+                      // Row(
+                      //   children: [
+                      //     Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
+                      //     SizedBox(width: 3),
+                      //     Text("1k"),
+                      //   ],
+                      // ),
                     ],
                   ),
                   SizedBox(height: 5),

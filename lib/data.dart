@@ -85,7 +85,7 @@ List posts = List.generate(
     (index) => {
           "name": names[random.nextInt(10)],
           "dp": "assets/images/cm${random.nextInt(10)}.jpeg", //profile pic
-          "time": "${random.nextInt(50)} min ago",
+          "time": "${random.nextInt(50)} mins ago",
           "img": "assets/images/em${random.nextInt(10)}.jpeg",
           "foodname": foodnames[random.nextInt(10)],
           "description": descriptions[random.nextInt(10)],

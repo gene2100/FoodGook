@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:foodgook/views/recipes_view.dart';
 
 import 'nestedTabBarView.dart';
@@ -163,6 +164,11 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
         animatedIcon: AnimatedIcons.menu_close,
         backgroundColor: Color(0xffff6240),
         foregroundColor: Colors.white,
+        // child: Icon(Icons.ac_unit),
+        //change to foodgook
+        child:
+            SvgPicture.asset('assets/svg/fabButton.svg'), //change to foodgook
+
         overlayColor: Colors.grey,
         overlayOpacity: 0.4,
         curve: Curves.easeIn,
@@ -176,7 +182,7 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
               foregroundColor: Color(0xffff6240),
               onTap: () => print('First')),
           SpeedDialChild(
-            child: Icon(Icons.live_tv),
+            child: Icon(Icons.live_tv_rounded),
             label: 'Live show',
             backgroundColor: Colors.white,
             foregroundColor: Color(0xffff6240),
