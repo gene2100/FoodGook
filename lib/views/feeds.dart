@@ -88,10 +88,6 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
                             children: <Widget>[
                               Expanded(
                                 child: Container(
-                                  // decoration: BoxDecoration(
-                                  //   boxShadow: [BoxShadow(color: Colors.black45)],
-                                  //   borderRadius: BorderRadius.circular(15.0),
-                                  // ),
                                   child: TextField(
                                     decoration: InputDecoration(
                                       contentPadding:

@@ -45,7 +45,7 @@ class _NestedTabBarState extends State<NestedTabBar>
           ],
         ),
         Container(
-          height: screenHeight * 0.7,
+          height: screenHeight * 0.74,
           margin: EdgeInsets.only(left: 16.0, right: 16.0),
           child: TabBarView(
             controller: _nestedTabController,
