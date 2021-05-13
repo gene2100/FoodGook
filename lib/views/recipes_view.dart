@@ -36,41 +36,60 @@ class _RecipesViewState extends State<RecipesView> {
                   ],
                 )),
             Container(
-              height: 39,
+              height: 40,
               margin: EdgeInsets.only(left: 25, right: 25, top: 18),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.grey),
+              // decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(10), color: Colors.grey),
               child: Stack(
                 children: <Widget>[
                   TextField(
-                    // ignore: deprecated_member_use
-                    maxLengthEnforced: true,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    ),
                     decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.only(left: 19, right: 50, bottom: 8),
-                      border: InputBorder.none,
-                      hintText: 'Search Menu',
-                      hintStyle: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      fillColor: Color(0xfff2f2f2),
+                      filled: true,
+                      hintText: 'Search for people, recipes...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24.0),
+                        borderSide: BorderSide.none,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        size: 24,
+                      ),
                     ),
                   ),
-                  Positioned(
-                    right: 0,
-                    child: SvgPicture.asset('assets/svg/background_search.svg'),
-                  ),
-                  Positioned(
-                    top: 8,
-                    right: 9,
-                    child: Icon(Icons.search),
-                    // SvgPicture.asset('assets/icons/icon_search_white.svg'),
-                  ),
+
+                  //old Por
+                  // TextField(
+                  //   // ignore: deprecated_member_use
+                  //   maxLengthEnforced: true,
+                  //   style: TextStyle(
+                  //     fontSize: 12,
+                  //     color: Colors.black,
+                  //     fontWeight: FontWeight.w600,
+                  //   ),
+                  //   decoration: InputDecoration(
+                  //     contentPadding:
+                  //         EdgeInsets.only(left: 19, right: 50, bottom: 8),
+                  //     border: InputBorder.none,
+                  //     hintText: 'Search Menu',
+                  //     hintStyle: TextStyle(
+                  //         fontSize: 12,
+                  //         color: Colors.white,
+                  //         fontWeight: FontWeight.w600),
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   right: 0,
+                  //   child: SvgPicture.asset('assets/svg/background_search.svg'),
+                  // ),
+                  // Positioned(
+                  //   top: 8,
+                  //   right: 9,
+                  //   child: Icon(Icons.search),
+                  //   // SvgPicture.asset('assets/icons/icon_search_white.svg'),
+                  // ),
                 ],
               ),
             ),
