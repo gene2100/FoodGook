@@ -1,17 +1,139 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'feeds.dart';
-// class SecondScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Text("Login"),
-//       ),
-//     );
-//   }
-// }
+
+final TextEditingController _emailController = TextEditingController();
+final TextEditingController _passwordController = TextEditingController();
+
+FirebaseAuth _auth = FirebaseAuth.instance;
+
+// ignore: missing_return
+Future<String> _login() async{
+  String returnString = 'loading';
+  try {
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+    email: _emailController.text,
+    password: _passwordController.text
+    );
+    } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+    print('No user found for that email.');
+    returnString = e.code;
+    } else if (e.code == 'wrong-password') {
+    print('Wrong password provided for that user.');
+    returnString = e.code;
+    }
+    print(e.code);
+  }
+  if (_auth.currentUser != null){
+    returnString = 'success';
+  }
+  return returnString;
+
+
+}
+
+Future<void> _showLoginDialog(BuildContext context) async {
+  await _auth.signOut();
+  Future<String> loginState = _login();
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return Dialog(
+        child: Container(
+          margin: const EdgeInsets.all(30),
+        child: SingleChildScrollView(
+          child: FutureBuilder(
+            future: loginState,
+            builder: (context, AsyncSnapshot<String> snapshot) {
+              List<Widget> children;
+              if(snapshot.data == 'user-not-found')
+                {
+                  children = <Widget>[
+                    Text('This Email not found',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'rublik',
+                        )),
+                    TextButton(
+                        onPressed:() {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('OK',
+                        style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'rublik',
+                      )),)
+                  ];
+                }
+
+              else if(snapshot.data == 'wrong-password')
+              {
+                children = <Widget>[
+                  Text('Wrong password',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'rublik',
+                      )),
+                  TextButton(
+                    onPressed:() {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('OK',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'rublik',
+                        )),)
+                ];
+              }
+
+              else if(snapshot.data == 'success')
+              {
+                print('Login Success');
+                children = <Widget>[
+                  SizedBox(
+                    child: CircularProgressIndicator(),
+                    width: 60,
+                    height: 60,
+                  )
+                ];
+                Navigator.pop(context);
+                SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+                  _emailController.clear();
+                  _passwordController.clear();
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Feeds()));
+                });
+              }
+
+              else
+                {
+                  print('Loading');
+                  children = <Widget>[
+              SizedBox(
+              child: CircularProgressIndicator(),
+              width: 60,
+              height: 60,
+              )
+                  ];
+                }
+              return Column(
+                children: children
+              );
+            },
+          ),
+        ),
+      )
+      );
+    },
+  );
+}
+
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -19,11 +141,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final validEmailCharacters = RegExp(r'^[a-zA-Z0-9@\.]+$');
+  final validCharacters = RegExp(r'^[a-zA-Z0-9&%=]+$');
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
+        body: Form(
+          key: _formKey,
+          child :Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
@@ -59,9 +188,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
                 child: Column(
                   children: <Widget>[
-                    TextField(
+                    TextFormField(
+                      controller: _emailController,
                       decoration: InputDecoration(
-                          labelText: 'USERNAME',
+                          labelText: 'EMAIL',
                           labelStyle: TextStyle(
                               fontFamily: 'Rublik',
                               fontWeight: FontWeight.bold,
@@ -69,9 +199,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           focusedBorder: UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: Color(0xffff6240)))),
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            !validEmailCharacters.hasMatch(value) ||
+                            !value.contains('@')) {
+                          return 'Please enter valid email';
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(height: 20.0),
-                    TextField(
+                    TextFormField(
+                      controller: _passwordController,
                       decoration: InputDecoration(
                           labelText: 'PASSWORD',
                           labelStyle: TextStyle(
@@ -81,6 +221,16 @@ class _MyHomePageState extends State<MyHomePage> {
                           focusedBorder: UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: Color(0xffff6240)))),
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            !validCharacters.hasMatch(value) ||
+                            value.length < 8 ||
+                            value.length > 16) {
+                          return 'Password must contain 8 - 16 letters or numbers';
+                        } else
+                          return null;
+                      },
                       obscureText: true,
                     ),
                     SizedBox(height: 5.0),
@@ -110,7 +260,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Color(0xffff6240),
                         elevation: 7.0,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            if (_formKey.currentState.validate()) {
+                              await _showLoginDialog(context);
+                            }
+                          },
                           child: Center(
                             child: Text(
                               'SIGN IN',
@@ -118,9 +272,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Rublik'),
-                              // onPressed: () {
 
-                              // }, //link to feeds
                             ),
                           ),
                         ),
@@ -210,6 +362,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             )
           ],
-        ));
+        ))
+    );
   }
 }
+

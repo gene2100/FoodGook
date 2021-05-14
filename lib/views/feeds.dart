@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodgook/views/recipes_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'nestedTabBarView.dart';
 // import 'package:foodgook/views/recipes_view.dart';
 // import 'package:foodgook/constant.dart';
 // import 'signin.dart';
+
+FirebaseAuth _auth = FirebaseAuth.instance;
 
 class Feeds extends StatefulWidget {
   @override
@@ -191,6 +194,7 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
               foregroundColor: Color(0xffff6240),
               onTap: () {
                 print('Third');
+                _auth.signOut();
                 Navigator.pop(context);
               })
         ],
