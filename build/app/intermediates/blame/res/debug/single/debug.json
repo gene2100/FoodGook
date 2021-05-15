@@ -56,6 +56,10 @@
         "source": "/Users/mookch/.gradle/caches/transforms-2/files-2.1/086ae226c57fd40f568905c7e86511a2/play-services-base-17.1.0/res/drawable/common_google_signin_btn_icon_dark_normal.xml"
     },
     {
+        "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/layout_toast_custom.xml.flat",
+        "source": "/Users/mookch/Documents/GitHub/FoodGook/build/fluttertoast/intermediates/packaged_res/debug/layout/toast_custom.xml"
+    },
+    {
         "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
         "source": "/Users/mookch/.gradle/caches/transforms-2/files-2.1/086ae226c57fd40f568905c7e86511a2/play-services-base-17.1.0/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
@@ -106,6 +110,10 @@
     {
         "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
         "source": "/Users/mookch/.gradle/caches/transforms-2/files-2.1/086ae226c57fd40f568905c7e86511a2/play-services-base-17.1.0/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/drawable_toast_bg.xml.flat",
+        "source": "/Users/mookch/Documents/GitHub/FoodGook/build/fluttertoast/intermediates/packaged_res/debug/drawable/toast_bg.xml"
     },
     {
         "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
@@ -162,6 +170,10 @@
     {
         "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "/Users/mookch/.gradle/caches/transforms-2/files-2.1/28e91832122b5dc7de235c04c0b3d0d2/core-1.1.0/res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/xml_flutter_image_picker_file_paths.xml.flat",
+        "source": "/Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/packaged_res/debug/xml/flutter_image_picker_file_paths.xml"
     },
     {
         "merged": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",

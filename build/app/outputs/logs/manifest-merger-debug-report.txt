@@ -8,11 +8,17 @@ MERGED from /Users/mookch/Documents/GitHub/FoodGook/android/app/src/main/Android
 MERGED from [:firebase_auth] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore] /Users/mookch/Documents/GitHub/FoodGook/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-22:12
+MERGED from [:flutter_plugin_android_lifecycle] /Users/mookch/Documents/GitHub/FoodGook/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences] /Users/mookch/Documents/GitHub/FoodGook/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:sqflite] /Users/mookch/Documents/GitHub/FoodGook/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:fluttertoast] /Users/mookch/Documents/GitHub/FoodGook/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] /Users/mookch/Documents/GitHub/FoodGook/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-auth:20.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c7af32d104e2767bf3db047aceaf9e59/jetified-firebase-auth-20.0.1/AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.firebase:firebase-firestore:22.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/37b10bf49ad4164fe8f11e1f1f504c13/jetified-firebase-firestore-22.0.1/AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/598efa33dc9c0ba46f0ffb36375fe6a1/firebase-auth-interop-19.0.0/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/ae675316913c69b48824589d562eec49/jetified-firebase-common-19.5.0/AndroidManifest.xml:15:1-49:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c981ed484fc24d6c51929b700356b1c1/exifinterface-1.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/809dc7605bec7826ba35137dbaad02b8/play-services-auth-api-phone-17.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/09baa55d03b3999d88403752edd7cc66/play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-database-collection:17.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/1b949b41faef6c14c8095e4106d2a668/firebase-database-collection-17.0.1/AndroidManifest.xml:2:1-9:12
@@ -20,9 +26,9 @@ MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/mookch/.gr
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/0ac5027c71fa1627280b37696bd72cd9/play-services-tasks-17.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-basement:17.1.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/1dcad3d240c9a08fd36975676cac6d57/jetified-play-services-basement-17.1.0/AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/08e2314f15663c5978ba621c86c841ca/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.activity:activity:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/3b384edac852eb91a246831ac2e392d7/activity-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/774bea0cd912130b2ae202ba0f7b587d/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/f9ccb68a1c2210256d06f08738ef073d/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/3b384edac852eb91a246831ac2e392d7/activity-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/cec57bb95b05eaf9610e804a3fe9a23c/customview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.1.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/28e91832122b5dc7de235c04c0b3d0d2/core-1.1.0/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/2dff477af97b6f518bb48dd325b304c8/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
@@ -61,6 +67,8 @@ MERGED from [:cloud_firestore] /Users/mookch/Documents/GitHub/FoodGook/build/clo
 MERGED from [:cloud_firestore] /Users/mookch/Documents/GitHub/FoodGook/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-20:19
+MERGED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-20:19
 MERGED from [com.google.firebase:firebase-auth:20.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c7af32d104e2767bf3db047aceaf9e59/jetified-firebase-auth-20.0.1/AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.firebase:firebase-auth:20.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c7af32d104e2767bf3db047aceaf9e59/jetified-firebase-auth-20.0.1/AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.firebase:firebase-firestore:22.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/37b10bf49ad4164fe8f11e1f1f504c13/jetified-firebase-firestore-22.0.1/AndroidManifest.xml:16:5-24:19
@@ -141,6 +149,16 @@ MERGED from [:cloud_firestore] /Users/mookch/Documents/GitHub/FoodGook/build/clo
 MERGED from [:cloud_firestore] /Users/mookch/Documents/GitHub/FoodGook/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /Users/mookch/Documents/GitHub/FoodGook/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /Users/mookch/Documents/GitHub/FoodGook/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /Users/mookch/Documents/GitHub/FoodGook/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /Users/mookch/Documents/GitHub/FoodGook/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] /Users/mookch/Documents/GitHub/FoodGook/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] /Users/mookch/Documents/GitHub/FoodGook/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/mookch/Documents/GitHub/FoodGook/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/mookch/Documents/GitHub/FoodGook/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /Users/mookch/Documents/GitHub/FoodGook/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /Users/mookch/Documents/GitHub/FoodGook/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth:20.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c7af32d104e2767bf3db047aceaf9e59/jetified-firebase-auth-20.0.1/AndroidManifest.xml:21:5-44
@@ -151,6 +169,8 @@ MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /Users/mookch/.gr
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/598efa33dc9c0ba46f0ffb36375fe6a1/firebase-auth-interop-19.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/ae675316913c69b48824589d562eec49/jetified-firebase-common-19.5.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/ae675316913c69b48824589d562eec49/jetified-firebase-common-19.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c981ed484fc24d6c51929b700356b1c1/exifinterface-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c981ed484fc24d6c51929b700356b1c1/exifinterface-1.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/809dc7605bec7826ba35137dbaad02b8/play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/809dc7605bec7826ba35137dbaad02b8/play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/09baa55d03b3999d88403752edd7cc66/play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
@@ -165,12 +185,12 @@ MERGED from [com.google.android.gms:play-services-basement:17.1.0] /Users/mookch
 MERGED from [com.google.android.gms:play-services-basement:17.1.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/1dcad3d240c9a08fd36975676cac6d57/jetified-play-services-basement-17.1.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/08e2314f15663c5978ba621c86c841ca/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/08e2314f15663c5978ba621c86c841ca/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/3b384edac852eb91a246831ac2e392d7/activity-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/3b384edac852eb91a246831ac2e392d7/activity-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/774bea0cd912130b2ae202ba0f7b587d/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/774bea0cd912130b2ae202ba0f7b587d/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/f9ccb68a1c2210256d06f08738ef073d/loader-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/f9ccb68a1c2210256d06f08738ef073d/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/3b384edac852eb91a246831ac2e392d7/activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/3b384edac852eb91a246831ac2e392d7/activity-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/cec57bb95b05eaf9610e804a3fe9a23c/customview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/cec57bb95b05eaf9610e804a3fe9a23c/customview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.1.0] /Users/mookch/.gradle/caches/transforms-2/files-2.1/28e91832122b5dc7de235c04c0b3d0d2/core-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -251,6 +271,30 @@ ADDED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/fireba
 		ADDED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] /Users/mookch/Documents/GitHub/FoodGook/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-78
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker] /Users/mookch/Documents/GitHub/FoodGook/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-auth:20.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/c7af32d104e2767bf3db047aceaf9e59/jetified-firebase-auth-20.0.1/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-firestore:22.0.1] /Users/mookch/.gradle/caches/transforms-2/files-2.1/37b10bf49ad4164fe8f11e1f1f504c13/jetified-firebase-firestore-22.0.1/AndroidManifest.xml:13:5-79

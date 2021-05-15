@@ -5,6 +5,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodgook/views/recipes_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:foodgook/widgets/addpost_item.dart';
 
 import 'nestedTabBarView.dart';
 // import 'package:foodgook/views/recipes_view.dart';
@@ -175,11 +176,18 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
         onClose: () => print('Closing'),
         children: [
           SpeedDialChild(
-              child: Icon(Icons.add),
-              label: 'Add recipe',
-              backgroundColor: Colors.white,
-              foregroundColor: Color(0xffff6240),
-              onTap: () => print('First')),
+            child: Icon(Icons.add),
+            label: 'Add recipe',
+            backgroundColor: Colors.white,
+            foregroundColor: Color(0xffff6240),
+            // onTap: () => print('First'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddRecipeScreen()),
+              );
+            },
+          ),
           SpeedDialChild(
             child: Icon(Icons.live_tv_rounded),
             label: 'Live show',
