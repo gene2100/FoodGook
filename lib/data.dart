@@ -80,6 +80,17 @@ List tags = [
 //           // "notif": notifs[random.nextInt(10)]
 //         });
 
+List view = [
+  14100,12500,14100,14100,13500,14100,100,14100,14500,14100,14100,
+
+
+
+];
+
+List favorite =[
+  259,259,259,259,259,259,259,259,259,259,259,259,259,259,259,259,
+];
+
 List posts = List.generate(
     13,
     (index) => {
@@ -90,6 +101,8 @@ List posts = List.generate(
           "foodname": foodnames[random.nextInt(10)],
           "description": descriptions[random.nextInt(10)],
           "tag": tags[random.nextInt(10)],
+          "view" : view[random.nextInt(10)],
+          "favorite" : favorite[random.nextInt(10)]
         });
 
 List types = ["text", "image"];

@@ -21,6 +21,10 @@ dependencies:
   country_pickers: ^2.0.0
   cloud_firestore: ^0.16.0+1
   google_fonts: ^0.2.0
+  firebase_storage: ^7.0.0
+  auto_size_text: ^2.1.0
+  timeago: ^3.0.2
+
 
 dev_dependencies:
   flutter_test:

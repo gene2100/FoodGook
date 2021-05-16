@@ -49,7 +49,8 @@ Future<void> register() async {
           'Description': '',
           'Followers': 0,
           'Following': 0,
-          'Recipes': 0
+          'Recipes': 0,
+          'ImageURL' : '',
         })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));

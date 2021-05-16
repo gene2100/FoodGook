@@ -11,7 +11,12 @@ import 'nestedTabBarView.dart';
 // import 'package:foodgook/constant.dart';
 // import 'signin.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 FirebaseAuth _auth = FirebaseAuth.instance;
+FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+Map recipeResult;
 
 class Feeds extends StatefulWidget {
   @override
@@ -37,6 +42,9 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
+
+    List<String> itemCounts;
+
     Color _notiIconColor = Colors.grey;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -179,7 +187,23 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
               label: 'Add recipe',
               backgroundColor: Colors.white,
               foregroundColor: Color(0xffff6240),
-              onTap: () => print('First')),
+              onTap: () async {
+                print('First');
+               await _firestore.collection("User_Profile").doc(_auth.currentUser.uid).collection("Relation_Detail").doc('Following').get().then((docSnap){
+                  print(docSnap.data());
+                  itemCounts = docSnap['UserUID'].cast<String>();
+                });
+                itemCounts.shuffle();
+                print(itemCounts[0]);
+                await _firestore.collection("Recipes").where('UserUID', whereIn: itemCounts).orderBy('postTime', descending: true).limit(10).get().then((collSnap){
+                  collSnap.docs.forEach((result) {
+                    print(result.data());
+                    recipeResult = result.data();
+                  });
+                });
+                print(recipeResult['Recipe_Name']);
+                    }),
+
           SpeedDialChild(
             child: Icon(Icons.live_tv_rounded),
             label: 'Live show',

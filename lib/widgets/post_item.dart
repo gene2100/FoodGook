@@ -1,13 +1,19 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class PostItem extends StatefulWidget {
   final String dp;
   final String name;
-  final String time;
+  final Timestamp time;
   final String img;
   final String foodname;
   final String description;
-  final String tag;
+  final List tag;
+  final int view;
+  final int favorite;
   // final int index;
 
   PostItem({
@@ -19,6 +25,8 @@ class PostItem extends StatefulWidget {
     @required this.foodname,
     @required this.description,
     @required this.tag,
+    @required this.view,
+    @required this.favorite,
   }) : super(key: key);
   @override
   _PostItemState createState() => _PostItemState();
@@ -82,7 +90,7 @@ class _PostItemState extends State<PostItem> {
                 Row(
                   children: [
                     CircleAvatar(
-                      backgroundImage: AssetImage(
+                      backgroundImage: NetworkImage(
                         "${widget.dp}",
                       ),
                     ),
@@ -100,7 +108,7 @@ class _PostItemState extends State<PostItem> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          "${widget.time}",
+                          timeago.format(DateTime.fromMicrosecondsSinceEpoch(widget.time.microsecondsSinceEpoch)),
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 11,
@@ -121,7 +129,7 @@ class _PostItemState extends State<PostItem> {
                       ? ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Container(
-                            child: Image.asset(
+                            child: Image.network(
                               "${widget.img}",
                               height: 170,
                               width: MediaQuery.of(context).size.width,
@@ -146,11 +154,11 @@ class _PostItemState extends State<PostItem> {
                           Icon(Icons.remove_red_eye_rounded,
                               color: Colors.grey),
                           SizedBox(width: 3),
-                          Text("14.1k"),
+                          Text(NumberFormat.compact().format(widget.view)),
                           SizedBox(width: 10),
                           Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
                           SizedBox(width: 3),
-                          Text("259"),
+                          Text('${widget.favorite}'),
                         ],
                       ),
                       // Row(
@@ -177,15 +185,22 @@ class _PostItemState extends State<PostItem> {
                   SizedBox(height: 5),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${widget.tag}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XFF5D6890),
-                        ),
-                      ),
-                    ],
+                    children: <Widget>[
+                      for (var item in widget.tag)
+                        Flexible(
+                          child:
+                          TextButton(
+                            child: AutoSizeText(
+                              '#'+item,
+                              minFontSize: 8,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0XFF5D6890),
+                              ),
+                            ),
+                          ),
+                        )],
                   ),
                   SizedBox(
                     height: 5,
