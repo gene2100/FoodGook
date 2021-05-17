@@ -213,7 +213,7 @@ class _RecipesViewState extends State<RecipesView> {
                       onTap: (){
                         print('ListView Tapped');
                         Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => MealDetailScreen()));
+                            MaterialPageRoute(builder: (context) => MealDetailScreen(populars[index].docName)));
 
                       },
                   child: Container(
