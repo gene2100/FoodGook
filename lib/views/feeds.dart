@@ -33,6 +33,10 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
     _tabController = new TabController(length: 5, vsync: this);
   }
 
+  void deactivate(){
+    super.deactivate();
+  }
+
   @override
   void dispose() {
     super.dispose();

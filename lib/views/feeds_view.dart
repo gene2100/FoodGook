@@ -14,12 +14,12 @@ FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 List<Map> recipeResultAll = [];
 String downloadURL;
+String lastedUID;
 
 Future<void> getData() async{
   recipeResultAll.clear();
   Map recipeFeedDetail;
   List<String> userUID;
-  String PicPath;
   await _firestore.collection("User_Profile").doc(_auth.currentUser.uid).collection("Relation_Detail").doc('Following').get().then((docSnap){
     print(docSnap.data());
     userUID = docSnap['UserUID'].cast<String>();
@@ -42,6 +42,22 @@ Future<void> getData() async{
 
 }
 
+Future<String> getDataCheck() async {
+    if(lastedUID != _auth.currentUser.uid){
+      recipeResultAll.clear();
+      lastedUID = _auth.currentUser.uid;
+    }
+    if(recipeResultAll.isEmpty){
+      print('...Getting data...');
+      await getData();
+    }
+    if(recipeResultAll.isNotEmpty){
+      print('Done');
+      return 'Done';
+    }
+}
+
+
 
 class FeedsView extends StatefulWidget {
   @override
@@ -50,17 +66,16 @@ class FeedsView extends StatefulWidget {
 
 class _FeedsViewState extends State<FeedsView> {
   @override
-
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-      future: getData(),
+      future: getDataCheck(),
       builder: (BuildContext context ,AsyncSnapshot snapshot){
-        if(snapshot.connectionState == ConnectionState.done)
+        if(snapshot.data == 'Done')
           {
             return RefreshIndicator(
               onRefresh: () async{
+                await getData();
                 setState(() {
                 });
               },
@@ -69,7 +84,6 @@ class _FeedsViewState extends State<FeedsView> {
                 itemCount: recipeResultAll.length,
                 itemBuilder: (BuildContext context, int index) {
                   Map recipeResult = recipeResultAll[index];
-                  Map post = posts[index];
                   return PostItem(
                     img: recipeResult['ImageURL'],
                     name: recipeResult['userName'],
