@@ -21,6 +21,7 @@ dependencies:
   country_pickers: ^2.0.0
   cloud_firestore: ^0.16.0+1
   google_fonts: ^0.2.0
+  http:
 
 dev_dependencies:
   flutter_test:

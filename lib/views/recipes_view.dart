@@ -5,6 +5,8 @@ import 'package:foodgook/models/newbook_model.dart';
 import 'package:foodgook/models/popularbook_model.dart';
 import 'package:foodgook/widgets/custom_tab_indicator.dart';
 
+import 'meal_detail_screen.dart';
+
 class RecipesView extends StatefulWidget {
   @override
   _RecipesViewState createState() => _RecipesViewState();
@@ -206,7 +208,15 @@ class _RecipesViewState extends State<RecipesView> {
                 shrinkWrap: true,
                 itemCount: populars.length,
                 itemBuilder: (context, index) {
-                  return Container(
+
+                  return GestureDetector(
+                      onTap: (){
+                        print('ListView Tapped');
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => MealDetailScreen()));
+
+                      },
+                  child: Container(
                     margin: EdgeInsets.only(bottom: 19),
                     height: 81,
                     width: MediaQuery.of(context).size.width - 50,
@@ -257,6 +267,7 @@ class _RecipesViewState extends State<RecipesView> {
                         ),
                       ],
                     ),
+                  ),
                   );
                 })
           ],
