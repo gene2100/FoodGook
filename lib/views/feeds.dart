@@ -89,14 +89,15 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
                             height: 15.0,
                           ),
                           Row(
+                            //search bar and notifications
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Expanded(
                                 child: Container(
                                   child: TextField(
                                     decoration: InputDecoration(
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              vertical: 10.0, horizontal: 10.0),
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 10.0, horizontal: 10.0),
                                       fillColor: Color(0xfff2f2f2),
                                       filled: true,
                                       hintText: 'Search for people, recipes...',
@@ -113,22 +114,49 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
                                   ),
                                 ),
                               ),
-                              IconButton(
-                                icon: Icon(Icons.notifications_none),
-                                color: Colors.grey,
-                                iconSize: 24,
-                                tooltip: 'Show all notifications',
-                                //Still can't change color when clicked
-                                onPressed: () {
-                                  setState(() {
-                                    if (_notiIconColor == Colors.grey) {
-                                      _notiIconColor = Color(0xffff6240);
-                                    } else {
-                                      _notiIconColor = Colors.grey;
-                                    }
-                                  });
-                                },
-                                padding: const EdgeInsets.all(15.0),
+                              // Row(
+                              //   children: [
+                              //     TextField(
+                              //       decoration: InputDecoration(
+                              //         contentPadding: EdgeInsets.symmetric(
+                              //             vertical: 10.0, horizontal: 10.0),
+                              //         fillColor: Color(0xfff2f2f2),
+                              //         filled: true,
+                              //         hintText: 'Search for people, recipes...',
+                              //         border: OutlineInputBorder(
+                              //           borderRadius:
+                              //               BorderRadius.circular(24.0),
+                              //           borderSide: BorderSide.none,
+                              //         ),
+                              //         prefixIcon: Icon(
+                              //           Icons.search,
+                              //           size: 24,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+
+                              Row(
+                                children: [
+                                  IconButton(
+                                    icon: Icon(Icons.notifications_none),
+                                    color: Colors.grey,
+                                    iconSize: 24,
+                                    tooltip: 'Show all notifications',
+                                    //Still can't change color when clicked
+                                    onPressed: () {
+                                      setState(() {
+                                        if (_notiIconColor == Colors.grey) {
+                                          _notiIconColor = Color(0xffff6240);
+                                        } else {
+                                          _notiIconColor = Colors.grey;
+                                        }
+                                      });
+                                    },
+                                    padding: const EdgeInsets.all(15.0),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -184,7 +212,9 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AddRecipeScreen()),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        AddRecipeScreen()), //addpost_item.dart
               );
             },
           ),
