@@ -125,13 +125,14 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
       body: SafeArea(
         child: Wrap(
           // key: _formKey,
-
           children: [
-            // Column(
-            //   children: [
-            //     SizedBox(height: 10),
-            //   ],
-            // ),
+            IconButton(
+              //change button position //on photo
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             GestureDetector(
               child: Container(
                 child: AspectRatio(
@@ -143,147 +144,198 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 _showPickerDialog(context);
               },
             ),
-            Form(
-              child: Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Column(
+            Expanded(
+              child: Scrollbar(
+                child: ListView(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: AlwaysScrollableScrollPhysics(),
+                  //input form
                   children: <Widget>[
-                    //Menu
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: TextFormField(
-                        // textInputAction: TextInputAction.newline,
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                            hintText: "Menu: Teriyaki Salmon",
-                            errorStyle: const TextStyle(
-                                color: Colors.yellow,
-                                decorationColor: Colors.yellow),
-                            contentPadding:
-                                const EdgeInsets.only(left: 15, right: 15)),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Enter Count!';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    //Description
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15.0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                            hintText: "Desciption",
-                            errorStyle: const TextStyle(
-                                color: Colors.yellow,
-                                decorationColor: Colors.yellow),
-                            contentPadding:
-                                const EdgeInsets.only(left: 15, right: 15)),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Enter Your Name!';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    //Tag
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15.0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                            hintText: "Add food tag e.g. #salmon, #dinner",
-                            errorStyle: const TextStyle(
-                                color: Colors.yellow,
-                                decorationColor: Colors.yellow),
-                            contentPadding:
-                                const EdgeInsets.only(left: 15, right: 15)),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Enter Your Name!';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Time",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 16,
+                    Form(
+                      child: Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: Column(
+                          children: <Widget>[
+                            //Menu
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                // textInputAction: TextInputAction.newline,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    hintText: "Menu: Teriyaki Salmon",
+                                    errorStyle: const TextStyle(
+                                        color: Colors.yellow,
+                                        decorationColor: Colors.yellow),
+                                    contentPadding: const EdgeInsets.only(
+                                        left: 15, right: 15)),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please Enter Count!';
+                                  }
+                                  return null;
+                                },
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.text,
-                            decoration: const InputDecoration(
-                                hintText: "2 hours",
-                                errorStyle: const TextStyle(
-                                    color: Colors.yellow,
-                                    decorationColor: Colors.yellow),
-                                contentPadding:
-                                    const EdgeInsets.only(left: 15, right: 15)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Skill",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 16,
+                            //Description
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: TextFormField(
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    hintText: "Desciption",
+                                    errorStyle: const TextStyle(
+                                        color: Colors.yellow,
+                                        decorationColor: Colors.yellow),
+                                    contentPadding: const EdgeInsets.only(
+                                        left: 15, right: 15)),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please Enter Your Name!';
+                                  }
+                                  return null;
+                                },
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.text,
-                            decoration: const InputDecoration(
-                                hintText: "Easy",
-                                errorStyle: const TextStyle(
-                                    color: Colors.yellow,
-                                    decorationColor: Colors.yellow),
-                                contentPadding:
-                                    const EdgeInsets.only(left: 15, right: 15)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Tooltip(
-                            message: "Next",
-                            preferBelow: false,
-                            // child: FloatingActionButton(
-                            //   backgroundColor: Colors.black,
-                            // ),
-                          ),
-                        ],
+                            //Tag
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: TextFormField(
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    hintText:
+                                        "Add food tag e.g. #salmon, #dinner",
+                                    errorStyle: const TextStyle(
+                                        color: Colors.yellow,
+                                        decorationColor: Colors.yellow),
+                                    contentPadding: const EdgeInsets.only(
+                                        left: 15, right: 15)),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please Enter Your Name!';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 30.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Time",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  TextFormField(
+                                    keyboardType: TextInputType.text,
+                                    decoration: const InputDecoration(
+                                        hintText: "2 hours",
+                                        errorStyle: const TextStyle(
+                                            color: Colors.yellow,
+                                            decorationColor: Colors.yellow),
+                                        contentPadding: const EdgeInsets.only(
+                                            left: 15, right: 15)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 30.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Skill",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  TextFormField(
+                                    keyboardType: TextInputType.text,
+                                    decoration: const InputDecoration(
+                                        hintText: "Easy",
+                                        errorStyle: const TextStyle(
+                                            color: Colors.yellow,
+                                            decorationColor: Colors.yellow),
+                                        contentPadding: const EdgeInsets.only(
+                                            left: 15, right: 15)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 30.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Tooltip(message: "NEXT"),
+                                  // child:
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            )
+            ),
+            // Row(
+            //   children: [
+            //     // SizedBox(width: 340),
+
+            //     ClipRRect(
+            //       borderRadius: BorderRadius.circular(10),
+            //       child: Stack(
+            //         children: <Widget>[
+            //           Positioned.fill(
+            //             child: Container(
+            //               decoration: BoxDecoration(
+            //                 color: Color(0xffff6240),
+            //                 boxShadow: [
+            //                   BoxShadow(
+            //                     color: Color(0x54000000),
+            //                     spreadRadius: 10,
+            //                     blurRadius: 2,
+            //                   ),
+            //                 ],
+            //               ),
+            //               height: 500,
+            //               width: MediaQuery.of(context).size.width,
+            //             ),
+            //           ),
+            //           TextButton(
+            //             style: TextButton.styleFrom(
+            //               padding: EdgeInsets.all(15.0),
+            //               primary: Colors.white,
+            //             ),
+            //             onPressed: () {},
+            //             child: Text('NEXT'),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+            ),
           ],
         ),
       ),
