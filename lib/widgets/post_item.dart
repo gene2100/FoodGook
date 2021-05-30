@@ -110,7 +110,21 @@ class _PostItemState extends State<PostItem> {
                     ),
                   ],
                 ),
-                Icon(Icons.more_horiz, size: 30, color: Colors.grey),
+                Row(
+                  children: [
+                    // IconButton(
+                    //   icon: Icon(Icons.bookmark_outline_rounded),
+                    //   color: Colors.grey,
+                    //   onPressed: () {},
+                    // ),
+                    // Icon(Icons.bookmark_outline, color: Colors.grey),
+                    // SizedBox(
+                    //   width: 10,
+                    // ),
+                    Icon(Icons.more_horiz, color: Colors.grey),
+                    // Icon(Icons.ios_share, color: Colors.grey),
+                  ],
+                )
               ],
             ),
             Padding(
