@@ -1,26 +1,21 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodgook/app/tabs/recipes/recipes_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:foodgook/app/components/addpost_item.dart';
-import 'package:foodgook/app/tabs/profile/profile_view.dart';
+// import 'package:foodgook/app/tabs/profile/profile_view.dart';
 
 import 'nestedTabBarView.dart';
-// import 'package:foodgook/views/recipes_view.dart';
-// import 'package:foodgook/constant.dart';
-// import 'signin.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 
-class Feeds extends StatefulWidget {
+class FeedsPage extends StatefulWidget {
   @override
-  _FeedsState createState() => _FeedsState();
+  _FeedsPageState createState() => _FeedsPageState();
 }
 
-class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
+class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
   var selectedIndex = 0;
   TabController _tabController;
 
