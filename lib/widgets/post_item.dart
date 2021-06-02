@@ -27,51 +27,6 @@ class PostItem extends StatefulWidget {
 class _PostItemState extends State<PostItem> {
   @override
   Widget build(BuildContext context) {
-    // return Padding(
-    //   padding: EdgeInsets.symmetric(vertical: 5),
-    //   child: InkWell(
-    //     child: Column(
-    //       children: <Widget>[
-    //         ListTile(
-    //           onTap: () => print('Move to profile'),
-    //           leading: CircleAvatar(
-    //             backgroundImage: AssetImage(
-    //               "${widget.dp}",
-    //             ),
-    //           ),
-    //           contentPadding: EdgeInsets.all(0),
-    //           title: Text(
-    //             "${widget.name}",
-    //             style: TextStyle(
-    //               fontWeight: FontWeight.bold,
-    //             ),
-    //           ),
-    //           subtitle: Text(
-    //             //from trailing
-    //             "${widget.time}",
-    //             style: TextStyle(
-    //               fontWeight: FontWeight.w300,
-    //               fontSize: 11,
-    //             ),
-    //           ),
-    //           trailing: TextButton(
-    //             child: Icon(Icons.bookmark_border),
-    //             // onPressed: () => print('save'),
-    //           ),
-
-    //           // onTap: () => print('save'),
-    //         ),
-    //         Image.asset(
-    //           "${widget.img}",
-    //           height: 170,
-    //           width: MediaQuery.of(context).size.width,
-    //           fit: BoxFit.cover,
-    //         ),
-    //       ],
-    //     ),
-    //     onTap: () {},
-    //   ),
-    // );
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Wrap(
