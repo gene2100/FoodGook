@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/scheduler.dart';
 
-import 'feeds.dart';
+import '../feeds/feeds.dart';
 
 final TextEditingController _emailController = TextEditingController();
 final TextEditingController _passwordController = TextEditingController();

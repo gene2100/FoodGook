@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
-import 'package:foodgook/models/newbook_model.dart';
-import 'package:foodgook/models/popularbook_model.dart';
-import 'package:foodgook/widgets/custom_tab_indicator.dart';
+import 'package:foodgook/app/models/newbook_model.dart';
+import 'package:foodgook/app/models/popularbook_model.dart';
+import 'package:foodgook/app/components/custom_tab_indicator.dart';
 
 class RecipesView extends StatefulWidget {
   @override

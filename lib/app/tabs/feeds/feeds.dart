@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodgook/views/recipes_view.dart';
+import 'package:foodgook/app/tabs/recipes/recipes_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodgook/widgets/addpost_item.dart';
-import 'package:foodgook/views/profile_view.dart';
+import 'package:foodgook/app/components/addpost_item.dart';
+import 'package:foodgook/app/tabs/profile/profile_view.dart';
 
 import 'nestedTabBarView.dart';
 // import 'package:foodgook/views/recipes_view.dart';

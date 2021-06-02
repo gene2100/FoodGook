@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'views/signin.dart';
-import 'views/signup.dart';
+import 'app/tabs/signin/signin.dart';
+import 'app/tabs/signup/signup.dart';
 //import 'screens/feeds.dart';
 
 void main() {

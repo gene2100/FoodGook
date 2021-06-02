@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodgook/views/feeds_view.dart';
+import 'package:foodgook/app/tabs/feeds/details/feeds_view.dart';
 
 class NestedTabBar extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodgook/widgets/post_item.dart';
+import 'package:foodgook/app/components/post_item.dart';
 import 'package:foodgook/data.dart';
 
 // import 'package:foodgook/views/feeds.dart';
