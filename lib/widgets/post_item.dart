@@ -28,141 +28,141 @@ class _PostItemState extends State<PostItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
-        child: Wrap(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage(
-                        "${widget.dp}",
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${widget.name}",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          "${widget.time}",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 11,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    // IconButton(
-                    //   icon: Icon(Icons.bookmark_outline_rounded),
-                    //   color: Colors.grey,
-                    //   onPressed: () {},
-                    // ),
-                    // Icon(Icons.bookmark_outline, color: Colors.grey),
-                    // SizedBox(
-                    //   width: 10,
-                    // ),
-                    Icon(Icons.more_horiz, color: Colors.grey),
-                    // Icon(Icons.ios_share, color: Colors.grey),
-                  ],
-                )
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Column(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Wrap(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
                 children: [
-                  "${widget.img}" != null
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            child: Image.asset(
-                              "${widget.img}",
-                              height: 170,
-                              width: MediaQuery.of(context).size.width,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )
-                      : SizedBox.shrink(),
-                  // SizedBox(height: 8.0),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "${widget.foodname}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.remove_red_eye_rounded,
-                              color: Colors.grey),
-                          SizedBox(width: 3),
-                          Text("14.1k"),
-                          SizedBox(width: 10),
-                          Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
-                          SizedBox(width: 3),
-                          Text("259"),
-                        ],
-                      ),
-                      // Row(
-                      //   children: [
-                      //     Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
-                      //     SizedBox(width: 3),
-                      //     Text("1k"),
-                      //   ],
-                      // ),
-                    ],
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${widget.description}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${widget.tag}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XFF5D6890),
-                        ),
-                      ),
-                    ],
+                  CircleAvatar(
+                    backgroundImage: AssetImage(
+                      "${widget.dp}",
+                    ),
                   ),
                   SizedBox(
-                    height: 5,
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${widget.name}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 2),
+                      Text(
+                        "${widget.time}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  // IconButton(
+                  //   icon: Icon(Icons.bookmark_outline_rounded),
+                  //   color: Colors.grey,
+                  //   onPressed: () {},
+                  // ),
+                  // Icon(Icons.bookmark_outline, color: Colors.grey),
+                  // SizedBox(
+                  //   width: 10,
+                  // ),
+                  Icon(Icons.more_horiz, color: Colors.grey),
+                  // Icon(Icons.ios_share, color: Colors.grey),
+                ],
+              )
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: Column(
+              children: [
+                "${widget.img}" != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          child: Image.asset(
+                            "${widget.img}",
+                            height: 170,
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    : SizedBox.shrink(),
+                // SizedBox(height: 8.0),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${widget.foodname}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.remove_red_eye_rounded, color: Colors.grey),
+                        SizedBox(width: 3),
+                        Text("14.1k"),
+                        SizedBox(width: 10),
+                        Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
+                        SizedBox(width: 3),
+                        Text("259"),
+                      ],
+                    ),
+                    // Row(
+                    //   children: [
+                    //     Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
+                    //     SizedBox(width: 3),
+                    //     Text("1k"),
+                    //   ],
+                    // ),
+                  ],
+                ),
+                SizedBox(height: 5),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${widget.description}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${widget.tag}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0XFF5D6890),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+              ],
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
