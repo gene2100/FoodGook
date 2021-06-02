@@ -96,8 +96,8 @@ Future<void> _showLoginDialog(BuildContext context) async {
                 SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
                   _emailController.clear();
                   _passwordController.clear();
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Feeds()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => FeedsPage()));
                 });
               } else {
                 print('Loading');
@@ -118,12 +118,12 @@ Future<void> _showLoginDialog(BuildContext context) async {
   );
 }
 
-class MyHomePage extends StatefulWidget {
+class SigninPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _SigninPageState createState() => new _SigninPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SigninPageState extends State<SigninPage> {
   final validEmailCharacters = RegExp(r'^[a-zA-Z0-9@\.]+$');
   final validCharacters = RegExp(r'^[a-zA-Z0-9&%=]+$');
 
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Form(
             key: _formKey,
@@ -266,7 +266,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             print("page change: Feeds");
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Feeds()));
+                                builder: (context) => FeedsPage()));
                           },
                           child: Container(
                             // Test button
@@ -331,7 +331,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(width: 5.0),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed('/signup');
+                        Navigator.of(context).pushNamed('/signuppage');
                       },
                       child: Text(
                         'Register',
