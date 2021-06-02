@@ -184,8 +184,8 @@ class _FeedsState extends State<Feeds> with TickerProviderStateMixin {
             //Add page route
           ),
           Center(
-            // child: Text("Profile"),
-            child: ProfileView(),
+            child: Text("Profile"),
+            // child: ProfileView(),
           ),
         ],
         controller: _tabController,
