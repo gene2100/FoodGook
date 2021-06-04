@@ -14,7 +14,7 @@ class _RecipesViewState extends State<RecipesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SafeArea(
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: <Widget>[
