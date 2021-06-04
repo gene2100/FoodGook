@@ -35,6 +35,7 @@ class _ProfileViewState extends State<ProfileView>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Profile',
@@ -45,15 +46,17 @@ class _ProfileViewState extends State<ProfileView>
                           fontFamily: 'Rublik',
                         ),
                       ),
-                      SizedBox(
-                        width: 215,
-                      ),
+                      // SizedBox(
+                      //   width: 215,
+                      // ),
                       IconButton(
                         icon: Icon(Icons.settings_outlined),
                         color: Colors.grey,
                         iconSize: 24,
                         tooltip: 'Show all settings',
-                        onPressed: () {},
+                        onPressed: () {
+                          print('Pressed');
+                        },
                       ),
                       // Icon(
                       //   Icons.settings_outlined,
@@ -107,10 +110,30 @@ class _ProfileViewState extends State<ProfileView>
                                     //   color: Color(0xFFebf4ef),
                                     // ),
                                     child: Center(
-                                      child: Text("Edit Profile",
-                                          style: TextStyle(
-                                              color: Color(0xffff6240),
-                                              fontWeight: FontWeight.w700)),
+                                      child: TextButton(
+                                        child: Text('Edit Profile'),
+                                        style: TextButton.styleFrom(
+                                          primary: Color(0xffff6240),
+                                          // backgroundColor: Colors.teal,
+                                          // onSurface: Colors.grey,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                          // side: BorderSide(
+                                          //   color: Colors.red,
+                                          //   width: 1,
+                                          // ),
+                                        ),
+                                        onPressed: () {
+                                          print('Pressed');
+                                        },
+                                      ),
+                                      // child: Text(
+                                      //   "Edit Profile",
+                                      //   style: TextStyle(
+                                      //       color: Color(0xffff6240),
+                                      //       fontWeight: FontWeight.w700),
+                                      // ),
                                     ),
                                   )
                                 ],
