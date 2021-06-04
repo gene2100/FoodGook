@@ -296,6 +296,15 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 ),
               ),
             ),
+            //Next button
+            SizedBox(width: 320),
+            ElevatedButton(
+              child: Text(
+                "Next",
+                style: TextStyle(fontWeight: FontWeight.w300),
+              ),
+              onPressed: () {},
+            ),
             // Row(
             //   children: [
             //     // SizedBox(width: 340),

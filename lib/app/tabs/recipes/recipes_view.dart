@@ -185,6 +185,7 @@ class _RecipesViewState extends State<RecipesView> {
                           color: Colors.deepOrangeAccent,
                           image: DecorationImage(
                             image: AssetImage(newbooks[index].image),
+                            fit: BoxFit.cover,
                           )),
                     );
                   }),
@@ -210,7 +211,7 @@ class _RecipesViewState extends State<RecipesView> {
                     margin: EdgeInsets.only(bottom: 19),
                     height: 81,
                     width: MediaQuery.of(context).size.width - 50,
-                    color: Colors.black12,
+                    color: Colors.grey[200],
                     child: Row(
                       children: <Widget>[
                         Container(
@@ -219,7 +220,9 @@ class _RecipesViewState extends State<RecipesView> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               image: DecorationImage(
-                                  image: AssetImage(populars[index].image)),
+                                image: AssetImage(populars[index].image),
+                                fit: BoxFit.cover,
+                              ),
                               color: Colors.deepOrangeAccent),
                         ),
                         SizedBox(
