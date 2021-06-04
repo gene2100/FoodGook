@@ -1,100 +1,71 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+// import 'package:flutter_svg/svg.dart';
+import 'package:foodgook/app/tabs/feeds/feedspage.dart';
+import 'package:foodgook/app/tabs/profile/profilepage.dart';
+import 'package:foodgook/app/tabs/recipes/recipes_view.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodgook/app/tabs/profile/profile_view.dart';
-import 'package:foodgook/app/tabs/recipes/recipes_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodgook/app/components/addpost_item.dart';
-// import 'package:foodgook/app/tabs/profile/profile_view.dart';
 
-import 'details/nestedTabBarView.dart';
+import 'app/components/addpost_item.dart';
+import 'app/tabs/signin/signin.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 
-class FeedsPage extends StatefulWidget {
+class App extends StatefulWidget {
   @override
-  _FeedsPageState createState() => _FeedsPageState();
+  _AppState createState() => _AppState();
 }
 
-class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
-  int _selectedIndex = 0;
-
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Recipes',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Forum',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Grocery',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Profile',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class _AppState extends State<App> with TickerProviderStateMixin {
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
-    Color _notiIconColor = Colors.grey;
-
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _getBody(index),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+        currentIndex: index,
+        onTap: (value) => setState(() => index = value),
 
-        iconSize: 25.0, //20
-        items: const <BottomNavigationBarItem>[
+        //list bottom nav
+        items: [
           BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(Icons.home),
-            backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.home,
+            ),
+            label: 'Feeds',
           ),
           BottomNavigationBarItem(
+            icon: Icon(
+              Icons.receipt,
+            ),
             label: 'Recipes',
-            icon: Icon(Icons.receipt),
-            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
+            icon: Icon(
+              Icons.forum,
+            ),
             label: 'Forum',
-            icon: Icon(Icons.forum),
-            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
+            icon: Icon(
+              Icons.local_grocery_store,
+            ),
             label: 'Grocery',
-            icon: Icon(Icons.local_grocery_store),
-            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+            ),
             label: 'Profile',
-            icon: Icon(Icons.person),
-            backgroundColor: Colors.red,
           ),
         ],
-        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: Color(0xffff6240),
         unselectedItemColor: Colors.grey,
-        onTap: _onItemTapped,
+        backgroundColor: Colors.white,
       ),
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
@@ -141,10 +112,38 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
               onTap: () {
                 print('Third');
                 _auth.signOut();
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                // Utils.mainAppNav.currentState.pushNamed('/signinpage');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SigninPage()),
+                );
               })
         ],
       ),
+    );
+  }
+
+  Widget _getBody(int index) {
+    switch (index) {
+      case 0: //feeds
+        return FeedsPage(); //FeedsPage() error
+      case 1: //recipes
+        return RecipesView();
+      case 2: //forum
+        return SafeArea(
+          child: Text('Forum'),
+        );
+      case 3: //grocery
+        return SafeArea(
+          child: Text('Grocery'),
+        );
+      case 4: //profile
+        return ProfileView();
+    }
+
+    return Center(
+      child: Text("There is no page builder for this index."),
     );
   }
 

@@ -46,14 +46,20 @@ class _ProfileViewState extends State<ProfileView>
                         ),
                       ),
                       SizedBox(
-                        width: 230,
+                        width: 215,
                       ),
-                      Icon(
-                        Icons.settings_outlined,
+                      IconButton(
+                        icon: Icon(Icons.settings_outlined),
                         color: Colors.grey,
-                        // color: Color(0xff828282),
-                        size: 30,
+                        iconSize: 24,
+                        tooltip: 'Show all settings',
+                        onPressed: () {},
                       ),
+                      // Icon(
+                      //   Icons.settings_outlined,
+                      //   color: Colors.grey,
+                      //   size: 24,
+                      // ),
                     ],
                   ),
                 ],
