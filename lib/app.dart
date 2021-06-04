@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:foodgook/app/tabs/feeds/feedspage.dart';
+import 'package:foodgook/app/tabs/forum/forumpage.dart';
+import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
 import 'package:foodgook/app/tabs/profile/profilepage.dart';
 import 'package:foodgook/app/tabs/recipes/recipes_view.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -67,60 +69,61 @@ class _AppState extends State<App> with TickerProviderStateMixin {
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
       ),
-      floatingActionButton: SpeedDial(
-        animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Color(0xffff6240),
-        foregroundColor: Colors.white,
-        // child: Icon(Icons.ac_unit),
-        //change to foodgook
-        child:
-            SvgPicture.asset('assets/svg/fabButton.svg'), //change to foodgook
+      //FAB
+      // floatingActionButton: SpeedDial(
+      //   animatedIcon: AnimatedIcons.menu_close,
+      //   backgroundColor: Color(0xffff6240),
+      //   foregroundColor: Colors.white,
+      //   // child: Icon(Icons.ac_unit),
+      //   //change to foodgook
+      //   child:
+      //       SvgPicture.asset('assets/svg/fabButton.svg'), //change to foodgook
 
-        overlayColor: Colors.grey,
-        overlayOpacity: 0.4,
-        curve: Curves.easeIn,
-        onOpen: () => print('Opening'),
-        onClose: () => print('Closing'),
-        children: [
-          SpeedDialChild(
-            child: Icon(Icons.add),
-            label: 'Add recipe',
-            backgroundColor: Colors.white,
-            foregroundColor: Color(0xffff6240),
-            // onTap: () => print('First'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        AddRecipeScreen()), //addpost_item.dart
-              );
-            },
-          ),
-          SpeedDialChild(
-            child: Icon(Icons.live_tv_rounded),
-            label: 'Live show',
-            backgroundColor: Colors.white,
-            foregroundColor: Color(0xffff6240),
-            onTap: () => print('Second'),
-          ),
-          SpeedDialChild(
-              child: Icon(Icons.logout),
-              label: 'Log out',
-              backgroundColor: Colors.white,
-              foregroundColor: Color(0xffff6240),
-              onTap: () {
-                print('Third');
-                _auth.signOut();
-                // Navigator.pop(context);
-                // Utils.mainAppNav.currentState.pushNamed('/signinpage');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SigninPage()),
-                );
-              })
-        ],
-      ),
+      //   overlayColor: Colors.grey,
+      //   overlayOpacity: 0.4,
+      //   curve: Curves.easeIn,
+      //   onOpen: () => print('Opening'),
+      //   onClose: () => print('Closing'),
+      //   children: [
+      //     SpeedDialChild(
+      //       child: Icon(Icons.add),
+      //       label: 'Add recipe',
+      //       backgroundColor: Colors.white,
+      //       foregroundColor: Color(0xffff6240),
+      //       // onTap: () => print('First'),
+      //       onTap: () {
+      //         Navigator.push(
+      //           context,
+      //           MaterialPageRoute(
+      //               builder: (context) =>
+      //                   AddRecipeScreen()), //addpost_item.dart
+      //         );
+      //       },
+      //     ),
+      //     SpeedDialChild(
+      //       child: Icon(Icons.live_tv_rounded),
+      //       label: 'Live show',
+      //       backgroundColor: Colors.white,
+      //       foregroundColor: Color(0xffff6240),
+      //       onTap: () => print('Second'),
+      //     ),
+      //     SpeedDialChild(
+      //         child: Icon(Icons.logout),
+      //         label: 'Log out',
+      //         backgroundColor: Colors.white,
+      //         foregroundColor: Color(0xffff6240),
+      //         onTap: () {
+      //           print('Third');
+      //           _auth.signOut();
+      //           // Navigator.pop(context);
+      //           // Utils.mainAppNav.currentState.pushNamed('/signinpage');
+      //           Navigator.push(
+      //             context,
+      //             MaterialPageRoute(builder: (context) => SigninPage()),
+      //           );
+      //         })
+      //   ],
+      // ),
     );
   }
 
@@ -131,13 +134,9 @@ class _AppState extends State<App> with TickerProviderStateMixin {
       case 1: //recipes
         return RecipesView();
       case 2: //forum
-        return SafeArea(
-          child: Text('Forum'),
-        );
+        return ForumPage();
       case 3: //grocery
-        return SafeArea(
-          child: Text('Grocery'),
-        );
+        return GroceryPage();
       case 4: //profile
         return ProfileView();
     }
