@@ -24,7 +24,7 @@ class _ProfileViewState extends State<ProfileView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SafeArea(
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: <Widget>[
@@ -149,6 +149,19 @@ class _ProfileViewState extends State<ProfileView>
                               ),
                             ),
                           ],
+                        ),
+
+                        // Container(
+                        //   height: 50,
+                        //   child: VerticalDivider(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+
+                        Container(
+                          color: Colors.grey[400],
+                          height: 50,
+                          width: 1,
                         ),
                         Column(
                           children: <Widget>[
