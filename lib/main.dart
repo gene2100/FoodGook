@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-import 'package:foodgook/app/tabs/feeds/feeds.dart';
+import 'app/tabs/feeds/feedspage.dart';
 import 'app/tabs/signin/signin.dart';
 import 'app/tabs/signup/signup.dart';
-import 'app/tabs/splah/splashpage.dart';
+import 'app/tabs/splash/splashpage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

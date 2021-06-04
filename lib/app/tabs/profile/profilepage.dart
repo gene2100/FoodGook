@@ -24,7 +24,7 @@ class _ProfileViewState extends State<ProfileView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SafeArea(
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: <Widget>[
@@ -46,14 +46,20 @@ class _ProfileViewState extends State<ProfileView>
                         ),
                       ),
                       SizedBox(
-                        width: 230,
+                        width: 215,
                       ),
-                      Icon(
-                        Icons.settings_outlined,
+                      IconButton(
+                        icon: Icon(Icons.settings_outlined),
                         color: Colors.grey,
-                        // color: Color(0xff828282),
-                        size: 30,
+                        iconSize: 24,
+                        tooltip: 'Show all settings',
+                        onPressed: () {},
                       ),
+                      // Icon(
+                      //   Icons.settings_outlined,
+                      //   color: Colors.grey,
+                      //   size: 24,
+                      // ),
                     ],
                   ),
                 ],
@@ -149,6 +155,19 @@ class _ProfileViewState extends State<ProfileView>
                               ),
                             ),
                           ],
+                        ),
+
+                        // Container(
+                        //   height: 50,
+                        //   child: VerticalDivider(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+
+                        Container(
+                          color: Colors.grey[400],
+                          height: 50,
+                          width: 1,
                         ),
                         Column(
                           children: <Widget>[

@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:foodgook/app/tabs/feeds/feedspage.dart';
 
-import '../feeds/feeds.dart';
+import '../../../app.dart';
 
 final TextEditingController _emailController = TextEditingController();
 final TextEditingController _passwordController = TextEditingController();
@@ -265,8 +266,8 @@ class _SigninPageState extends State<SigninPage> {
                         GestureDetector(
                           onTap: () {
                             print("page change: Feeds");
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => FeedsPage()));
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => App()));
                           },
                           child: Container(
                             // Test button
