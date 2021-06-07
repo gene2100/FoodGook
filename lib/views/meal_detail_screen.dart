@@ -10,6 +10,8 @@ import 'package:foodgook/models/popularbook_model.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
+
+
   String docName;
 
   MealDetailScreen(
@@ -20,12 +22,15 @@ class MealDetailScreen extends StatelessWidget {
 
 
 
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute
         .of(context)
         .settings
         .arguments as String;
+
+
 
     return Scaffold(
         body: StreamBuilder(
@@ -42,10 +47,11 @@ class MealDetailScreen extends StatelessWidget {
                     Container(
                       height: 300,
                       width: double.infinity,
-                      child: Image.asset(
-                        'assets/images/meals/steak.jpg',
-                        fit: BoxFit.cover,
-                      ),
+                      child:
+                        Image.network(snapshot.data['ImageURL'],
+                          fit: BoxFit.cover,),
+
+
                     ),
                     DraggableScrollableSheet(
                         initialChildSize: 0.6,
@@ -83,7 +89,7 @@ class MealDetailScreen extends StatelessWidget {
                                                 color: Colors.blue,
                                                 size: 18,)
                                           ),
-                                          Text('2 Hours',
+                                          Text(snapshot.data['Cook_Time'],
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15)),
@@ -91,7 +97,7 @@ class MealDetailScreen extends StatelessWidget {
                                             Icons.signal_cellular_alt_rounded,
                                             color: Colors.green,
                                             size: 18,),
-                                          Text('Easy',
+                                          Text(snapshot.data['Level'],
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15)),
@@ -100,14 +106,13 @@ class MealDetailScreen extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           20.0, 0, 0, 0),
-                                      child: Text('#Meat',
+                                      child: Text(snapshot.data['Tag'].toString(),
                                           style: TextStyle(fontSize: 15,
                                               color: const Color(0xFF00008B))),
                                     ),
                                     Padding(
                                         padding: const EdgeInsets.all(20),
-                                        child: Text(
-                                            '“Butter can make any of your favorite steak recipes more delicious by using it as a basting tool when cooking or to impart flavor once cooked.”',
+                                        child: Text(snapshot.data['Description'],
                                             style: TextStyle(
                                                 fontFamily: 'Rubik'))
                                     ),
@@ -131,7 +136,7 @@ class MealDetailScreen extends StatelessWidget {
                                                             0xFFFF6240)),
                                                   ),
                                                 ),
-                                                Text('4.0',
+                                                Text(snapshot.data['Rating'].toString(),
                                                     style: TextStyle(
                                                         fontFamily: 'Rubik',
                                                         fontWeight: FontWeight
@@ -145,8 +150,8 @@ class MealDetailScreen extends StatelessWidget {
                                                       padding: const EdgeInsets
                                                           .fromLTRB(
                                                           20.0, 10, 0, 10),
-                                                      child: Text(
-                                                          '0 people\nTry this recipe',
+                                                      child: Text(snapshot.data['View'].toString() +
+                                                          ' people\nTry this recipe',
                                                           style: TextStyle(
                                                               fontFamily: 'Rubik',
                                                               color: Colors
@@ -197,7 +202,7 @@ class MealDetailScreen extends StatelessWidget {
                                                             children: <
                                                                 TextSpan>[
                                                               TextSpan(
-                                                                  text: 'TestUser\n',
+                                                                  text: snapshot.data['User'] + '\n',
                                                                   style: TextStyle(
                                                                       fontWeight: FontWeight
                                                                           .bold,
@@ -251,7 +256,7 @@ class MealDetailScreen extends StatelessWidget {
                                                                           2, 0,
                                                                           0, 0),
                                                                       child: Text(
-                                                                          '2',
+                                                                          snapshot.data['View'].toString(),
                                                                           style: TextStyle(
                                                                               fontFamily: 'Rubik',
                                                                               color: Colors
@@ -285,7 +290,7 @@ class MealDetailScreen extends StatelessWidget {
                                                                         2, 0, 0,
                                                                         0),
                                                                     child: Text(
-                                                                        '0',
+                                                                        snapshot.data['Favorite'].toString(),
                                                                         style: TextStyle(
                                                                             fontFamily: 'Rubik',
                                                                             color: Colors
@@ -342,6 +347,7 @@ class MealDetailScreen extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             20, 10, 0, 0),
@@ -350,9 +356,8 @@ class MealDetailScreen extends StatelessWidget {
                                               Icon(Icons.add_circle_outline),
                                               Padding(
                                                   padding: const EdgeInsets
-                                                      .fromLTRB(20, 0, 0, 0),
-                                                  child: Text(
-                                                      '2 tablespoons butter, softened, divided',
+                                                      .fromLTRB(30, 0, 0, 0),
+                                                  child: Text(snapshot.data['Ingredient'][0].toString(),
                                                       style: TextStyle(
                                                           fontFamily: 'Rubik')
                                                   )
@@ -371,7 +376,7 @@ class MealDetailScreen extends StatelessWidget {
                                                   padding: const EdgeInsets
                                                       .fromLTRB(20, 0, 0, 0),
                                                   child: Text(
-                                                      '1 teaspoon minced fresh parsley',
+                                                      snapshot.data['Ingredient'][1].toString(),
                                                       style: TextStyle(
                                                           fontFamily: 'Rubik')
                                                   )
@@ -389,7 +394,7 @@ class MealDetailScreen extends StatelessWidget {
                                                   padding: const EdgeInsets
                                                       .fromLTRB(20, 0, 0, 0),
                                                   child: Text(
-                                                      '1/2 teaspoon minced garlic',
+                                                      snapshot.data['Ingredient'][2].toString(),
                                                       style: TextStyle(
                                                           fontFamily: 'Rubik')
                                                   )
@@ -407,7 +412,7 @@ class MealDetailScreen extends StatelessWidget {
                                                   padding: const EdgeInsets
                                                       .fromLTRB(20, 0, 0, 0),
                                                   child: Text(
-                                                      '1/4 teaspoon reduced-sodium soy sauce',
+                                                      snapshot.data['Ingredient'][3].toString(),
                                                       style: TextStyle(
                                                           fontFamily: 'Rubik')
                                                   )
@@ -427,7 +432,7 @@ class MealDetailScreen extends StatelessWidget {
                                                           .fromLTRB(
                                                           20, 0, 0, 0),
                                                       child: Text(
-                                                          '1 beef flat iron steak or boneless top sirloin steak (3/4 pound)',
+                                                          snapshot.data['Ingredient'][4].toString(),
                                                           style: TextStyle(
                                                               fontFamily: 'Rubik')
                                                       )
@@ -446,7 +451,7 @@ class MealDetailScreen extends StatelessWidget {
                                                   padding: const EdgeInsets
                                                       .fromLTRB(20, 0, 0, 0),
                                                   child: Text(
-                                                      '1/8 teaspoon salt',
+                                                      snapshot.data['Ingredient'][5].toString(),
                                                       style: TextStyle(
                                                           fontFamily: 'Rubik')
                                                   )
@@ -464,7 +469,7 @@ class MealDetailScreen extends StatelessWidget {
                                                   padding: const EdgeInsets
                                                       .fromLTRB(20, 0, 0, 0),
                                                   child: Text(
-                                                      '1/8 teaspoon pepper',
+                                                      snapshot.data['Ingredient'][6].toString(),
                                                       style: TextStyle(
                                                           fontFamily: 'Rubik')
                                                   )
@@ -501,9 +506,9 @@ class MealDetailScreen extends StatelessWidget {
                                               Expanded(child:
                                               Padding(
                                                   padding: const EdgeInsets
-                                                      .fromLTRB(20, 0, 0, 0),
+                                                      .fromLTRB(20, 20, 0, 0),
                                                   child: Text(
-                                                      'Mix 1 tablespoon butter, parsley, garlic and soy sauce.',
+                                                      snapshot.data['Direction'][0].toString(),
                                                       style: TextStyle(
                                                           fontFamily: 'Rubik')
                                                   )
@@ -530,15 +535,17 @@ class MealDetailScreen extends StatelessWidget {
                                                           fontFamily: 'Rubik',
                                                           fontSize: 16))
                                               ),
-                                              Padding(
-                                                  padding: const EdgeInsets
-                                                      .fromLTRB(20, 0, 0, 0),
-                                                  child: Text(
-                                                      'Sprinkle steak with salt and pepper.',
-                                                      style: TextStyle(
-                                                          fontFamily: 'Rubik')
-                                                  )
-                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(20, 0, 0, 0),
+                                                    child: Text(
+                                                        snapshot.data['Direction'][1].toString(),
+                                                        style: TextStyle(
+                                                            fontFamily: 'Rubik')
+                                                    )
+                                                ),
+                                              )
                                             ]
                                         )
                                     ),
@@ -565,7 +572,7 @@ class MealDetailScreen extends StatelessWidget {
                                                     padding: const EdgeInsets
                                                         .fromLTRB(20, 0, 20, 0),
                                                     child: Text(
-                                                        'In a large skillet, heat remaining butter over medium heat.',
+                                                        snapshot.data['Direction'][2].toString(),
                                                         style: TextStyle(
                                                             fontFamily: 'Rubik')
                                                     )
@@ -597,7 +604,7 @@ class MealDetailScreen extends StatelessWidget {
                                                     padding: const EdgeInsets
                                                         .fromLTRB(20, 0, 0, 0),
                                                     child: Text(
-                                                        'Add steak; cook until meat reaches desired doneness (for medium-rare, 135°; medium, 140°; medium-well, 145°), 4-7 mins per side.',
+                                                        snapshot.data['Direction'][3].toString(),
                                                         style: TextStyle(
                                                             fontFamily: 'Rubik')
                                                     )
@@ -606,6 +613,8 @@ class MealDetailScreen extends StatelessWidget {
                                             ]
                                         )
                                     ),
+
+
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             20, 20, 0, 0),
@@ -624,18 +633,32 @@ class MealDetailScreen extends StatelessWidget {
                                                           fontFamily: 'Rubik',
                                                           fontSize: 16))
                                               ),
-                                              Padding(
-                                                  padding: const EdgeInsets
-                                                      .fromLTRB(20, 0, 0, 0),
-                                                  child: Text(
-                                                      'Serve with garlic butter and enjoy !',
-                                                      style: TextStyle(
-                                                          fontFamily: 'Rubik')
-                                                  )
-                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(20, 0, 0, 0),
+                                                    child: Text(
+                                                        snapshot.data['Direction'][4].toString(),
+                                                        style: TextStyle(
+                                                            fontFamily: 'Rubik')
+                                                    )
+                                                ),
+                                              )
                                             ]
                                         )
                                     ),
+
+
+
+
+
+
+
+
+
+
+
+
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             20, 20, 0, 0),

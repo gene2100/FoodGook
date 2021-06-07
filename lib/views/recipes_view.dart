@@ -169,16 +169,32 @@ class _RecipesViewState extends State<RecipesView> {
                     ],
                   )),
             ),
+
+
+
+
             Container(
               margin: EdgeInsets.only(top: 21),
               height: 150,
               child: ListView.builder(
+
+
+
                   padding: EdgeInsets.only(left: 25, right: 6),
                   itemCount: newbooks.length,
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container(
+
+                    return GestureDetector(
+                        onTap: (){
+                      print('ListView Tapped');
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => MealDetailScreen(populars[index].docName)));
+
+                    },
+
+                    child: Container(
                       margin: EdgeInsets.only(right: 19),
                       height: 150,
                       width: 153,
@@ -188,6 +204,8 @@ class _RecipesViewState extends State<RecipesView> {
                           image: DecorationImage(
                             image: AssetImage(newbooks[index].image),
                           )),
+                    ),
+
                     );
                   }),
             ),
