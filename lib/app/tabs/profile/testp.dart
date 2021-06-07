@@ -95,23 +95,26 @@ class _ProfileViewState extends State<ProfileView>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    "Phatto33",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
+                                  Expanded(
+                                    child: Text(
+                                      "Phatto33",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 100,
-                                  ),
-                                  Container(
-                                    height: 45,
-                                    width: 100,
-                                    // decoration: BoxDecoration(
-                                    //   borderRadius: BorderRadius.circular(10),
-                                    //   color: Color(0xFFebf4ef),
-                                    // ),
+                                  // Text(
+                                  //   "Phatto33",
+                                  //   style: TextStyle(
+                                  //     fontWeight: FontWeight.bold,
+                                  //     fontSize: 18,
+                                  //   ),
+                                  // ),
+                                  // SizedBox(
+                                  //   width: 100,
+                                  // ),
+                                  Expanded(
                                     child: Center(
                                       child: TextButton(
                                         child: Text('Edit Profile'),
@@ -132,7 +135,7 @@ class _ProfileViewState extends State<ProfileView>
                                         },
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                               SizedBox(height: 0), //change

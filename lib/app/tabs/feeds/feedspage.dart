@@ -29,26 +29,34 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
             child: SafeArea(
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 21.0),
+                // padding: const EdgeInsets.symmetric(horizontal: 21.0),
+                margin: EdgeInsets.only(left: 20, right: 10, top: 20),
                 child: SingleChildScrollView(
                   child: Column(
+                    //All feeds
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      SizedBox(
-                        height: 15.0,
-                      ),
                       Row(
                         //search bar and notifications
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Expanded(
                             child: Container(
+                              // height: 40,
+
                               child: TextField(
+                                keyboardType: TextInputType.text,
+                                autocorrect: true,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
+                                  contentPadding: const EdgeInsets.symmetric(
                                       vertical: 10.0, horizontal: 10.0),
                                   fillColor: Color(0xfff2f2f2),
                                   filled: true,
                                   hintText: 'Search for people, recipes...',
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey,
+                                    // fontSize: 19.0,
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(24.0),
                                     borderSide: BorderSide.none,

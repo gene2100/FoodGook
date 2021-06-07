@@ -19,7 +19,7 @@ class _GroceryPageState extends State<GroceryPage> {
           physics: BouncingScrollPhysics(),
           children: <Widget>[
             Padding(
-                padding: EdgeInsets.only(left: 25, top: 25),
+                padding: EdgeInsets.only(left: 25, right: 20, top: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[

@@ -123,16 +123,81 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
     // change to TransformerPageView
     return Scaffold(
       body: SafeArea(
-        child: Wrap(
+        child: ListView(
+          //wrap
           // key: _formKey,
-          children: [
-            IconButton(
-              //change button position //on photo
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+          children: <Widget>[
+            Padding(
+              padding:
+                  EdgeInsets.only(left: 10, right: 20, top: 20, bottom: 10),
+              child: Column(
+                children: <Widget>[
+                  // Align(
+                  //   alignment: Alignment.topCenter,
+                  //   child: Text(
+                  //     'Add recipe',
+                  //     style: TextStyle(
+                  //       fontSize: 18,
+                  //       fontWeight: FontWeight.w800,
+                  //       color: Colors.black,
+                  //       fontFamily: 'Rublik',
+                  //     ),
+                  //   ),
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        //change button position //on photo
+                        icon: const Icon(Icons.close),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      Text(
+                        'Add recipe',
+                        // textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          // fontWeight: FontWeight.w800,
+                          color: Colors.black,
+                          fontFamily: 'Rublik',
+                        ),
+                      ),
+                      // SizedBox(
+                      //   width: 215,
+                      // ),
+
+                      // Icon(
+                      //   Icons.settings_outlined,
+                      //   color: Colors.grey,
+                      //   size: 24,
+                      // ),
+                    ],
+                  ),
+                ],
+              ),
             ),
+            // Row(
+            //   children: [
+            //     IconButton(
+            //       //change button position //on photo
+            //       icon: const Icon(Icons.close),
+            //       onPressed: () {
+            //         Navigator.pop(context);
+            //       },
+            //     ),
+            //     Text(
+            //       'Add recipe',
+            //       style: TextStyle(fontSize: 18.0),
+            //       textAlign: TextAlign.center,
+            //     ),
+            //   ],
+            // ),
+
+            // SizedBox(
+            //   height: 60,
+            // ),
             GestureDetector(
               child: Container(
                 child: AspectRatio(
@@ -156,7 +221,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                   children: <Widget>[
                     Form(
                       child: Padding(
-                        padding: const EdgeInsets.all(25.0),
+                        // padding: const EdgeInsets.all(25.0),
+                        padding: const EdgeInsets.only(
+                            top: 10, left: 20, right: 20, bottom: 30),
                         child: Column(
                           children: <Widget>[
                             //Menu
@@ -165,9 +232,14 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                               child: TextFormField(
                                 // textInputAction: TextInputAction.newline,
                                 keyboardType: TextInputType.text,
+
                                 decoration: const InputDecoration(
                                     hintText: "Menu: Teriyaki Salmon",
-                                    errorStyle: const TextStyle(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Color(0xffff6240)),
+                                    ),
+                                    errorStyle: TextStyle(
                                         color: Colors.yellow,
                                         decorationColor: Colors.yellow),
                                     contentPadding: const EdgeInsets.only(
@@ -187,6 +259,10 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                 keyboardType: TextInputType.text,
                                 decoration: const InputDecoration(
                                     hintText: "Desciption",
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Color(0xffff6240)),
+                                    ),
                                     errorStyle: const TextStyle(
                                         color: Colors.yellow,
                                         decorationColor: Colors.yellow),
@@ -208,6 +284,10 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                 decoration: const InputDecoration(
                                     hintText:
                                         "Add food tag e.g. #salmon, #dinner",
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Color(0xffff6240)),
+                                    ),
                                     errorStyle: const TextStyle(
                                         color: Colors.yellow,
                                         decorationColor: Colors.yellow),
@@ -240,6 +320,10 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                     keyboardType: TextInputType.text,
                                     decoration: const InputDecoration(
                                         hintText: "2 hours",
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffff6240)),
+                                        ),
                                         errorStyle: const TextStyle(
                                             color: Colors.yellow,
                                             decorationColor: Colors.yellow),
@@ -267,18 +351,23 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                   TextFormField(
                                     keyboardType: TextInputType.text,
                                     decoration: const InputDecoration(
-                                        hintText: "Easy",
-                                        errorStyle: const TextStyle(
-                                            color: Colors.yellow,
-                                            decorationColor: Colors.yellow),
-                                        contentPadding: const EdgeInsets.only(
-                                            left: 15, right: 15)),
+                                      hintText: "Easy",
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xffff6240)),
+                                      ),
+                                      errorStyle: const TextStyle(
+                                          color: Colors.yellow,
+                                          decorationColor: Colors.yellow),
+                                      contentPadding: const EdgeInsets.only(
+                                          left: 15, right: 15),
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 30.0),
+                              padding: const EdgeInsets.only(top: 10.0),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -298,52 +387,42 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
             ),
             //Next button
             SizedBox(width: 320),
-            ElevatedButton(
-              child: Text(
-                "Next",
-                style: TextStyle(fontWeight: FontWeight.w300),
-              ),
-              onPressed: () {},
-            ),
-            // Row(
-            //   children: [
-            //     // SizedBox(width: 340),
 
-            //     ClipRRect(
-            //       borderRadius: BorderRadius.circular(10),
-            //       child: Stack(
-            //         children: <Widget>[
-            //           Positioned.fill(
-            //             child: Container(
-            //               decoration: BoxDecoration(
-            //                 color: Color(0xffff6240),
-            //                 boxShadow: [
-            //                   BoxShadow(
-            //                     color: Color(0x54000000),
-            //                     spreadRadius: 10,
-            //                     blurRadius: 2,
-            //                   ),
-            //                 ],
-            //               ),
-            //               height: 500,
-            //               width: MediaQuery.of(context).size.width,
-            //             ),
-            //           ),
-            //           TextButton(
-            //             style: TextButton.styleFrom(
-            //               padding: EdgeInsets.all(15.0),
-            //               primary: Colors.white,
-            //             ),
-            //             onPressed: () {},
-            //             child: Text('NEXT'),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+            Row(
+              children: [
+                SizedBox(width: 340),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xffff6240),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x54000000),
+                                spreadRadius: 10,
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
+                          height: 500,
+                          width: MediaQuery.of(context).size.width,
+                        ),
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.all(15.0),
+                          primary: Colors.white,
+                        ),
+                        onPressed: () {},
+                        child: Text('NEXT'),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
