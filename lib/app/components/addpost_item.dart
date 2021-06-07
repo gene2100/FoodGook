@@ -127,87 +127,41 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           //wrap
           // key: _formKey,
           children: <Widget>[
-            Padding(
-              padding:
-                  EdgeInsets.only(left: 10, right: 20, top: 20, bottom: 10),
-              child: Column(
-                children: <Widget>[
-                  // Align(
-                  //   alignment: Alignment.topCenter,
-                  //   child: Text(
-                  //     'Add recipe',
-                  //     style: TextStyle(
-                  //       fontSize: 18,
-                  //       fontWeight: FontWeight.w800,
-                  //       color: Colors.black,
-                  //       fontFamily: 'Rublik',
-                  //     ),
-                  //   ),
-                  // ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        //change button position //on photo
-                        icon: const Icon(Icons.close),
-                        onPressed: () {
-                          Navigator.pop(context);
+            Column(
+              children: <Widget>[
+                Container(
+                  //image and close icon
+                  decoration: new BoxDecoration(color: Colors.white),
+                  child: Stack(
+                    children: <Widget>[
+                      GestureDetector(
+                        child: Container(
+                          child: AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: _decideImageView(),
+                          ),
+                        ),
+                        onTap: () {
+                          _showPickerDialog(context);
                         },
                       ),
-                      Text(
-                        'Add recipe',
-                        // textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          // fontWeight: FontWeight.w800,
-                          color: Colors.black,
-                          fontFamily: 'Rublik',
+                      Positioned(
+                        top: 10,
+                        left: 20,
+                        child: IconButton(
+                          //change button position //on photo
+                          icon: const Icon(Icons.close),
+                          color: Colors.grey,
+                          iconSize: 24,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                         ),
                       ),
-                      // SizedBox(
-                      //   width: 215,
-                      // ),
-
-                      // Icon(
-                      //   Icons.settings_outlined,
-                      //   color: Colors.grey,
-                      //   size: 24,
-                      // ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            // Row(
-            //   children: [
-            //     IconButton(
-            //       //change button position //on photo
-            //       icon: const Icon(Icons.close),
-            //       onPressed: () {
-            //         Navigator.pop(context);
-            //       },
-            //     ),
-            //     Text(
-            //       'Add recipe',
-            //       style: TextStyle(fontSize: 18.0),
-            //       textAlign: TextAlign.center,
-            //     ),
-            //   ],
-            // ),
-
-            // SizedBox(
-            //   height: 60,
-            // ),
-            GestureDetector(
-              child: Container(
-                child: AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: _decideImageView(),
                 ),
-              ),
-              onTap: () {
-                _showPickerDialog(context);
-              },
+              ],
             ),
             Expanded(
               child: Scrollbar(
@@ -366,17 +320,6 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Tooltip(message: "NEXT"),
-                                  // child:
-                                ],
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -385,44 +328,53 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 ),
               ),
             ),
-            //Next button
-            SizedBox(width: 320),
 
-            Row(
-              children: [
-                SizedBox(width: 340),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Stack(
-                    children: <Widget>[
-                      Positioned.fill(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xffff6240),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x54000000),
-                                spreadRadius: 10,
-                                blurRadius: 2,
-                              ),
-                            ],
+            //Next button
+            Padding(
+              padding: EdgeInsets.only(top: 20, right: 20, left: 20),
+              // alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  // SizedBox(width: 340),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Stack(
+                      //next button
+                      children: <Widget>[
+                        Positioned.fill(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xffff6240),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x54000000),
+                                  spreadRadius: 10,
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            ),
+                            height: 500,
+                            width: MediaQuery.of(context).size.width,
                           ),
-                          height: 500,
-                          width: MediaQuery.of(context).size.width,
                         ),
-                      ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.all(15.0),
-                          primary: Colors.white,
+                        SizedBox(
+                          height: 45,
+                          width: 100,
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.all(15.0),
+                              primary: Colors.white,
+                            ),
+                            onPressed: () {},
+                            child: Text('NEXT'),
+                          ),
                         ),
-                        onPressed: () {},
-                        child: Text('NEXT'),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
