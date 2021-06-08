@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/services.dart';
 
+import 'addpost_item2.dart';
+
 class AddRecipeScreen extends StatefulWidget {
   // final Recipe recipe;
 
@@ -366,7 +368,14 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                               padding: EdgeInsets.all(15.0),
                               primary: Colors.white,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        AddRecipe2Screen()), //addpost_item.dart
+                              );
+                            },
                             child: Text('NEXT'),
                           ),
                         ),
