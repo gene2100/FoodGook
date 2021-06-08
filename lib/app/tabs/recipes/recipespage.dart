@@ -180,66 +180,67 @@ class _RecipesViewState extends State<RecipesView> {
               ),
             ),
             ListView.builder(
-                padding: EdgeInsets.only(top: 25, right: 25, left: 25),
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: populars.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 19),
-                    height: 81,
-                    width: MediaQuery.of(context).size.width - 50,
-                    color: Colors.grey[200],
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          height: 150,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              image: DecorationImage(
-                                image: AssetImage(populars[index].image),
-                                fit: BoxFit.cover,
-                              ),
-                              color: Colors.deepOrangeAccent),
-                        ),
-                        SizedBox(
-                          width: 21,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              populars[index].title,
-                              style: TextStyle(
-                                fontSize: 16,
+              padding: EdgeInsets.only(top: 25, right: 25, left: 25),
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: populars.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(bottom: 19),
+                  height: 81,
+                  width: MediaQuery.of(context).size.width - 50,
+                  color: Colors.grey[200],
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        height: 150,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            image: DecorationImage(
+                              image: AssetImage(populars[index].image),
+                              fit: BoxFit.cover,
+                            ),
+                            color: Colors.deepOrangeAccent),
+                      ),
+                      SizedBox(
+                        width: 21,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            populars[index].title,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            populars[index].price,
+                            style: TextStyle(
+                                fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              populars[index].price,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                })
+                                color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

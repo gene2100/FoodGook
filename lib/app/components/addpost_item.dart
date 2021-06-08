@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/services.dart';
-
 import 'addpost_item2.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class AddRecipeScreen extends StatefulWidget {
   // final Recipe recipe;
@@ -124,6 +124,31 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
 
     // change to TransformerPageView
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.close, color: Colors.grey[700], size: 24),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(top: 6.0),
+          child: Text(
+            'Menu',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: ListView(
           //wrap
@@ -131,6 +156,21 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           children: <Widget>[
             Column(
               children: <Widget>[
+                Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      StepProgressIndicator(
+                        totalSteps: 3,
+                        currentStep: 1,
+                        // selectedColor: Colors.green[400],
+                        selectedColor: Color(0xffff6240),
+                        unselectedColor: Colors.grey[200],
+                      )
+                    ],
+                  ),
+                ),
                 Container(
                   //image and close icon
                   decoration: new BoxDecoration(color: Colors.white),
@@ -147,19 +187,20 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                           _showPickerDialog(context);
                         },
                       ),
-                      Positioned(
-                        top: 10,
-                        left: 20,
-                        child: IconButton(
-                          //change button position //on photo
-                          icon: const Icon(Icons.close),
-                          color: Colors.grey,
-                          iconSize: 24,
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ),
+                      // Positioned(
+                      //   //close
+                      //   top: 10,
+                      //   left: 20,
+                      //   child: IconButton(
+                      //     //change button position //on photo
+                      //     icon: const Icon(Icons.close),
+                      //     color: Colors.grey,
+                      //     iconSize: 24,
+                      //     onPressed: () {
+                      //       Navigator.pop(context);
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
