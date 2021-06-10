@@ -29,7 +29,7 @@ class _ForumPageState extends State<ForumPage> with TickerProviderStateMixin {
           children: <Widget>[
             //profile
             Padding(
-              padding: EdgeInsets.only(left: 25, top: 25),
+              padding: EdgeInsets.only(left: 25, right: 10, top: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -68,8 +68,8 @@ class _ForumPageState extends State<ForumPage> with TickerProviderStateMixin {
               ),
             ),
             Container(
-              height: 40,
-              margin: EdgeInsets.only(left: 25, right: 25, top: 18),
+              // height: 40, //height of textfield
+              margin: EdgeInsets.only(left: 20, right: 20, top: 20),
               // decoration: BoxDecoration(
               //     borderRadius: BorderRadius.circular(10), color: Colors.grey),
               child: Stack(
@@ -81,6 +81,10 @@ class _ForumPageState extends State<ForumPage> with TickerProviderStateMixin {
                       fillColor: Color(0xfff2f2f2),
                       filled: true,
                       hintText: 'Search for topic, tags...',
+                      hintStyle: TextStyle(
+                        color: Colors.grey,
+                        // fontSize: 19.0,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(24.0),
                         borderSide: BorderSide.none,

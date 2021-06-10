@@ -23,7 +23,6 @@ class _ProfileViewState extends State<ProfileView>
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -92,71 +91,61 @@ class _ProfileViewState extends State<ProfileView>
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                width: screenWidth * 0.683,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      flex: 5,
-                                      child: Text(
-                                        "Phatto33",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
-                                        ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Phatto33",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
                                       ),
                                     ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Container(
-                                        height: 45,
-                                        width: 100,
-                                        // decoration: BoxDecoration(
-                                        //   borderRadius: BorderRadius.circular(10),
-                                        //   color: Color(0xFFebf4ef),
-                                        // ),
-                                        child: Center(
-                                          child: TextButton(
-                                            child: Text('Edit Profile'),
-                                            style: TextButton.styleFrom(
-                                              primary: Color(0xffff6240),
-                                              // backgroundColor: Colors.teal,
-                                              // onSurface: Colors.grey,
-                                              textStyle: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                              // side: BorderSide(
-                                              //   color: Colors.red,
-                                              //   width: 1,
-                                              // ),
-                                            ),
-                                            onPressed: () {
-                                              print('Pressed');
-                                            },
+                                  ),
+                                  // Text(
+                                  //   "Phatto33",
+                                  //   style: TextStyle(
+                                  //     fontWeight: FontWeight.bold,
+                                  //     fontSize: 18,
+                                  //   ),
+                                  // ),
+                                  // SizedBox(
+                                  //   width: 100,
+                                  // ),
+                                  Expanded(
+                                    child: Center(
+                                      child: TextButton(
+                                        child: Text('Edit Profile'),
+                                        style: TextButton.styleFrom(
+                                          primary: Color(0xffff6240),
+                                          // backgroundColor: Colors.teal,
+                                          // onSurface: Colors.grey,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w700,
                                           ),
+                                          // side: BorderSide(
+                                          //   color: Colors.red,
+                                          //   width: 1,
+                                          // ),
                                         ),
+                                        onPressed: () {
+                                          print('Pressed');
+                                        },
                                       ),
-                                    )
-                                  ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 0), //change
+                              Text(
+                                "Passionate cook with more than six years.",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 14,
                                 ),
                               ),
-
-                              SizedBox(height: 0), //change
-                              Container(
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      "Passionate cook with more than six years. fhwkfhdfkskfhjdskf",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
                             ],
                           ),
                         ],

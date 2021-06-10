@@ -5,7 +5,7 @@ import 'package:foodgook/app/tabs/feeds/feedspage.dart';
 import 'package:foodgook/app/tabs/forum/forumpage.dart';
 import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
 import 'package:foodgook/app/tabs/profile/profilepage.dart';
-import 'package:foodgook/app/tabs/recipes/recipes_view.dart';
+import 'package:foodgook/app/tabs/recipes/recipespage.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
