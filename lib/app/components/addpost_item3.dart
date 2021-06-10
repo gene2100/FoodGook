@@ -133,8 +133,8 @@ class _AddRecipe3ScreenState extends State<AddRecipe3Screen> {
                                   Image.asset(
                                     'assets/images/recipe_place_holder.jpg',
                                     fit: BoxFit.cover,
-                                    height: 200,
-                                    width: 200,
+                                    height: 100,
+                                    width: 100,
                                   ),
                                 ],
                               ),
@@ -178,8 +178,8 @@ class _AddRecipe3ScreenState extends State<AddRecipe3Screen> {
                                   Image.asset(
                                     'assets/images/recipe_place_holder.jpg',
                                     fit: BoxFit.cover,
-                                    height: 200,
-                                    width: 200,
+                                    height: 100,
+                                    width: 100,
                                   ),
                                 ],
                               ),
