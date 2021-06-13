@@ -48,6 +48,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
     _openGallery(BuildContext context) async {
       var imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
       setState(() {
+        //imagePicker.getImage()
         this.imageFile = imageFile;
       });
       Navigator.of(context).pop();
