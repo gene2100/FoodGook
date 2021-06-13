@@ -3,15 +3,20 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:foodgook/app/tabs/feeds/feedspage.dart';
 import 'package:foodgook/app/tabs/forum/forumpage.dart';
-import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
+// import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
+import 'package:foodgook/app/tabs/grocery/plannet_summary.dart';
 import 'package:foodgook/app/tabs/profile/profilepage.dart';
 import 'package:foodgook/app/tabs/recipes/recipespage.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'app/components/addpost_item.dart';
-import 'app/tabs/signin/signin.dart';
+import 'app/models/planets.dart';
+import 'package:foodgook/app/tabs/grocery/plannet_summary.dart';
+
+// import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+// import 'package:flutter_svg/svg.dart';
+// import 'app/components/addpost_item.dart';
+// import 'app/tabs/signin/signin.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -66,6 +71,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
         ],
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Color(0xffff6240),
+        // unselectedItemColor: Colors.grey,
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
       ),
@@ -136,7 +142,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
       case 2: //forum
         return ForumPage();
       case 3: //grocery
-        return GroceryPage();
+        return PlanetSummary(planets[index]);
       case 4: //profile
         return ProfileView();
     }
