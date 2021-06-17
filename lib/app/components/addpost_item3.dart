@@ -127,15 +127,15 @@ class _AddRecipe3ScreenState extends State<AddRecipe3Screen> {
                                       return null;
                                     },
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/recipe_place_holder.jpg',
-                                    fit: BoxFit.cover,
-                                    height: 100,
-                                    width: 100,
-                                  ),
+                                  // SizedBox(
+                                  //   height: 10,
+                                  // ),
+                                  // Image.asset(
+                                  //   'assets/images/recipe_place_holder.jpg',
+                                  //   fit: BoxFit.cover,
+                                  //   height: 100,
+                                  //   width: 100,
+                                  // ),
                                 ],
                               ),
                             ),
@@ -172,15 +172,15 @@ class _AddRecipe3ScreenState extends State<AddRecipe3Screen> {
                                       return null;
                                     },
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/recipe_place_holder.jpg',
-                                    fit: BoxFit.cover,
-                                    height: 100,
-                                    width: 100,
-                                  ),
+                                  // SizedBox(
+                                  //   height: 10,
+                                  // ),
+                                  // Image.asset(
+                                  //   'assets/images/recipe_place_holder.jpg',
+                                  //   fit: BoxFit.cover,
+                                  //   height: 100,
+                                  //   width: 100,
+                                  // ),
                                 ],
                               ),
                             ),
