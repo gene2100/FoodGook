@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:foodgook/app/tabs/feeds/feedspage.dart';
 import 'package:foodgook/app/tabs/forum/forumpage.dart';
 // import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
+import 'package:foodgook/app/tabs/grocery/1.dart';
+// import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
 import 'package:foodgook/app/tabs/grocery/plannet_summary.dart';
 import 'package:foodgook/app/tabs/profile/profilepage.dart';
 import 'package:foodgook/app/tabs/recipes/recipespage.dart';
@@ -142,7 +144,8 @@ class _AppState extends State<App> with TickerProviderStateMixin {
       case 2: //forum
         return ForumPage();
       case 3: //grocery
-        return PlanetSummary(planets[index]);
+        // return PlanetSummary(planets[index]);
+        return GroceryPage();
       case 4: //profile
         return ProfileView();
     }
