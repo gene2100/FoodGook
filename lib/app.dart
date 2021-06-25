@@ -6,14 +6,11 @@ import 'package:foodgook/app/tabs/forum/forumpage.dart';
 // import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
 import 'package:foodgook/app/tabs/grocery/1.dart';
 // import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
-import 'package:foodgook/app/tabs/grocery/plannet_summary.dart';
+
+// import 'package:foodgook/app/tabs/grocery/test.dart';
 import 'package:foodgook/app/tabs/profile/profilepage.dart';
 import 'package:foodgook/app/tabs/recipes/recipespage.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
-
-import 'app/models/planets.dart';
-import 'package:foodgook/app/tabs/grocery/plannet_summary.dart';
 
 // import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 // import 'package:flutter_svg/svg.dart';
@@ -145,6 +142,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
         return ForumPage();
       case 3: //grocery
         // return PlanetSummary(planets[index]);
+        // return ExpansionPanelDemo();
         return GroceryPage();
       case 4: //profile
         return ProfileView();
