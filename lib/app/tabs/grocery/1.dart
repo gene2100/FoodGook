@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 import 'package:foodgook/app/models/grocerybook_model.dart';
+import 'package:flutter/widgets.dart';
+
 // import 'package:foodgook/app/models/grocery_model.dart';
 
 class GroceryPage extends StatefulWidget {
@@ -13,9 +15,33 @@ class GroceryPage extends StatefulWidget {
 }
 
 class _GroceryPageState extends State<GroceryPage> {
+  Map<String, bool> numbers = {
+    'One': false,
+    'Two': false,
+    'Three': false,
+  };
+
+  var holder_1 = [];
+
+  getItems() {
+    numbers.forEach((key, value) {
+      if (value == true) {
+        holder_1.add(key);
+      }
+    });
+
+    // Printing all selected items on Terminal screen.
+    print(holder_1);
+    // Here you will get all your selected Checkbox items.
+
+    // Clear array after use.
+    holder_1.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     // Color _notiIconColor = Colors.grey;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -48,148 +74,66 @@ class _GroceryPageState extends State<GroceryPage> {
               ), //between Grocery and listview
               physics: BouncingScrollPhysics(),
               shrinkWrap: true,
-              itemCount: populars.length,
+              // itemCount: populars.length,
+              itemCount: itemData.length,
+
               itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 20), //space between each card
-                  height: 100,
-                  width: MediaQuery.of(context).size.width - 50,
-                  // color: Colors.grey[100],
-                  color: Color(0xfff7f7f7),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      //text
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          //img and text
-                          Row(
-                            children: [
-                              //img
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Container(
-                                    height: 80,
-                                    width: 80,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        image: DecorationImage(
-                                          image:
-                                              AssetImage(populars[index].image),
-                                          fit: BoxFit.cover,
-                                        ),
-                                        color: Colors.deepOrangeAccent),
-                                  ),
-                                  // SizedBox(width: 20,),
-                                  // Icon(Icons.more_horiz, color: Colors.grey),
-                                ],
+                return ExpansionPanelList(
+                  animationDuration: Duration(milliseconds: 1000),
+                  dividerColor: Colors.yellow,
+                  elevation: 1, //shadow
+                  children: [
+                    ExpansionPanel(
+                      body: Container(
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            ClipOval(
+                              child: CircleAvatar(
+                                child: Image.asset(
+                                  itemData[index].img,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-
-                              SizedBox(
-                                width: 20,
-                              ),
-
-                              //text part1 and part2
-                              Column(
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.end, //what
-                                children: [
-                                  //text part top
-                                  Column(
-                                    children: [
-                                      Row(
-                                        // mainAxisAlignment:
-                                        //     MainAxisAlignment.center,
-                                        // crossAxisAlignment:
-                                        //     CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                populars[index].title,
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Icon(
-                                                Icons.delete_outline,
-                                                color: Color(0xffbdbdbd),
-                                                size: 24,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 2),
-                                      Text(
-                                        populars[index].price,
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            // fontWeight: FontWeight.w600,
-                                            color: Color(0xffff6240)),
-                                      ),
-                                    ],
-                                  ),
-
-                                  // Divider(
-                                  //   color: Colors.grey,
-                                  // ),
-                                  //text part bottom
-
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'See this recipe',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 100,
-                                      ),
-                                      IconButton(
-                                        icon: Icon(Icons.arrow_drop_down),
-                                        color: Color(0xffbdbdbd),
-                                        iconSize: 30,
-                                        //Still can't change color when clicked
-                                        onPressed: () {
-                                          print('Pressed');
-                                          // setState(
-                                          //   () {
-                                          //     if (_notiIconColor ==
-                                          //         Colors.grey) {
-                                          //       _notiIconColor =
-                                          //           Color(0xffff6240);
-                                          //     } else {
-                                          //       _notiIconColor = Colors.grey;
-                                          //     }
-                                          //   },
-                                          // );
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              itemData[index].discription,
+                              style: TextStyle(
+                                  color: Colors.grey[700],
+                                  fontSize: 15,
+                                  letterSpacing: 0.3,
+                                  height: 1.3),
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
+                      headerBuilder: (BuildContext context, bool isExpanded) {
+                        return Container(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            itemData[index].headerItem,
+                            style: TextStyle(
+                              color: itemData[index].colorsItem,
+                              fontSize: 18,
+                            ),
+                          ),
+                        );
+                      },
+                      isExpanded: itemData[index].expanded,
+                    ),
+                  ],
+                  expansionCallback: (int item, bool status) {
+                    setState(
+                      () {
+                        itemData[index].expanded = !itemData[index].expanded;
+                      },
+                    );
+                  },
                 );
               },
             ),
@@ -198,4 +142,34 @@ class _GroceryPageState extends State<GroceryPage> {
       ),
     );
   }
+
+  List<ItemModel> itemData = <ItemModel>[
+    ItemModel(
+        headerItem: 'Hi',
+        discription:
+            "Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets. ... Some well known derivatives include Android TV for televisions and Wear OS for wearables, both developed by Google.",
+        colorsItem: Colors.black,
+        img: 'assets/images/1.jpg'),
+    ItemModel(
+        headerItem: 'Hi',
+        discription:
+            "Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets. ... Some well known derivatives include Android TV for televisions and Wear OS for wearables, both developed by Google.",
+        colorsItem: Colors.black,
+        img: 'assets/images/1.jpg'),
+  ];
+}
+
+class ItemModel {
+  bool expanded;
+  String headerItem;
+  String discription;
+  Color colorsItem;
+  String img;
+
+  ItemModel(
+      {this.expanded: false,
+      this.headerItem,
+      this.discription,
+      this.colorsItem,
+      this.img});
 }
