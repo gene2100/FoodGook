@@ -155,9 +155,9 @@ class _RecipesViewState extends State<RecipesView> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.only(right: 19),
+                      margin: EdgeInsets.only(right: 20),
                       height: 150,
-                      width: 153,
+                      width: 150,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.deepOrangeAccent,
