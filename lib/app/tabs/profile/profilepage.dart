@@ -253,7 +253,8 @@ class _ProfileViewState extends State<ProfileView>
                 indicatorSize: TabBarIndicatorSize.label,
                 labelColor: Color(0xffff6240),
                 // labelStyle: TextStyle(fontSize: 20.0),
-                unselectedLabelColor: Colors.black,
+                unselectedLabelColor: Colors.black54,
+
                 tabs: <Widget>[
                   Tab(text: 'Posts'),
                   Tab(text: 'Cookbooks'),
