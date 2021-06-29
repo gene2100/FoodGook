@@ -12,9 +12,12 @@ class _NestedTabBarState extends State<NestedTabBar>
 
   @override
   void initState() {
+    _nestedTabController = new TabController(
+      length: 2,
+      initialIndex: 0,
+      vsync: this,
+    );
     super.initState();
-
-    _nestedTabController = new TabController(length: 2, vsync: this);
   }
 
   @override
@@ -29,10 +32,11 @@ class _NestedTabBarState extends State<NestedTabBar>
     double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         TabBar(
           controller: _nestedTabController,
-          indicatorColor: Colors.orange[700],
+          indicatorColor: Color(0xffff6240),
           labelColor: Color(0xffff6240),
           unselectedLabelColor: Colors.black54,
           isScrollable: true,
@@ -47,7 +51,7 @@ class _NestedTabBarState extends State<NestedTabBar>
         ),
         Container(
           height: screenHeight * 0.74,
-          margin: EdgeInsets.only(left: 16.0, right: 16.0),
+          margin: EdgeInsets.only(left: 10.0, right: 16.0),
           child: TabBarView(
             controller: _nestedTabController,
             children: <Widget>[
