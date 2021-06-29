@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foodgook/app/tabs/feeds/feedspage.dart';
 import 'package:foodgook/app/tabs/forum/forumpage.dart';
 // import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
-import 'package:foodgook/app/tabs/grocery/1.dart';
+import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
 // import 'package:foodgook/app/tabs/grocery/grocerypage.dart';
 
 // import 'package:foodgook/app/tabs/grocery/test.dart';
