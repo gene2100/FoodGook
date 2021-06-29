@@ -98,7 +98,7 @@ Future<void> _showLoginDialog(BuildContext context) async {
                   _emailController.clear();
                   _passwordController.clear();
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => FeedsPage()));
+                      MaterialPageRoute(builder: (context) => App()));
                 });
               } else {
                 print('Loading');

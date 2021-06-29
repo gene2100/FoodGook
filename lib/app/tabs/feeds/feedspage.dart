@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 // import 'package:foodgook/app/components/utils.dart';
 // import 'package:foodgook/app/tabs/recipes/recipes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:foodgook/app/components/addpostMain.dart';
 import 'package:foodgook/app/components/addpost_item.dart';
 import 'package:foodgook/app/tabs/signin/signin.dart';
 import 'details/nestedTabBarView.dart';

@@ -35,6 +35,9 @@ dependencies:
   flutter_polyline_points: ^0.2.4
   provider: ^5.0.0
   step_progress_indicator: ^1.0.0
+  firebase_storage: ^7.0.0
+  auto_size_text: ^2.1.0
+  timeago: ^3.0.2
 
 dev_dependencies:
   flutter_test:

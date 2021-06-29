@@ -138,7 +138,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
       case 3: //grocery
         return GroceryPage();
       case 4: //profile
-        return ProfileView();
+        return ProfileView(_auth.currentUser.uid);
     }
 
     return Center(

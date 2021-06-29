@@ -6,8 +6,15 @@ import 'package:flutter/services.dart';
 import 'addpost_item2.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
+final TextEditingController _usernameController = TextEditingController();
+List<TextEditingController> tagConList = List.generate(5, (i) => TextEditingController());
+
+TextEditingController getText() {
+  return _usernameController;
+}
+
 class AddRecipeScreen extends StatefulWidget {
-  // final Recipe recipe;
+  // final Recipe recipe;]
 
   AddRecipeScreen({
     Key key,
@@ -18,11 +25,32 @@ class AddRecipeScreen extends StatefulWidget {
 }
 
 class _AddRecipeScreenState extends State<AddRecipeScreen> {
+
+  static int tagCount = 1;
+
   final tagController = TextEditingController();
   String dropdownValue = '';
   // List<String> _dynamicChips = [];
   File imageFile;
   var isSubmiting = false;
+
+  void addTag(){
+    if(tagCount < 5)
+    {
+      tagCount++;
+    }
+    setState(() {
+    });
+  }
+
+  void reduceTag(){
+    if(tagCount > 1)
+    {
+      tagCount--;
+    }
+    setState(() {
+    });
+  }
 
   @override
   void initState() {
@@ -130,8 +158,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
+            closePage2();
             Navigator.pop(context);
           },
           child: Icon(Icons.close, color: Colors.grey[700], size: 24),
@@ -206,14 +233,13 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 ),
               ],
             ),
-            Expanded(
-              child: Scrollbar(
+                Scrollbar(
                 child: ListView(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   //input form
                   children: <Widget>[
                     Form(
@@ -228,6 +254,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                               padding: const EdgeInsets.only(top: 10.0),
                               child: TextFormField(
                                 // textInputAction: TextInputAction.newline,
+                                controller: _usernameController,
                                 keyboardType: TextInputType.text,
 
                                 decoration: const InputDecoration(
@@ -274,28 +301,87 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                               ),
                             ),
                             //Tag
+
+                              ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: tagCount,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    Padding(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    child: TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  decoration: const InputDecoration(
+                                      hintText:
+                                      "Add food tag e.g. #salmon, #dinner",
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide:
+                                        BorderSide(color: Color(0xffff6240)),
+                                      ),
+                                      errorStyle: const TextStyle(
+                                          color: Colors.yellow,
+                                          decorationColor: Colors.yellow),
+                                      contentPadding: const EdgeInsets.only(
+                                          left: 15, right: 15)),
+                                  validator: (value) {
+                                    if (value.isEmpty) {
+                                      return 'Please Enter Your Name!';
+                                    }
+                                    return null;
+                                  },
+                                )
+                                    )
+                                  ]
+                                );
+                              }
+                            ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 15.0),
-                              child: TextFormField(
-                                keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    hintText:
-                                        "Add food tag e.g. #salmon, #dinner",
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xffff6240)),
+                              padding: const EdgeInsets.only(top: 30.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      addTag();
+                                    },
+                                    child : Container(
+                                      child: Icon(
+                                          Icons.add,
+                                          color: Colors.black,
+                                          size: 28
+                                      ),
                                     ),
-                                    errorStyle: const TextStyle(
-                                        color: Colors.yellow,
-                                        decorationColor: Colors.yellow),
-                                    contentPadding: const EdgeInsets.only(
-                                        left: 15, right: 15)),
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Please Enter Your Name!';
-                                  }
-                                  return null;
-                                },
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text(
+                                    'Tags',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      reduceTag();
+                                    },
+                                    child : Container(
+                                      child: Icon(
+                                        Icons.exposure_minus_1,
+                                        color: Colors.black,
+                                        size: 28,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Padding(
@@ -304,7 +390,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Time",
+                                    "Cooking Time",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w300,
                                       fontSize: 16,
@@ -370,7 +456,6 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                   ],
                 ),
               ),
-            ),
 
             //Next button
             Padding(
@@ -414,7 +499,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        AddRecipe2Screen()), //addpost_item.dart
+                                        AddRecipe2Screen(key: ValueKey('52412556655fs'))), //addpost_item.dart
                               );
                             },
                             child: Text('NEXT'),

@@ -10,6 +10,17 @@ import 'addpost_item.dart';
 import 'addpost_item3.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
+TextEditingController _emailController = TextEditingController();
+List<TextEditingController> conList = List.generate(10, (i) => TextEditingController());
+
+void closePage2(){
+  _emailController.clear();
+  for(int i = 0; i < 10; i++) {
+    conList[i].clear();
+  }
+}
+
+
 class AddRecipe2Screen extends StatefulWidget {
   // final Recipe recipe;
 
@@ -22,11 +33,33 @@ class AddRecipe2Screen extends StatefulWidget {
 }
 
 class _AddRecipe2ScreenState extends State<AddRecipe2Screen> {
+
+  static int ingCount = 1;
+  final _formKey = GlobalKey<FormState>();
+
   final tagController = TextEditingController();
   String dropdownValue = '';
   // List<String> _dynamicChips = [];
   File imageFile;
   var isSubmiting = false;
+
+  void addIng(){
+    if(ingCount < 10)
+      {
+        ingCount++;
+      }
+    setState(() {
+    });
+  }
+
+  void reduceIng(){
+    if(ingCount > 1)
+    {
+      ingCount--;
+    }
+    setState(() {
+    });
+  }
 
   //fix deprecated
   @override
@@ -39,6 +72,7 @@ class _AddRecipe2ScreenState extends State<AddRecipe2Screen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
+            closePage2();
             Navigator.pop(context);
             Navigator.pop(context);
           },
@@ -97,133 +131,96 @@ class _AddRecipe2ScreenState extends State<AddRecipe2Screen> {
             //     ),
             //   ],
             // ),
-            Expanded(
-              child: Scrollbar(
-                child: ListView(
+                  Form(
+                    key: _formKey,
+                   child: ListView.builder(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  physics: AlwaysScrollableScrollPhysics(),
-                  //input form
-                  children: <Widget>[
-                    Form(
-                      child: Padding(
-                        // padding: const EdgeInsets.all(25.0),
-                        padding: const EdgeInsets.only(
-                            top: 10, left: 20, right: 20, bottom: 30),
-                        child: Column(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: ingCount,
+                  itemBuilder: (context, index) {
+                  return  Column(
                           children: <Widget>[
                             //ingre1
                             Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
+                              padding: const EdgeInsets.only(top: 15.0,left: 20, right: 20),
                               child: TextFormField(
+                                controller: conList[index],
+                                validator: (value) {
+                                  if (value == null || value.isEmpty){
+                                    return 'Please enter remain information';
+                                  }
+                                  return null;
+                                },
                                 // textInputAction: TextInputAction.newline,
                                 keyboardType: TextInputType.text,
-
-                                decoration: const InputDecoration(
-                                    hintText: "1/2 teaspoon minced garlic",
+                                decoration: InputDecoration(
+                                    hintText: "${index+1}. ingredients",
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Color(0xffff6240)),
                                     ),
                                     errorStyle: TextStyle(
-                                        color: Colors.yellow,
-                                        decorationColor: Colors.yellow),
+                                        color: Colors.red,
+                                        decorationColor: Colors.red),
                                     contentPadding: const EdgeInsets.only(
                                         left: 15, right: 15)),
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Please Enter Count!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                            //ingre2
-                            Padding(
-                              padding: const EdgeInsets.only(top: 15.0),
-                              child: TextFormField(
-                                keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    hintText:
-                                        "1/4 teaspoon reduced-sodium soy sauce",
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xffff6240)),
-                                    ),
-                                    errorStyle: const TextStyle(
-                                        color: Colors.yellow,
-                                        decorationColor: Colors.yellow),
-                                    contentPadding: const EdgeInsets.only(
-                                        left: 15, right: 15)),
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Please Enter Your Name!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                            //ingre3
-                            Padding(
-                              padding: const EdgeInsets.only(top: 15.0),
-                              child: TextFormField(
-                                keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    hintText:
-                                        "4 (6 oz) skinless salmon fillets",
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xffff6240)),
-                                    ),
-                                    errorStyle: const TextStyle(
-                                        color: Colors.yellow,
-                                        decorationColor: Colors.yellow),
-                                    contentPadding: const EdgeInsets.only(
-                                        left: 15, right: 15)),
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Please Enter Your Name!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                            //+ Ingredients
-                            Padding(
-                              padding: const EdgeInsets.only(top: 30.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.add,
-                                    color: Colors.black,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    'Ingredients',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ],
-                        ),
+                      );
+                }
+                ),
+                  ),
+            //Next button
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      addIng();
+                    },
+                    child : Container(
+                      child: Icon(
+                    Icons.add,
+                    color: Colors.black,
+                          size: 28
+                      ),
+                  ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    'Ingredients',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      reduceIng();
+                    },
+                    child : Container(
+                      child: Icon(
+                        Icons.exposure_minus_1,
+                        color: Colors.black,
+                        size: 28,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-
-            //Next button
             Padding(
               padding: EdgeInsets.only(top: 20, right: 20, left: 20),
               // alignment: Alignment.center,
@@ -290,12 +287,13 @@ class _AddRecipe2ScreenState extends State<AddRecipe2Screen> {
                               primary: Colors.white,
                             ),
                             onPressed: () {
+                                  if (_formKey.currentState.validate()) {
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        AddRecipe3Screen()), //addpost_item.dart
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AddRecipe3Screen()));
+                              }
                             },
                             child: Text('NEXT'),
                           ),

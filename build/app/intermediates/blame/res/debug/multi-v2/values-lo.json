@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mookch/Documents/GitHub/FoodGook/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-lo/values-lo.xml",
+            "outputFile": "C:\\Users\\Gene-PC\\Documents\\GitHub\\FoodGook\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lo\\values-lo.xml",
             "map": [
                 {
-                    "source": "/Users/mookch/.gradle/caches/transforms-2/files-2.1/1dcad3d240c9a08fd36975676cac6d57/jetified-play-services-basement-17.1.0/res/values-lo/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "190",
-                        "endOffsets": "437"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1279",
-                        "endColumns": "190",
-                        "endOffsets": "1465"
-                    }
-                },
-                {
-                    "source": "/Users/mookch/.gradle/caches/transforms-2/files-2.1/086ae226c57fd40f568905c7e86511a2/play-services-base-17.1.0/res/values-lo/values.xml",
+                    "source": "C:\\Users\\Gene-PC\\.gradle\\caches\\transforms-2\\files-2.1\\086ae226c57fd40f568905c7e86511a2\\play-services-base-17.1.0\\res\\values-lo\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/mookch/.gradle/caches/transforms-2/files-2.1/28e91832122b5dc7de235c04c0b3d0d2/core-1.1.0/res/values-lo/values-lo.xml",
+                    "source": "C:\\Users\\Gene-PC\\.gradle\\caches\\transforms-2\\files-2.1\\b0ddb3ea4c35c42b38907662cdb06a25\\jetified-play-services-basement-17.1.0\\res\\values-lo\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "190",
+                        "endOffsets": "437"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1279",
+                        "endColumns": "190",
+                        "endOffsets": "1465"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Gene-PC\\.gradle\\caches\\transforms-2\\files-2.1\\28e91832122b5dc7de235c04c0b3d0d2\\core-1.1.0\\res\\values-lo\\values-lo.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
