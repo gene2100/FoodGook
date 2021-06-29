@@ -35,7 +35,7 @@ List descriptions = [
   "Hola salmon fans! Here’s another one to tuck in...",
   "Sawasdee better way to enjoy a weekend night than...",
   "Hey salmon fans! Here’s another one to tuck in...",
-  "Anyeong better way to enjoy a weekend night than...",
+  "Anyeong better way to enjoy a weekend night...",
   "My better way to enjoy a weekend night than...",
   "Bye salmon fans! Here’s another one to tuck in...",
   "Nani better way to enjoy a weekend night than...",
