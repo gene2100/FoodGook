@@ -1,9 +1,129 @@
 
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+FirebaseAuth _auth = FirebaseAuth.instance;
+FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+
+Future<String> updateProfile(File ImageFile, String Description) async{
+
+  String imageURL;
+  CollectionReference users = _firestore.collection('User_Profile');
+  if(ImageFile == null){
+    await users.doc(_auth.currentUser.uid).update({
+      'Description': Description
+    }).then((value) => print("Succes to update"))
+        .catchError((error) {
+      print("Failed to update");
+    });
+    return 'succes';
+  }
+  else if(ImageFile != null) {
+    imageURL = await uploadImage(ImageFile, _auth.currentUser.uid);
+
+    await users.doc(_auth.currentUser.uid).update({
+      'Description': Description,
+      'ImageURL': imageURL
+    }).then((value) => print("Succes to update imageurl"))
+        .catchError((error) {
+      print("Failed to update imageurl");
+    });
+    return 'succes';
+  }
+}
+
+Future<String> uploadImage(File _image, String userID) async {
+  String url;
+  Reference firebaseStorageRef =
+  FirebaseStorage.instance.ref().child('ProfilePicture/$userID/ProfileImage');
+  UploadTask uploadTask =  firebaseStorageRef.putFile(_image);
+  await uploadTask.then((res) async{
+    url = await res.ref.getDownloadURL();
+  }).catchError((onError) {
+    print('error2');
+  });
+  return url;
+}
+
+Future<void> _updateProcessDialog(BuildContext context, File ImageFile, String Description) async{
+  Future<String> updateState = updateProfile(ImageFile,Description);
+  return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context){
+        return Dialog(
+          child: Container(
+              margin: const EdgeInsets.all(30),
+              child: SingleChildScrollView(
+                child: FutureBuilder(
+                  future: updateState,
+                  builder: (context, AsyncSnapshot<String> snapshot){
+                    List<Widget> children;
+                    if(snapshot.data == 'succes') {
+                      children = <Widget>[
+                        Text('Update Succes',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'rublik',
+                            )),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('OK',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'rublik',
+                              )),
+                        )
+                      ];
+                    }
+                    else if(snapshot.hasError) {
+                      children = <Widget>[
+                        Text('Error occured',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'rublik',
+                            )),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('OK',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'rublik',
+                              )),
+                        )
+                      ];
+                    }
+                    else{
+                      children = <Widget>[
+                        SizedBox(
+                          child: CircularProgressIndicator(),
+                          width: 60,
+                          height: 60,
+                        )
+                      ];
+                    }
+                    return Column(children: children);
+                  },
+                ),
+              )
+          ),
+        );
+      }
+  );
+}
 
 class EditProfile extends StatefulWidget{
 
@@ -34,7 +154,7 @@ class _EditProfileState extends State<EditProfile>{
     _openGallery(BuildContext context) async {
       var imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
       setState(() {
-        imageFile = imageFile;
+        this.imageFile = imageFile;
       });
       Navigator.of(context).pop();
     }
@@ -42,15 +162,15 @@ class _EditProfileState extends State<EditProfile>{
     _openCamera(BuildContext context) async {
       var imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
       setState(() {
-        imageFile = imageFile;
+        this.imageFile = imageFile;
       });
       Navigator.of(context).pop();
     }
 
     Widget _decideImageView() {
       if (imageFile != null) {
-        print('1');
         return CircleAvatar(
+          foregroundImage: FileImage(imageFile),
           backgroundColor: Color(
               0xffE6E6E6),
           radius: 50,
@@ -60,7 +180,6 @@ class _EditProfileState extends State<EditProfile>{
           ),
         );
       } else if(widget._ImageURL.isNotEmpty){
-        print('2');
         print(imageFile);
         return CircleAvatar(
           backgroundColor: Color(
@@ -76,7 +195,6 @@ class _EditProfileState extends State<EditProfile>{
         );
       }
       else {
-        print('3');
         return CircleAvatar(
           backgroundColor: Color(
               0xffE6E6E6),
@@ -274,7 +392,7 @@ class _EditProfileState extends State<EditProfile>{
                               primary: Colors.white,
                             ),
                             onPressed: () {
-
+                              _updateProcessDialog(context,imageFile,_descController.text);
                             },
                             child: Text('UPDATE'),
                           ),

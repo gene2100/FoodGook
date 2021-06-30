@@ -10,7 +10,9 @@ class DataController extends GetxController{
 
   Future queryData(String queryString) async{
     return FirebaseFirestore.instance.collection('Recipes').orderBy('searchName').startAt([queryString.toLowerCase()]).endAt([queryString.toLowerCase() + '\uf8ff']).get();
+  }
 
-
+  Future queryData2(String queryString) async{
+    return FirebaseFirestore.instance.collection('Recipes').where('Ingredient', arrayContains: queryString.toLowerCase()).get();
   }
 }

@@ -10,6 +10,25 @@ import 'DataController.dart';
 
 import 'detail/meal_detail_screen.dart';
 
+List<QueryDocumentSnapshot> mergeList(QuerySnapshot snapshotData,QuerySnapshot snapshotData2){
+  List data = snapshotData.docs;
+  List data2 = snapshotData2.docs;
+  List dataID = [];
+  List dataResult;
+  dataResult = data;
+
+  for(int i = 0; i<data.length; i++){
+    dataID.add(data[i].id);
+  }
+
+  for(int i = 0; i<data2.length; i++){
+    if(!dataID.contains(data2[i].id)){
+      dataResult.add(data2[i]);
+    }
+  }
+  return dataResult;
+}
+
 class RecipesView extends StatefulWidget {
   @override
   _RecipesViewState createState() => _RecipesViewState();
@@ -19,6 +38,8 @@ class _RecipesViewState extends State<RecipesView> {
 
   final TextEditingController searchController = TextEditingController();
   QuerySnapshot snapshotData;
+  QuerySnapshot snapshotData2;
+  List<QueryDocumentSnapshot> queryData =[];
   bool isExecuted = false;
 
   @override
@@ -26,28 +47,27 @@ class _RecipesViewState extends State<RecipesView> {
 
     Widget searchedData(){
       return ListView.builder(
-        itemCount: snapshotData.docs.length,
+        itemCount: queryData.length,
         itemBuilder: (BuildContext context,int index) {
           return GestureDetector(
             onTap: (){
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => MealDetailScreen(snapshotData.docs[index].id)));
+                  MaterialPageRoute(builder: (context) => MealDetailScreen(queryData[index].id)));
             },
             child: ListTile(
             leading: CircleAvatar(
-              backgroundImage: NetworkImage(snapshotData.docs[index].data()['ImageURL']),
+              backgroundImage: NetworkImage(queryData[index].data()['ImageURL']),
             ),
 
-            title: Text(snapshotData.docs[index].data()['Recipe_Name'],style: TextStyle(
+            title: Text(queryData[index].data()['Recipe_Name'],style: TextStyle(
                 color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20.0
             ),),
-            subtitle: Text(snapshotData.docs[index].data()['Description'],style: TextStyle(
+            subtitle: Text(queryData[index].data()['Description'],style: TextStyle(
                 color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 14.0
             ),),)
           );
         },
       );
-
     }
 
 
@@ -63,10 +83,13 @@ class _RecipesViewState extends State<RecipesView> {
                   onPressed: () {
                     val.queryData(searchController.text).then((value) {
                       snapshotData = value;
-                      setState(() {
-                        isExecuted = true;
+                      val.queryData2(searchController.text).then((value){
+                        snapshotData2 = value;
+                        queryData = mergeList(snapshotData, snapshotData2);
+                        setState(() {
+                          isExecuted = true;
+                        });
                       });
-
                     });
                   });
             },

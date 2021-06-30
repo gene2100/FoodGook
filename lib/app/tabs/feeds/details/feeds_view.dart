@@ -17,10 +17,17 @@ Future<void> getData() async{
   recipeResultAll.clear();
   Map recipeFeedDetail;
   List<String> userUID;
+  List<String> tempUserUID;
   await _firestore.collection("User_Profile").doc(_auth.currentUser.uid).collection("Relation_Detail").doc('Following').get().then((docSnap){
     print(docSnap.data());
-    userUID = docSnap['UserUID'].cast<String>();
-    userUID.shuffle();
+    tempUserUID = docSnap['UserUID'].cast<String>();
+    tempUserUID.shuffle();
+    if(tempUserUID.length > 10){
+      userUID = tempUserUID.getRange(0, 9);
+    }
+    else if(tempUserUID.length <= 10){
+      userUID = tempUserUID;
+    }
   });
   await _firestore.collection("Recipes").where('UserUID', whereIn: userUID).orderBy('postTime', descending: true).limit(10).get().then((collSnap){
     collSnap.docs.forEach((result){
