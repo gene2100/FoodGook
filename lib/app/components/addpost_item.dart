@@ -5,12 +5,48 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter/services.dart';
 import 'addpost_item2.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:numberpicker/numberpicker.dart';
 
-final TextEditingController _usernameController = TextEditingController();
+import 'addpost_item3.dart';
+
+
+
+final TextEditingController _menunameController = TextEditingController();
+final TextEditingController _descnameController = TextEditingController();
 List<TextEditingController> tagConList = List.generate(5, (i) => TextEditingController());
+int _TimeValue = 5;
+String _Difficult = "Easy";
+File imageFile2;
 
-TextEditingController getText() {
-  return _usernameController;
+
+List<String> sendPage1String(){
+  List<String> _Sender = [_menunameController.text,_descnameController.text,_Difficult];
+  return _Sender;
+}
+
+int sendTime(){
+  return _TimeValue;
+}
+
+File imageSend(){
+  return imageFile2;
+}
+
+void closePage(){
+  _menunameController.clear();
+  _descnameController.clear();
+  for(int i = 0; i < 5; i++) {
+    tagConList[i].clear();
+  }
+  for(int i = 0; i < 10; i++) {
+    conList[i].clear();
+  }
+  for(int i = 0; i < 10; i++) {
+    dirConList[i].clear();
+  }
+  _Difficult = "Easy";
+  _TimeValue = 5;
+  imageFile2 = null;
 }
 
 class AddRecipeScreen extends StatefulWidget {
@@ -26,12 +62,14 @@ class AddRecipeScreen extends StatefulWidget {
 
 class _AddRecipeScreenState extends State<AddRecipeScreen> {
 
+  NumberPicker integerNumberPicker;
+  final _formKey = GlobalKey<FormState>();
+
   static int tagCount = 1;
 
   final tagController = TextEditingController();
   String dropdownValue = '';
   // List<String> _dynamicChips = [];
-  File imageFile;
   var isSubmiting = false;
 
   void addTag(){
@@ -73,10 +111,11 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
   //fix deprecated
   @override
   Widget build(BuildContext context) {
+
     _openGallery(BuildContext context) async {
       var imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
       setState(() {
-        this.imageFile = imageFile;
+        imageFile2 = imageFile;
       });
       Navigator.of(context).pop();
     }
@@ -84,15 +123,15 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
     _openCamera(BuildContext context) async {
       var imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
       setState(() {
-        this.imageFile = imageFile;
+        imageFile2 = imageFile;
       });
       Navigator.of(context).pop();
     }
 
     Widget _decideImageView() {
-      if (imageFile != null) {
+      if (imageFile2 != null) {
         return Image.file(
-          imageFile,
+          imageFile2,
           fit: BoxFit.cover,
         );
       } else {
@@ -132,6 +171,41 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           });
     }
 
+    Future<void> _showIntegerDialog() async {
+      await showDialog<int>(
+          context: context,
+          builder: (BuildContext context) {
+            return new StatefulBuilder(
+                builder: (context, setState2) {
+                  return AlertDialog(
+                    content: NumberPicker(
+                      value: _TimeValue,
+                      minValue: 5,
+                      maxValue: 300,
+                      step: 5,
+                      onChanged: (value) {
+                        setState(() => _TimeValue = value);
+                        setState2(() => _TimeValue = value);
+                      },
+                    ),
+                  );
+                }
+            );
+          }
+      );
+    }
+
+    Future<void> _AlertImageNotPick() async {
+      await showDialog<int>(
+          context: context,
+          builder: (BuildContext context) {
+                  return AlertDialog(
+                    content: Text("Please select the image"),
+                  );
+                }
+            );
+          }
+
     // dynamicChips() {
     //   return Wrap(
     //     spacing: 6.0,
@@ -158,7 +232,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            closePage2();
+            closePage();
             Navigator.pop(context);
           },
           child: Icon(Icons.close, color: Colors.grey[700], size: 24),
@@ -243,6 +317,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                   //input form
                   children: <Widget>[
                     Form(
+                      key: _formKey,
                       child: Padding(
                         // padding: const EdgeInsets.all(25.0),
                         padding: const EdgeInsets.only(
@@ -254,7 +329,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                               padding: const EdgeInsets.only(top: 10.0),
                               child: TextFormField(
                                 // textInputAction: TextInputAction.newline,
-                                controller: _usernameController,
+                                controller: _menunameController,
                                 keyboardType: TextInputType.text,
 
                                 decoration: const InputDecoration(
@@ -264,13 +339,13 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                           BorderSide(color: Color(0xffff6240)),
                                     ),
                                     errorStyle: TextStyle(
-                                        color: Colors.yellow,
-                                        decorationColor: Colors.yellow),
+                                        color: Colors.red,
+                                        decorationColor: Colors.red),
                                     contentPadding: const EdgeInsets.only(
                                         left: 15, right: 15)),
                                 validator: (value) {
                                   if (value.isEmpty) {
-                                    return 'Please Enter Count!';
+                                    return 'Please Enter Menu Name';
                                   }
                                   return null;
                                 },
@@ -280,21 +355,23 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                             Padding(
                               padding: const EdgeInsets.only(top: 15.0),
                               child: TextFormField(
+                                controller: _descnameController,
                                 keyboardType: TextInputType.text,
+                                maxLines: null,
                                 decoration: const InputDecoration(
-                                    hintText: "Desciption",
+                                    hintText: "Description",
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Color(0xffff6240)),
                                     ),
                                     errorStyle: const TextStyle(
-                                        color: Colors.yellow,
-                                        decorationColor: Colors.yellow),
+                                        color: Colors.red,
+                                        decorationColor: Colors.red),
                                     contentPadding: const EdgeInsets.only(
                                         left: 15, right: 15)),
                                 validator: (value) {
                                   if (value.isEmpty) {
-                                    return 'Please Enter Your Name!';
+                                    return 'Please Enter Description!';
                                   }
                                   return null;
                                 },
@@ -313,22 +390,22 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                     Padding(
                                     padding: const EdgeInsets.only(top: 15.0),
                                     child: TextFormField(
+                                      controller: tagConList[index],
                                   keyboardType: TextInputType.text,
                                   decoration: const InputDecoration(
-                                      hintText:
-                                      "Add food tag e.g. #salmon, #dinner",
+                                      hintText: "Add food tag e.g. salmon, dinner",
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide:
                                         BorderSide(color: Color(0xffff6240)),
                                       ),
                                       errorStyle: const TextStyle(
-                                          color: Colors.yellow,
-                                          decorationColor: Colors.yellow),
+                                          color: Colors.red,
+                                          decorationColor: Colors.red),
                                       contentPadding: const EdgeInsets.only(
                                           left: 15, right: 15)),
                                   validator: (value) {
                                     if (value.isEmpty) {
-                                      return 'Please Enter Your Name!';
+                                      return 'Please Enter Tag!';
                                     }
                                     return null;
                                   },
@@ -397,22 +474,35 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 10,
+                                    height: 15,
                                   ),
-                                  TextFormField(
-                                    keyboardType: TextInputType.text,
-                                    decoration: const InputDecoration(
-                                        hintText: "2 hours",
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xffff6240)),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                          onTap: () {_showIntegerDialog();},
+                                          child : Container(
+                                              color: Color(0xFFF0F0F0) ,
+                                              padding: const EdgeInsets.only(left: 10 , right: 10 ,top: 8 ,bottom: 8),
+                                              margin: const EdgeInsets.only(left: 15),
+                                              child : Text( _TimeValue.toString(),
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 24,
+                                                ),)
+                                          )
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Text(
+                                        "Minute",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 18,
                                         ),
-                                        errorStyle: const TextStyle(
-                                            color: Colors.yellow,
-                                            decorationColor: Colors.yellow),
-                                        contentPadding: const EdgeInsets.only(
-                                            left: 15, right: 15)),
-                                  ),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
@@ -431,21 +521,34 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  TextFormField(
-                                    keyboardType: TextInputType.text,
-                                    decoration: const InputDecoration(
-                                      hintText: "Easy",
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Color(0xffff6240)),
-                                      ),
-                                      errorStyle: const TextStyle(
-                                          color: Colors.yellow,
-                                          decorationColor: Colors.yellow),
-                                      contentPadding: const EdgeInsets.only(
-                                          left: 15, right: 15),
-                                    ),
-                                  ),
+                                  Container(
+                                      alignment: Alignment.bottomLeft,
+                                      child: DropdownButton<String>(
+                                        value: _Difficult,
+                                        icon: Icon(Icons.arrow_downward),
+                                        iconSize: 20,
+                                        elevation: 16,
+                                        style: TextStyle(
+                                            color: Color(0xffff6240),
+                                            fontFamily: 'rublik',
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                        underline: Container(
+                                            height: 2, color: Color(0xffff6240)),
+                                        onChanged: (String newValue) {
+                                          setState(() {
+                                            _Difficult = newValue;
+                                          });
+                                        },
+                                        items: <String>["Easy", "Medium", "Hard"]
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value),
+                                              );
+                                            }).toList(),
+                                      ))
                                 ],
                               ),
                             ),
@@ -495,13 +598,21 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                               primary: Colors.white,
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        AddRecipe2Screen(key: ValueKey('52412556655fs'))), //addpost_item.dart
-                              );
-                            },
+                              if( imageFile2 != null){
+                                  print("image selected");
+                                if (_formKey.currentState.validate()) {
+                                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                  builder: (context) =>
+                                      AddRecipe2Screen()));
+                                  }
+                              }
+                              else{
+                                print("image not selected");
+                                _AlertImageNotPick();
+                              }
+                              },
                             child: Text('NEXT'),
                           ),
                         ),
@@ -517,3 +628,4 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
     );
   }
 }
+

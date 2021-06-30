@@ -1,5 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foodgook/app/tabs/recipes/detail/meal_detail_screen.dart';
+import 'package:intl/intl.dart';
+
+import 'editProfile.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
@@ -27,12 +32,155 @@ class _ProfileViewState extends State<ProfileView>
     super.initState();
   }
 
+  Widget _PostTab(){
+    CollectionReference recipes = FirebaseFirestore.instance.collection('Recipes');
+    return FutureBuilder(
+        future: recipes.where('UserUID', isEqualTo: widget.userID).orderBy('postTime', descending: true).limit(5).get(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot2){
+          if (snapshot2.hasData && snapshot2.data.docs.isEmpty) {
+            return Container(
+              alignment: Alignment.center,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'There is no content to display.',
+                      style: TextStyle(color: Colors.grey[400]),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }
+          else if(snapshot2.hasData && snapshot2.data.docs.isNotEmpty){
+            List<QueryDocumentSnapshot> docSnap = snapshot2.data.docs;
+            return ListView.builder(
+                itemCount: docSnap.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Wrap(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 0), //10
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      print("ID:" + docSnap[index].id);
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context) => MealDetailScreen(docSnap[index].id)));
+                                    },
+                                  child: Container(
+                                    child: Image.network(
+                                      docSnap[index]['ImageURL'],
+                                      height: 170,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                ),
+                                SizedBox.shrink(),
+                                // SizedBox(height: 8.0),
+                                SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      docSnap[index]['Recipe_Name'],
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.remove_red_eye_rounded,
+                                            color: Colors.grey),
+                                        SizedBox(width: 3),
+                                        Text(NumberFormat.compact().format(docSnap[index]['View'])),
+                                        SizedBox(width: 10),
+                                        Icon(Icons.favorite,
+                                            color: Color(0XFFEE2B4A)),
+                                        SizedBox(width: 3),
+                                        Text(NumberFormat.compact().format(docSnap[index]['Favorite'])),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 5),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                      docSnap[index]['Description'],
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 5),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    for (var item in docSnap[index]['Tag'])
+                                      Flexible(
+                                        child:
+                                        TextButton(
+                                          onPressed: () {
+                                            print("XD");
+                                          },
+                                          child: AutoSizeText(
+                                            '#'+item,
+                                            minFontSize: 8,
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0XFF5D6890),
+                                            ),
+                                          ),
+                                        ),
+                                      )],
+                                ),
+                                // SizedBox(
+                                //   height: 5,
+                                // ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                });
+                }
+          return SizedBox(
+            child: CircularProgressIndicator(),
+            width: 60,
+            height: 60,
+          );
+        }
+          );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     CollectionReference users = FirebaseFirestore.instance.collection('User_Profile');
-    return Scaffold(
-    body: FutureBuilder(
+    return FutureBuilder(
       future: users.doc(widget.userID).get(),
       builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot){
         if (snapshot.hasError) {
@@ -47,8 +195,7 @@ class _ProfileViewState extends State<ProfileView>
           Map<String, dynamic> data = snapshot.data.data() as Map<String, dynamic>;
           return Scaffold(
             body: SafeArea(
-              child: ListView(
-                physics: BouncingScrollPhysics(),
+              child: Column(
                 children: <Widget>[
                   //profile
                   Padding(
@@ -103,11 +250,16 @@ class _ProfileViewState extends State<ProfileView>
                             Row(
                               children: [
                                 CircleAvatar(
-                                  radius: 50.0,
-                                  backgroundImage:
-                                  NetworkImage(
-                                    data['ImageURL'],
-                                  )
+                                  backgroundColor: Color(
+                                      0xffE6E6E6),
+                                  radius: 50,
+                                  child: Icon(
+                                    Icons.person,
+                                    color: Color(0xffCCCCCC),
+                                  ),
+                                  foregroundImage: NetworkImage(
+                                    data["ImageURL"],
+                                  ),
                                 ),
                                 SizedBox(
                                   width: 15,
@@ -157,6 +309,11 @@ class _ProfileViewState extends State<ProfileView>
                                                   ),
                                                   onPressed: () {
                                                     print('Pressed');
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                EditProfile(data['ImageURL'],data['Description'])));
                                                   },
                                                 ),
                                               ),
@@ -286,36 +443,31 @@ class _ProfileViewState extends State<ProfileView>
                       ],
                     ),
                   ),
+                  Expanded(
+                      child: TabBarView(
+                      controller: this._tabController,
+                      children:[
+                        _PostTab(),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'There is no content to display.',
+                                  style: TextStyle(color: Colors.grey[400]),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Text('XD3')
+                      ])
+                      )
                   //if/else when no content
-                  Container(
-                    padding: EdgeInsets.only(top: 180),
-                    alignment: Alignment.center,
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Icon(
-                          //   Icons.local_dining,
-                          //   color: Colors.grey[400],
-                          //   size: 24,
-                          // ),
-                          // Container(
-                          //   margin: EdgeInsets.only(left: 20, right: 20),
-                          //   width: 1,
-                          //   height: 50,
-                          //   color: Colors.grey[400],
-                          // ),
-                          Text(
-                            'There is no content to display.',
-                            style: TextStyle(color: Colors.grey[400]),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
 
-                  // Expanded(
-                  //   child: TabBarView(
+                  //     TabBarView(
                   //     controller: this._tabController,
                   //     children: <Widget>[
                   //       //post1
@@ -572,7 +724,6 @@ class _ProfileViewState extends State<ProfileView>
                   //       ),
                   //     ],
                   //   ),
-                  // ),
 //post here
                 ],
               ),
@@ -585,7 +736,6 @@ class _ProfileViewState extends State<ProfileView>
           height: 60,
         );
       },
-    )
     );
   }
 }

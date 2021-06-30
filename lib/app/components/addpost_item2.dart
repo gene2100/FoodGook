@@ -10,16 +10,7 @@ import 'addpost_item.dart';
 import 'addpost_item3.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-TextEditingController _emailController = TextEditingController();
 List<TextEditingController> conList = List.generate(10, (i) => TextEditingController());
-
-void closePage2(){
-  _emailController.clear();
-  for(int i = 0; i < 10; i++) {
-    conList[i].clear();
-  }
-}
-
 
 class AddRecipe2Screen extends StatefulWidget {
   // final Recipe recipe;
@@ -72,7 +63,7 @@ class _AddRecipe2ScreenState extends State<AddRecipe2Screen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            closePage2();
+            closePage();
             Navigator.pop(context);
             Navigator.pop(context);
           },
@@ -150,7 +141,7 @@ class _AddRecipe2ScreenState extends State<AddRecipe2Screen> {
                                 controller: conList[index],
                                 validator: (value) {
                                   if (value == null || value.isEmpty){
-                                    return 'Please enter remain information';
+                                    return 'Please enter remain ingredients';
                                   }
                                   return null;
                                 },

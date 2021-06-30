@@ -93,7 +93,14 @@ class _PostItemState extends State<PostItem> {
                 Row(
                   children: [
                     CircleAvatar(
-                      backgroundImage: NetworkImage(
+                      backgroundColor: Color(
+                          0xffE6E6E6),
+                      radius: 20,
+                      child: Icon(
+                        Icons.person,
+                        color: Color(0xffCCCCCC),
+                      ),
+                      foregroundImage: NetworkImage(
                         "${widget.dp}",
                       ),
                     ),
@@ -167,7 +174,7 @@ class _PostItemState extends State<PostItem> {
                           SizedBox(width: 10),
                           Icon(Icons.favorite, color: Color(0XFFEE2B4A)),
                           SizedBox(width: 3),
-                          Text('${widget.favorite}'),
+                          Text(NumberFormat.compact().format(widget.favorite)),
                         ],
                       ),
                       // Row(
@@ -183,12 +190,15 @@ class _PostItemState extends State<PostItem> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      Flexible(
+                        child:Text(
                         "${widget.description}",
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                         ),
                       ),
+                      )
                     ],
                   ),
                   SizedBox(height: 5),
@@ -199,6 +209,9 @@ class _PostItemState extends State<PostItem> {
                         Flexible(
                           child:
                           TextButton(
+                            onPressed: () {
+                              print("XD");
+                            },
                             child: AutoSizeText(
                               '#'+item,
                               minFontSize: 8,
