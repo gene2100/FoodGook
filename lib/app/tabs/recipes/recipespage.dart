@@ -46,6 +46,16 @@ class _RecipesViewState extends State<RecipesView> {
   List<QueryDocumentSnapshot> queryData =[];
   bool isExecuted = false;
   
+  String _tagMerge(List tagList){
+    String returnString;
+    
+    returnString = '#' + tagList[0];
+    for(int i =1; i<tagList.length; i++){
+      returnString = returnString + ' #' + tagList[i];
+    }
+    return returnString;
+  }
+  
   Future<List> recommendQuery() async{
     List _RecommendReturn = [];
     List<DocumentSnapshot> RecRecipe = [];
@@ -153,6 +163,17 @@ class _RecipesViewState extends State<RecipesView> {
                                     style: TextStyle(
                                       // fontFamily: GoogleFonts.openSans ,
                                       fontSize: 36,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black,
+                                      fontFamily: 'Rublik',
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    'Popular',
+                                    style: TextStyle(
+                                      // fontFamily: GoogleFonts.openSans ,
+                                      fontSize: 23,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.black,
                                       fontFamily: 'Rublik',
@@ -288,9 +309,9 @@ class _RecipesViewState extends State<RecipesView> {
                                   return GestureDetector(
                                     onTap: (){
                                       print('ListView Tapped');
-                                      //   Navigator.of(context).push(
-                                      //       MaterialPageRoute(builder: (context) => MealDetailScreen(populars[index].docName)));
-                                      //
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(builder: (context) => MealDetailScreen(snapshot3.data.docs[index].id)));
+
                                     },
 
                                     child: Container(
@@ -330,19 +351,17 @@ class _RecipesViewState extends State<RecipesView> {
                                 return GestureDetector(
                                   onTap: (){
                                     print('ListView Tapped');
-                                    //   Navigator.of(context).push(
-                                    //       MaterialPageRoute(builder: (context) => MealDetailScreen(populars[index].docName)));
-                                    //
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context) => MealDetailScreen(snapshot4.data[index].id)));
+
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(bottom: 19),
-                                    height: 81,
-                                    width: MediaQuery.of(context).size.width - 50,
                                     color: Colors.black12,
                                     child: Row(
                                       children: <Widget>[
                                         Container(
-                                          height: 150,
+                                          height: 81,
                                           width: 150,
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(5),
@@ -358,10 +377,10 @@ class _RecipesViewState extends State<RecipesView> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: <Widget>[
-                                            Flexible(child:
-                                                Row(children:[
-                                            Text(
-                                            snapshot4.data[index]['Recipe_Name'],
+                                            Row(children: [
+                                                      Container(
+                                                        width: MediaQuery.of(context).size.width - 240,
+                                                        child: Text(snapshot4.data[index]['Recipe_Name'],
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                 fontSize: 16,
@@ -369,29 +388,29 @@ class _RecipesViewState extends State<RecipesView> {
                                                 color: Colors.black,
                                               ),
                                             ),
-                                    ]
                                             ),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
+                                            ]
                                             ),
                                             SizedBox(
                                               height: 5,
                                             ),
-                                            Row(
-                                              children:
-                                                List.generate(snapshot4.data[index]['Tag'].length,(i) {
-                                                  return Text("${snapshot4.data[index]['Tag'][i]}",
-                                                    overflow: TextOverflow
-                                                        .ellipsis,
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight: FontWeight
-                                                            .w600,
-                                                        color: Colors.black),
-                                                  );
-                                                }
-                                                )
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Row(children: [
+                                            Container(
+                                            width: MediaQuery.of(context).size.width - 240,
+                                            child: Text(_tagMerge(snapshot4.data[index]['Tag']),
+                                                overflow: TextOverflow
+                                                    .ellipsis,
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight
+                                                        .w600,
+                                                    color: Color(0XFF5D6890)),
+                                            ),
+                                            ),
+                                            ]
                                             ),
                                             SizedBox(
                                               height: 5,
