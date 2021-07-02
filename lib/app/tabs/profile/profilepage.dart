@@ -438,7 +438,7 @@ class _ProfileViewState extends State<ProfileView>
                       unselectedLabelColor: Colors.black,
                       tabs: <Widget>[
                         Tab(text: 'Posts'),
-                        Tab(text: 'Cookbooks'),
+                        Tab(text: 'Grocery'),
                         Tab(text: 'Forums'),
                       ],
                     ),

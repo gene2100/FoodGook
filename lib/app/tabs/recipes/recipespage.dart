@@ -141,7 +141,7 @@ class _RecipesViewState extends State<RecipesView> {
 
       body: isExecuted ? searchedData() :
       FutureBuilder(
-      future: recipes.where('postTime', isGreaterThan: DateTime.now().subtract(const Duration(days: 1))).orderBy('postTime', descending: true).orderBy('View', descending:  true).limit(10).get(),
+      future: recipes.orderBy('postTime', descending:  true).where('postTime', isGreaterThan: DateTime.now().subtract(const Duration(days: 60))).orderBy('View', descending: true).limit(10).get(),
       builder: (BuildContext context , AsyncSnapshot<QuerySnapshot> snapshot3){
         if(snapshot3.hasData)
           {
@@ -170,7 +170,7 @@ class _RecipesViewState extends State<RecipesView> {
                                   ),
                                   SizedBox(height: 20),
                                   Text(
-                                    'Popular',
+                                    'Recent popular',
                                     style: TextStyle(
                                       // fontFamily: GoogleFonts.openSans ,
                                       fontSize: 23,

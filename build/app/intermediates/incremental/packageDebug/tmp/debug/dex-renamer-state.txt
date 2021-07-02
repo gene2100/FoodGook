@@ -1,4 +1,4 @@
-#Thu Jul 01 02:02:36 ICT 2021
+#Fri Jul 02 03:57:26 ICT 2021
 base.2=C\:\\Users\\Gene-PC\\Documents\\GitHub\\FoodGook\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
 base.1=C\:\\Users\\Gene-PC\\Documents\\GitHub\\FoodGook\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
 base.0=C\:\\Users\\Gene-PC\\Documents\\GitHub\\FoodGook\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex

@@ -28,6 +28,107 @@ class MealDetailScreen extends StatefulWidget {
       return returntext;
     }
 
+    _GroceryButton(String recipeID){
+      return StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('User_Profile').doc(_auth.currentUser.uid).collection('Relation_Detail').doc('Grocery').snapshots(),
+          builder: (context, snapshot){
+            if(snapshot.hasData && snapshot.data['RecipeID'].contains(recipeID)) {
+              return GestureDetector(
+                  onTap :() {
+                    _RemoveGrocery(recipeID);},
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade600,
+                      borderRadius: BorderRadius
+                          .circular(15)),
+                  child: Padding(
+                    padding: const EdgeInsets
+                        .fromLTRB(18, 2, 10, 2),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.remove,
+                            color: Colors.white
+                        ),
+                        Text('Remove',
+                            style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 16,
+                                color: Colors
+                                    .white))
+                      ],
+                    ),
+                  )
+              ));
+            }
+            else if(snapshot.hasData && !snapshot.data['RecipeID'].contains(recipeID)){
+              return GestureDetector(
+                  onTap :() {
+                    _AddGrocery(recipeID);},
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: const Color(
+                          0xFFFF6240),
+                      borderRadius: BorderRadius
+                          .circular(15)),
+                  child: Padding(
+                    padding: const EdgeInsets
+                        .fromLTRB(18.0, 2, 10, 2),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.add,
+                            color: Colors.white
+                        ),
+                        Text('Grocery',
+                            style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 16,
+                                color: Colors
+                                    .white))
+                      ],
+                    ),
+                  )
+              ));
+            }
+            return Container(
+                decoration: BoxDecoration(
+                    color: const Color(
+                        0xFFFF6240),
+                    borderRadius: BorderRadius
+                        .circular(15)),
+                child: Padding(
+                  padding: const EdgeInsets
+                      .fromLTRB(5.0, 2, 10, 2),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.add,
+                          color: Colors.white
+                      ),
+                      Text('Grocery',
+                          style: TextStyle(
+                              fontFamily: 'Rubik',
+                              fontSize: 16,
+                              color: Colors
+                                  .white))
+                    ],
+                  ),
+                )
+            );
+          });
+    }
+
+    void _AddGrocery(String recipeID){
+      List<String> temp =[];
+      temp.add(recipeID);
+      FirebaseFirestore.instance.collection('User_Profile').doc(_auth.currentUser.uid).collection('Relation_Detail').doc('Grocery').update({'RecipeID' : FieldValue.arrayUnion(temp)});
+    }
+
+    void _RemoveGrocery(String recipeID){
+      List<String> temp =[];
+      temp.add(recipeID);
+      FirebaseFirestore.instance.collection('User_Profile').doc(_auth.currentUser.uid).collection('Relation_Detail').doc('Grocery').update({'RecipeID' : FieldValue.arrayRemove(temp)});
+    }
+
     void _Follow(String recipeOwnerID){
       List<String> temp =[];
       temp.add(recipeOwnerID);
@@ -395,41 +496,18 @@ class MealDetailScreen extends StatefulWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.fromLTRB(
-                                        20.0, 0, 0, 0),
+                                        20.0, 0, 10, 0),
                                     child: Row(
                                       children: <Widget>[
+                                        Expanded(flex : 2,
+                                            child:
                                         Text('Ingredients',
                                             style: TextStyle(
                                                 fontFamily: 'Rubik',
                                                 fontSize: 20,
-                                                fontWeight: FontWeight.w500)),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              175, 0, 0, 0),
-                                          child: Container(
-                                              decoration: BoxDecoration(
-                                                  color: const Color(
-                                                      0xFFFF6240),
-                                                  borderRadius: BorderRadius
-                                                      .circular(15)),
-                                              child: Padding(
-                                                padding: const EdgeInsets
-                                                    .fromLTRB(5.0, 2, 10, 2),
-                                                child: Row(
-                                                  children: <Widget>[
-                                                    Icon(Icons.add,
-                                                        color: Colors.white
-                                                    ),
-                                                    Text('Grocery',
-                                                        style: TextStyle(
-                                                            fontFamily: 'Rubik',
-                                                            fontSize: 16,
-                                                            color: Colors
-                                                                .white))
-                                                  ],
-                                                ),
-                                              )
-                                          ),
+                                                fontWeight: FontWeight.w500))),
+                                        Flexible(
+                                          child: _GroceryButton(widget.docName)
                                         )
                                       ],
                                     ),
