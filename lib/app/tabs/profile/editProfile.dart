@@ -301,6 +301,7 @@ class _EditProfileState extends State<EditProfile>{
                     children: [
                       Flexible(
                         child: TextFormField(
+                          maxLength: 240,
                           maxLines: null,
                           controller: _descController,
                           keyboardType: TextInputType.text,

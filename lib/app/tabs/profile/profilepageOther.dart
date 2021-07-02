@@ -10,33 +10,37 @@ import 'editProfile.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
-class ProfileView extends StatefulWidget {
+class ProfileViewOther extends StatefulWidget {
   final String userID;
 
-  const ProfileView(this.userID);
+  const ProfileViewOther(this.userID);
 
   @override
-  _ProfileViewState createState() => _ProfileViewState();
+  _ProfileViewOtherState createState() => _ProfileViewOtherState();
 }
 
-class _ProfileViewState extends State<ProfileView>
+class _ProfileViewOtherState extends State<ProfileViewOther>
     with TickerProviderStateMixin {
   TabController _tabController;
   bool switchValue = true;
 
-  Future<List> getGrocery() async{
+  Future<List> getGrocery() async {
     List groceryID = [];
-    DocumentReference grocery = FirebaseFirestore.instance.collection('User_Profile').doc(widget.userID).collection('Relation_Detail').doc('Grocery');
-    CollectionReference recipes = FirebaseFirestore.instance.collection('Recipes');
+    DocumentReference grocery = FirebaseFirestore.instance
+        .collection('User_Profile')
+        .doc(widget.userID)
+        .collection('Relation_Detail')
+        .doc('Grocery');
+    CollectionReference recipes =
+        FirebaseFirestore.instance.collection('Recipes');
     DocumentSnapshot grocerySnap = await grocery.get();
     groceryID = grocerySnap.data()['RecipeID'];
     List<DocumentSnapshot> groceryReturn = [];
     DocumentSnapshot temp;
-    for (int i = 0; i< groceryID.length;i++)
-      {
-        temp = await recipes.doc(groceryID[i]).get();
-        groceryReturn.add(temp);
-      }
+    for (int i = 0; i < groceryID.length; i++) {
+      temp = await recipes.doc(groceryID[i]).get();
+      groceryReturn.add(temp);
+    }
     return groceryReturn;
   }
 
@@ -45,10 +49,14 @@ class _ProfileViewState extends State<ProfileView>
     Map temp;
     String usernameTemp;
     DocumentSnapshot _userQuery;
-    CollectionReference _user = FirebaseFirestore.instance.collection('User_Profile');
+    CollectionReference _user =
+        FirebaseFirestore.instance.collection('User_Profile');
     CollectionReference _forum = FirebaseFirestore.instance.collection('Forum');
-    QuerySnapshot _forumQuery =
-    await _forum.where('UserUID', isEqualTo: widget.userID).orderBy('postTime', descending: true).limit(10).get();
+    QuerySnapshot _forumQuery = await _forum
+        .where('UserUID', isEqualTo: widget.userID)
+        .orderBy('postTime', descending: true)
+        .limit(10)
+        .get();
 
     for (int i = 0; i < _forumQuery.docs.length; i++) {
       temp = _forumQuery.docs[i].data();
@@ -224,8 +232,7 @@ class _ProfileViewState extends State<ProfileView>
   Widget _GroceryTab() {
     return FutureBuilder(
         future: getGrocery(),
-        builder:
-            (BuildContext context, snapshot3) {
+        builder: (BuildContext context, snapshot3) {
           if (snapshot3.hasData && snapshot3.data.isEmpty) {
             return Container(
               alignment: Alignment.center,
@@ -262,15 +269,15 @@ class _ProfileViewState extends State<ProfileView>
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  MealDetailScreen(
-                                                      snapshot3.data[index].id)));
+                                                  MealDetailScreen(snapshot3
+                                                      .data[index].id)));
                                     },
                                     child: Container(
                                       child: Image.network(
                                         snapshot3.data[index]['ImageURL'],
                                         height: 170,
                                         width:
-                                        MediaQuery.of(context).size.width,
+                                            MediaQuery.of(context).size.width,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -281,7 +288,7 @@ class _ProfileViewState extends State<ProfileView>
                                 SizedBox(height: 10),
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       snapshot3.data[index]['Recipe_Name'],
@@ -294,8 +301,8 @@ class _ProfileViewState extends State<ProfileView>
                                         Icon(Icons.remove_red_eye_rounded,
                                             color: Colors.grey),
                                         SizedBox(width: 3),
-                                        Text(NumberFormat.compact()
-                                            .format(snapshot3.data[index]['View'])),
+                                        Text(NumberFormat.compact().format(
+                                            snapshot3.data[index]['View'])),
                                         SizedBox(width: 10),
                                         Icon(Icons.favorite,
                                             color: Color(0XFFEE2B4A)),
@@ -325,7 +332,8 @@ class _ProfileViewState extends State<ProfileView>
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    for (var item in snapshot3.data[index]['Tag'])
+                                    for (var item in snapshot3.data[index]
+                                        ['Tag'])
                                       Flexible(
                                         child: TextButton(
                                           onPressed: () {
@@ -364,12 +372,12 @@ class _ProfileViewState extends State<ProfileView>
         });
   }
 
-  Widget _ForumTab(){
-    CollectionReference recipes = FirebaseFirestore.instance.collection('Forum');
+  Widget _ForumTab() {
+    CollectionReference recipes =
+        FirebaseFirestore.instance.collection('Forum');
     return FutureBuilder(
         future: getForum(),
-        builder:
-            (BuildContext context, snapshot5) {
+        builder: (BuildContext context, snapshot5) {
           if (snapshot5.hasData && snapshot5.data.isEmpty) {
             return Container(
               alignment: Alignment.center,
@@ -389,43 +397,32 @@ class _ProfileViewState extends State<ProfileView>
             return ListView.builder(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 shrinkWrap: true,
-                itemCount:
-                snapshot5.data.length,
-                physics:
-                BouncingScrollPhysics(),
-                itemBuilder:
-                    (context, index) {
+                itemCount: snapshot5.data.length,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
                   return Container(
-                      padding: EdgeInsets
-                          .fromLTRB(0, 15,
-                          0, 15),
-                      decoration:
-                      BoxDecoration(
+                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                      decoration: BoxDecoration(
                         border: Border(
-                          bottom: BorderSide(
-                              width: 1,
-                              color: Colors
-                                  .grey
-                                  .shade400),
+                          bottom:
+                              BorderSide(width: 1, color: Colors.grey.shade400),
                         ),
                       ),
                       child: Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment
-                              .start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(children: [
-                              Icon(
-                                  Icons
-                                      .contact_support_outlined,
-                                  color: Colors
-                                      .deepOrangeAccent,
-                                  size:
-                                  20),
+                              Icon(Icons.contact_support_outlined,
+                                  color: Colors.deepOrangeAccent, size: 20),
                               Flexible(
                                   child: GestureDetector(
                                       onTap: () {
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetail(snapshot5.data[index]['DocID'])));
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ForumDetail(
+                                                        snapshot5.data[index]
+                                                            ['DocID'])));
                                       },
                                       child: Text(
                                         snapshot5.data[index]['Topic'],
@@ -440,64 +437,46 @@ class _ProfileViewState extends State<ProfileView>
                               height: 10,
                             ),
                             Text(
-                              timeago.format(DateTime.fromMicrosecondsSinceEpoch(snapshot5
-                                  .data[
-                              index]
-                              [
-                              'postTime']
-                                  .microsecondsSinceEpoch)),
-                              overflow:
-                              TextOverflow
-                                  .clip,
-                              style:
-                              TextStyle(
-                                color: Colors
-                                    .grey
-                                    .shade600,
-                                fontSize:
-                                14,
+                              timeago.format(
+                                  DateTime.fromMicrosecondsSinceEpoch(snapshot5
+                                      .data[index]['postTime']
+                                      .microsecondsSinceEpoch)),
+                              overflow: TextOverflow.clip,
+                              style: TextStyle(
+                                color: Colors.grey.shade600,
+                                fontSize: 14,
                               ),
                             ),
                             SizedBox(
                               height: 15,
                             ),
-                            Row(
-                                children: [
-                                  Expanded(
-                                      child:
-                                      GestureDetector(
-                                        onTap:
-                                            () {
-                                          print('to UserDetail');
-                                        },
-                                        child:
-                                        Text(
-                                          "by ${snapshot5.data[index]['Username']}",
-                                          overflow:
-                                          TextOverflow.clip,
-                                          style:
-                                          TextStyle(
-                                            color: Colors.grey.shade600,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      )),
-                                  Expanded(
-                                    child:
-                                    Text(
-                                      "${snapshot5.data[index]['Comment']} anwsers",
-                                      textAlign:
-                                      TextAlign.end,
-                                      overflow:
-                                      TextOverflow.clip,
-                                      style:
-                                      TextStyle(
-                                        color: Colors.grey.shade600,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  )
-                                ])
+                            Row(children: [
+                              Expanded(
+                                  child: GestureDetector(
+                                onTap: () {
+                                  print('to UserDetail');
+                                },
+                                child: Text(
+                                  "by ${snapshot5.data[index]['Username']}",
+                                  overflow: TextOverflow.clip,
+                                  style: TextStyle(
+                                    color: Colors.grey.shade600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              )),
+                              Expanded(
+                                child: Text(
+                                  "${snapshot5.data[index]['Comment']} anwsers",
+                                  textAlign: TextAlign.end,
+                                  overflow: TextOverflow.clip,
+                                  style: TextStyle(
+                                    color: Colors.grey.shade600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              )
+                            ])
                           ]));
                 });
           }
@@ -507,7 +486,6 @@ class _ProfileViewState extends State<ProfileView>
             height: 60,
           );
         });
-
   }
 
   @override
@@ -515,7 +493,8 @@ class _ProfileViewState extends State<ProfileView>
     double screenWidth = MediaQuery.of(context).size.width;
     CollectionReference users =
         FirebaseFirestore.instance.collection('User_Profile');
-    return FutureBuilder(
+    return Scaffold(
+      body: FutureBuilder(
       future: users.doc(widget.userID).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -531,8 +510,7 @@ class _ProfileViewState extends State<ProfileView>
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
               snapshot.data.data() as Map<String, dynamic>;
-          return Scaffold(
-            body: SafeArea(
+          return SafeArea(
               child: Column(
                 children: <Widget>[
                   //profile
@@ -544,27 +522,17 @@ class _ProfileViewState extends State<ProfileView>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Profile',
-                              style: TextStyle(
-                                fontSize: 36,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.black,
-                                fontFamily: 'Rublik',
-                              ),
+                            IconButton(
+                              icon: Icon(Icons.arrow_back_ios),
+                              color: Colors.grey,
+                              iconSize: 24,
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
                             ),
                             // SizedBox(
                             //   width: 215,
                             // ),
-                            IconButton(
-                              icon: Icon(Icons.settings_outlined),
-                              color: Colors.grey,
-                              iconSize: 24,
-                              tooltip: 'Show all settings',
-                              onPressed: () {
-                                print('Pressed');
-                              },
-                            ),
                             // Icon(
                             //   Icons.settings_outlined,
                             //   color: Colors.grey,
@@ -620,47 +588,6 @@ class _ProfileViewState extends State<ProfileView>
                                               ),
                                             ),
                                           ),
-                                          Expanded(
-                                            flex: 5,
-                                            child: Container(
-                                              height: 45,
-                                              width: 100,
-                                              // decoration: BoxDecoration(
-                                              //   borderRadius: BorderRadius.circular(10),
-                                              //   color: Color(0xFFebf4ef),
-                                              // ),
-                                              child: Center(
-                                                child: TextButton(
-                                                  child: Text('Edit Profile'),
-                                                  style: TextButton.styleFrom(
-                                                    primary: Color(0xffff6240),
-                                                    // backgroundColor: Colors.teal,
-                                                    // onSurface: Colors.grey,
-                                                    textStyle: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                    ),
-                                                    // side: BorderSide(
-                                                    //   color: Colors.red,
-                                                    //   width: 1,
-                                                    // ),
-                                                  ),
-                                                  onPressed: () {
-                                                    print('Pressed');
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                EditProfile(
-                                                                    data[
-                                                                        'ImageURL'],
-                                                                    data[
-                                                                        'Description'])));
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                          )
                                         ],
                                       ),
                                     ),
@@ -789,11 +716,7 @@ class _ProfileViewState extends State<ProfileView>
                   Expanded(
                       child: TabBarView(
                           controller: this._tabController,
-                          children: [
-                        _PostTab(),
-                        _GroceryTab(),
-                            _ForumTab()
-                      ]))
+                          children: [_PostTab(), _GroceryTab(), _ForumTab()]))
                   //if/else when no content
 
                   //     TabBarView(
@@ -1056,7 +979,6 @@ class _ProfileViewState extends State<ProfileView>
 //post here
                 ],
               ),
-            ),
           );
         }
         return SizedBox(
@@ -1065,6 +987,7 @@ class _ProfileViewState extends State<ProfileView>
           height: 60,
         );
       },
+      )
     );
   }
 }

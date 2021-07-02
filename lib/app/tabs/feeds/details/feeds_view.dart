@@ -76,7 +76,25 @@ class _FeedsViewState extends State<FeedsView> {
         body: FutureBuilder(
             future: getDataCheck(),
             builder: (BuildContext context ,AsyncSnapshot snapshot){
-              if(snapshot.data == 'Done')
+              print(recipeResultAll.length);
+              if (recipeResultAll.length == 0)
+              {
+                return Container(
+                  alignment: Alignment.center,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'There is no content to display.',
+                          style: TextStyle(color: Colors.grey[400]),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              }
+              else if(recipeResultAll.length != 0)
               {
                 return RefreshIndicator(
                   onRefresh: () async{
@@ -101,6 +119,7 @@ class _FeedsViewState extends State<FeedsView> {
                         view: recipeResult['View'],
                         favorite: recipeResult['Favorite'],
                         docID: recipeResult['docID'],
+                        UserUID : recipeResult['UserUID']
                       );
                     },
                   ),

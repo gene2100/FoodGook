@@ -10,6 +10,7 @@ import 'package:foodgook/app/models/grocerybook_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodgook/app/tabs/recipes/detail/meal_detail_screen.dart';
 
+
 // import 'package:foodgook/app/models/grocery_model.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,6 +19,7 @@ FirebaseAuth _auth = FirebaseAuth.instance;
 class IngGrocery {
   bool isCheck = false;
   String ingredient;
+
 
   IngGrocery(
     this.ingredient,
@@ -88,6 +90,8 @@ class _GroceryPageState extends State<GroceryPage> {
   }
 
 
+
+
   Map<String, bool> numbers = {
     'One': false,
     'Two': false,
@@ -113,6 +117,7 @@ class _GroceryPageState extends State<GroceryPage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
+
         future: _groceryReturn,
         builder: (BuildContext context , snapshot) {
           if(snapshot.hasData) {

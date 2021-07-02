@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foodgook/app/tabs/profile/profilepageOther.dart';
 import 'package:foodgook/app/tabs/recipes/detail/meal_detail_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -16,6 +17,7 @@ class PostItem extends StatefulWidget {
   final int view;
   final int favorite;
   final String docID;
+  final String UserUID;
   // final int index;
 
   PostItem({
@@ -30,6 +32,7 @@ class PostItem extends StatefulWidget {
     @required this.view,
     @required this.favorite,
     @required this.docID,
+    @required this.UserUID,
   }) : super(key: key);
   @override
   _PostItemState createState() => _PostItemState();
@@ -92,7 +95,12 @@ class _PostItemState extends State<PostItem> {
               children: [
                 Row(
                   children: [
-                    CircleAvatar(
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => ProfileViewOther(widget.UserUID)));
+                      },
+                     child: CircleAvatar(
                       backgroundColor: Color(
                           0xffE6E6E6),
                       radius: 20,
@@ -104,18 +112,24 @@ class _PostItemState extends State<PostItem> {
                         "${widget.dp}",
                       ),
                     ),
+                    ),
                     SizedBox(
                       width: 10,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) => ProfileViewOther(widget.UserUID)));
+                            },
+                        child: Text(
                           "${widget.name}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        )),
                         SizedBox(height: 2),
                         Text(
                           timeago.format(DateTime.fromMicrosecondsSinceEpoch(widget.time.microsecondsSinceEpoch)),

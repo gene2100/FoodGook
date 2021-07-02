@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:foodgook/app/tabs/forum/ForumDetail.dart';
+import 'package:foodgook/app/tabs/forum/addForum.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:get/get.dart';
 import 'DataControllerForum.dart';
@@ -23,6 +25,7 @@ Future<List> getForum() async {
     _userQuery = await _user.doc(temp['UserUID']).get();
     usernameTemp = _userQuery.data()['Username'];
     temp['Username'] = usernameTemp;
+    temp['DocID'] = _forumQuery.docs[i].id;
     returnForum.add(temp);
   }
   return returnForum;
@@ -61,13 +64,8 @@ class _ForumPageState extends State<ForumPage> with TickerProviderStateMixin {
               //     MaterialPageRoute(builder: (context) => MealDetailScreen(queryData[index].id)));
             },
             child: ListTile(
-              leading: Icon(
-                  Icons
-                      .contact_support_outlined,
-                  color: Colors
-                      .deepOrangeAccent,
-                  size:
-                  20),
+              leading: Icon(Icons.contact_support_outlined,
+                  color: Colors.deepOrangeAccent, size: 20),
               title: Text(
                 snapshotData.docs[index].data()['Topic'],
                 style: TextStyle(
@@ -151,9 +149,13 @@ class _ForumPageState extends State<ForumPage> with TickerProviderStateMixin {
                                         icon: Icon(Icons.add),
                                         color: Colors.grey,
                                         iconSize: 24,
-                                        tooltip: 'Show all settings',
+                                        tooltip: 'Add new post',
                                         onPressed: () {
-                                          print('Pressed');
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddForum()));
                                         },
                                       ),
                                       // Icon(
@@ -270,7 +272,7 @@ class _ForumPageState extends State<ForumPage> with TickerProviderStateMixin {
                                                                     Flexible(
                                                                         child: GestureDetector(
                                                                             onTap: () {
-                                                                              print('to ForumDetail');
+                                                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetail(snapshot.data[index]['DocID'])));
                                                                             },
                                                                             child: Text(
                                                                               snapshot.data[index]['Topic'],

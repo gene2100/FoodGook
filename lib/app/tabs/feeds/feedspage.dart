@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:foodgook/app/components/addpostMain.dart';
 import 'package:foodgook/app/components/addpost_item.dart';
+import 'package:foodgook/app/tabs/profile/profilepageOther.dart';
 import 'DataControllerFeed.dart';
 import 'package:foodgook/app/tabs/signin/signin.dart';
 import 'details/nestedTabBarView.dart';
@@ -37,7 +38,12 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
               //     MaterialPageRoute(builder: (context) => MealDetailScreen(queryData[index].id)));
             },
             child: ListTile(
-              leading: CircleAvatar(
+              leading: GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ProfileViewOther(snapshotData.docs[index].id)));
+                  },
+              child: CircleAvatar(
                 backgroundColor: Color(
                     0xffE6E6E6),
                 child: Icon(
@@ -47,11 +53,16 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
                 foregroundImage: NetworkImage(
                   snapshotData.docs[index]["ImageURL"],
                 ),
-              ),
+              )),
 
-              title: Text(snapshotData.docs[index].data()['Username'],style: TextStyle(
+              title: GestureDetector(
+                onTap: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProfileViewOther(snapshotData.docs[index].id)));
+                },
+              child: Text(snapshotData.docs[index].data()['Username'],style: TextStyle(
                   color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20.0
-              ),),
+              )),),
              )
         );
       },

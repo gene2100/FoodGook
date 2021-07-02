@@ -263,32 +263,6 @@ class _SigninPageState extends State<SigninPage> {
                           ),
                         ),
                         SizedBox(height: 20.0),
-                        GestureDetector(
-                          onTap: () {
-                            print("page change: Feeds");
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => App()));
-                          },
-                          child: Container(
-                            // Test button
-                            height: 40.0,
-                            child: Material(
-                              borderRadius: BorderRadius.circular(20.0),
-                              shadowColor: Colors.orangeAccent,
-                              color: Color(0xffff6240),
-                              elevation: 7.0,
-                              child: Center(
-                                child: Text(
-                                  'TEST',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Rublik'),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
                         // SizedBox(height: 20.0),
                         // Container(
                         //   height: 40.0,

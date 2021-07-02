@@ -36,8 +36,13 @@ Future<void> register() async {
   }
   if (_auth.currentUser != null) {
     registerStatus = _registerStatus.success;
-    CollectionReference users =
-    _firestore.collection('User_Profile');
+    CollectionReference users = _firestore.collection('User_Profile');
+    QuerySnapshot recQuery = await _firestore.collection('Recipes').orderBy('postTime', descending: true).limit(5).get();
+    List recList = [];
+    for(int i = 0; i< recQuery.docs.length; i++)
+      {
+        recList.add(recQuery.docs[i].id);
+      }
     await users
         .doc(_auth.currentUser.uid)
         .set({
@@ -50,9 +55,25 @@ Future<void> register() async {
           'Followers': 0,
           'Following': 0,
           'Recipes': 0,
-          'SearchName' : _usernameController.text.toLowerCase()
+          'ImageURL': '',
+          'searchName' : _usernameController.text.toLowerCase()
         })
-        .then((value) => print("User Added"))
+        .then((value) => print("User Added1"))
+        .catchError((error) => print("Failed to add user: $error"));
+    await users.doc(_auth.currentUser.uid).collection('Relation_Detail').doc('Following').set(
+        {
+          'UserUID': []
+        }).then((value) => print("User Added2"))
+        .catchError((error) => print("Failed to add user: $error"));
+    await users.doc(_auth.currentUser.uid).collection('Relation_Detail').doc('Grocery').set(
+        {
+          'RecipeID': []
+        }).then((value) => print("User Added3"))
+        .catchError((error) => print("Failed to add user: $error"));
+    await users.doc(_auth.currentUser.uid).collection('Relation_Detail').doc('Recommend').set(
+        {
+          'RecipeID': recList
+        }).then((value) => print("User Added4"))
         .catchError((error) => print("Failed to add user: $error"));
     print(_emailController.text);
     print(_passwordController.text);
@@ -146,7 +167,7 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
             child: Form(
