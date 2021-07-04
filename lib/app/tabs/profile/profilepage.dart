@@ -621,7 +621,7 @@ class _ProfileViewState extends State<ProfileView>
                                             ),
                                           ),
                                           Expanded(
-                                            flex: 5,
+                                            flex: 4,
                                             child: Container(
                                               height: 45,
                                               width: 100,

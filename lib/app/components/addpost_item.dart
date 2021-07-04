@@ -333,7 +333,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                                 keyboardType: TextInputType.text,
 
                                 decoration: const InputDecoration(
-                                    hintText: "Menu: Teriyaki Salmon",
+                                    hintText: "Menu",
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Color(0xffff6240)),

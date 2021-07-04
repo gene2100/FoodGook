@@ -180,7 +180,7 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
             return Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
                   child: Text('',
                       style:
                           TextStyle(fontFamily: 'Rubik', color: Colors.indigo)),
@@ -190,7 +190,7 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
             return Expanded(
                 flex: 2,
                 child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
                     child: Container(
                         child: InkWell(
                       onTap: () {
@@ -441,65 +441,73 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
                                                       20.0, 0, 0, 30),
                                               child: Row(children: <Widget>[
                                                 GestureDetector(
-                                                    onTap: (){
+                                                    onTap: () {
                                                       Navigator.of(context).push(
-                                                          MaterialPageRoute(builder: (context) => ProfileViewOther(snapshot.data['UserUID'])));
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  ProfileViewOther(
+                                                                      snapshot.data[
+                                                                          'UserUID'])));
                                                     },
-                                                child: CircleAvatar(
-                                                  backgroundColor:
-                                                      Color(0xffE6E6E6),
-                                                  radius: 20,
-                                                  child: Icon(
-                                                    Icons.person,
-                                                    color: Color(0xffCCCCCC),
-                                                  ),
-                                                  foregroundImage: NetworkImage(
-                                                    snapshot2.data['ImageURL'],
-                                                  ),
-                                                )),
-                                                Expanded(
+                                                    child: CircleAvatar(
+                                                      backgroundColor:
+                                                          Color(0xffE6E6E6),
+                                                      radius: 20,
+                                                      child: Icon(
+                                                        Icons.person,
+                                                        color:
+                                                            Color(0xffCCCCCC),
+                                                      ),
+                                                      foregroundImage:
+                                                          NetworkImage(
+                                                        snapshot2
+                                                            .data['ImageURL'],
+                                                      ),
+                                                    )),
+                                                Flexible(
                                                     flex: 3,
                                                     child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .fromLTRB(
-                                                                10.0, 0, 0, 0),
+                                                        padding: const EdgeInsets
+                                                                .fromLTRB(
+                                                            10.0, 0, 15, 0),
                                                         child: GestureDetector(
-                                                            onTap: (){
-                                                              Navigator.of(context).push(
-                                                                  MaterialPageRoute(builder: (context) => ProfileViewOther(snapshot.data['UserUID'])));
+                                                            onTap: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .push(MaterialPageRoute(
+                                                                      builder: (context) =>
+                                                                          ProfileViewOther(
+                                                                              snapshot.data['UserUID'])));
                                                             },
-                                                        child: RichText(
-                                                            text: TextSpan(
-                                                                style: DefaultTextStyle.of(
-                                                                        context)
-                                                                    .style,
-                                                                children: <
-                                                                    TextSpan>[
-                                                              TextSpan(
-                                                                  text: snapshot2
-                                                                              .data[
-                                                                          'Username'] +
-                                                                      '\n',
-                                                                  style: TextStyle(
-                                                                      fontWeight:
-                                                                          FontWeight
+                                                            child: RichText(
+                                                                text: TextSpan(
+                                                                    style: DefaultTextStyle.of(
+                                                                            context)
+                                                                        .style,
+                                                                    children: <
+                                                                        TextSpan>[
+                                                                  TextSpan(
+                                                                      text: snapshot2.data[
+                                                                              'Username'] +
+                                                                          '\n',
+                                                                      style: TextStyle(
+                                                                          fontWeight: FontWeight
                                                                               .bold,
-                                                                      fontFamily:
-                                                                          'Rubik')),
-                                                              TextSpan(
-                                                                  text:
-                                                                      "${snapshot2.data['Recipes'].toString()} Recipes",
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          'Rubik',
-                                                                      color: Colors
-                                                                          .grey)),
-                                                            ]))))),
+                                                                          fontFamily:
+                                                                              'Rubik')),
+                                                                  TextSpan(
+                                                                      text:
+                                                                          "${snapshot2.data['Recipes'].toString()} Recipes",
+                                                                      style: TextStyle(
+                                                                          fontFamily:
+                                                                              'Rubik',
+                                                                          color:
+                                                                              Colors.grey)),
+                                                                ]))))),
                                                 _FollowButton(
                                                     snapshot.data['UserUID']),
                                                 Expanded(
-                                                  flex: 2,
+                                                  flex: 1,
                                                   child: Row(children: <Widget>[
                                                     Icon(
                                                         Icons
@@ -515,14 +523,14 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
                                                   ]),
                                                 ),
                                                 Expanded(
-                                                    flex: 2,
+                                                    flex: 1,
                                                     child: Row(
                                                       children: <Widget>[
                                                         Padding(
                                                           padding:
                                                               const EdgeInsets
                                                                       .fromLTRB(
-                                                                  0, 0, 0, 0),
+                                                                  10, 0, 0, 0),
                                                           child: Icon(
                                                               Icons.thumb_up,
                                                               color:

@@ -195,6 +195,7 @@ class _addCommentState extends State<addComment> {
                             Padding(
                               padding: const EdgeInsets.only(top: 40.0),
                               child: TextFormField(
+                                maxLines: null,
                                 // textInputAction: TextInputAction.newline,
                                 controller: _replyController,
                                 keyboardType: TextInputType.text,

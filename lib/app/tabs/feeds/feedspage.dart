@@ -23,48 +23,49 @@ class FeedsPage extends StatefulWidget {
 }
 
 class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
-
   final TextEditingController searchController = TextEditingController();
   QuerySnapshot snapshotData;
   bool isExecuted = false;
 
-  Widget searchedData(){
+  Widget searchedData() {
     return ListView.builder(
       itemCount: snapshotData.docs.length,
-      itemBuilder: (BuildContext context,int index) {
+      itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
-            onTap: (){
+            onTap: () {
               // Navigator.of(context).push(
               //     MaterialPageRoute(builder: (context) => MealDetailScreen(queryData[index].id)));
             },
             child: ListTile(
               leading: GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => ProfileViewOther(snapshotData.docs[index].id)));
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            ProfileViewOther(snapshotData.docs[index].id)));
                   },
-              child: CircleAvatar(
-                backgroundColor: Color(
-                    0xffE6E6E6),
-                child: Icon(
-                  Icons.person,
-                  color: Color(0xffCCCCCC),
-                ),
-                foregroundImage: NetworkImage(
-                  snapshotData.docs[index]["ImageURL"],
-                ),
-              )),
-
+                  child: CircleAvatar(
+                    backgroundColor: Color(0xffE6E6E6),
+                    child: Icon(
+                      Icons.person,
+                      color: Color(0xffCCCCCC),
+                    ),
+                    foregroundImage: NetworkImage(
+                      snapshotData.docs[index]["ImageURL"],
+                    ),
+                  )),
               title: GestureDetector(
-                onTap: (){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ProfileViewOther(snapshotData.docs[index].id)));
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          ProfileViewOther(snapshotData.docs[index].id)));
                 },
-              child: Text(snapshotData.docs[index].data()['Username'],style: TextStyle(
-                  color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20.0
-              )),),
-             )
-        );
+                child: Text(snapshotData.docs[index].data()['Username'],
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0)),
+              ),
+            ));
       },
     );
   }
@@ -106,86 +107,86 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
       ),
       body: isExecuted
           ? searchedData()
-      : ListView(
-        //safe area and nested tab
-        children: [
-          Container(
-            child: SafeArea(
-              child: Container(
-                width: double.infinity,
-                // padding: const EdgeInsets.symmetric(horizontal: 21.0),
-                margin: EdgeInsets.only(left: 20, right: 10, top: 20),
-                child: SingleChildScrollView(
-                  child: Column(
-                    //All feeds
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      // Row(
-                      //   //search bar and notifications
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: <Widget>[
-                      //     Expanded(
-                      //       child: Container(
-                      //         // height: 40,
-                      //
-                      //         child: TextField(
-                      //           keyboardType: TextInputType.text,
-                      //           autocorrect: true,
-                      //           decoration: InputDecoration(
-                      //             contentPadding: const EdgeInsets.symmetric(
-                      //                 vertical: 10.0, horizontal: 10.0),
-                      //             fillColor: Color(0xfff2f2f2),
-                      //             filled: true,
-                      //             hintText: 'Search for people, recipes...',
-                      //             hintStyle: TextStyle(
-                      //               color: Colors.grey,
-                      //               // fontSize: 19.0,
-                      //             ),
-                      //             border: OutlineInputBorder(
-                      //               borderRadius: BorderRadius.circular(24.0),
-                      //               borderSide: BorderSide.none,
-                      //             ),
-                      //             prefixIcon: Icon(
-                      //               Icons.search,
-                      //               size: 24,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     Row(
-                      //       children: [
-                      //         IconButton(
-                      //           icon: Icon(Icons.notifications_none),
-                      //           color: Colors.grey,
-                      //           iconSize: 24,
-                      //           tooltip: 'Show all notifications',
-                      //           //Still can't change color when clicked
-                      //           onPressed: () {
-                      //             print('Pressed');
-                      //             setState(() {
-                      //               if (_notiIconColor == Colors.grey) {
-                      //                 _notiIconColor = Color(0xffff6240);
-                      //               } else {
-                      //                 _notiIconColor = Colors.grey;
-                      //               }
-                      //             });
-                      //           },
-                      //           padding: const EdgeInsets.all(15.0),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ],
-                      // ),
-                    ],
+          : ListView(
+              //safe area and nested tab
+              children: [
+                Container(
+                  child: SafeArea(
+                    child: Container(
+                      width: double.infinity,
+                      // padding: const EdgeInsets.symmetric(horizontal: 21.0),
+                      margin: EdgeInsets.only(left: 20, right: 10, top: 20),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          //All feeds
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            // Row(
+                            //   //search bar and notifications
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: <Widget>[
+                            //     Expanded(
+                            //       child: Container(
+                            //         // height: 40,
+                            //
+                            //         child: TextField(
+                            //           keyboardType: TextInputType.text,
+                            //           autocorrect: true,
+                            //           decoration: InputDecoration(
+                            //             contentPadding: const EdgeInsets.symmetric(
+                            //                 vertical: 10.0, horizontal: 10.0),
+                            //             fillColor: Color(0xfff2f2f2),
+                            //             filled: true,
+                            //             hintText: 'Search for people, recipes...',
+                            //             hintStyle: TextStyle(
+                            //               color: Colors.grey,
+                            //               // fontSize: 19.0,
+                            //             ),
+                            //             border: OutlineInputBorder(
+                            //               borderRadius: BorderRadius.circular(24.0),
+                            //               borderSide: BorderSide.none,
+                            //             ),
+                            //             prefixIcon: Icon(
+                            //               Icons.search,
+                            //               size: 24,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //     Row(
+                            //       children: [
+                            //         IconButton(
+                            //           icon: Icon(Icons.notifications_none),
+                            //           color: Colors.grey,
+                            //           iconSize: 24,
+                            //           tooltip: 'Show all notifications',
+                            //           //Still can't change color when clicked
+                            //           onPressed: () {
+                            //             print('Pressed');
+                            //             setState(() {
+                            //               if (_notiIconColor == Colors.grey) {
+                            //                 _notiIconColor = Color(0xffff6240);
+                            //               } else {
+                            //                 _notiIconColor = Colors.grey;
+                            //               }
+                            //             });
+                            //           },
+                            //           padding: const EdgeInsets.all(15.0),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   ],
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                NestedTabBar(), //feeds and live show
+              ],
             ),
-          ),
-          NestedTabBar(), //feeds and live show
-        ],
-      ),
       //FAB
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
@@ -234,10 +235,7 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
                 _auth.signOut();
                 // Navigator.pop(context);
                 // Utils.mainAppNav.currentState.pushNamed('/signinpage');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SigninPage()),
-                );
+                Navigator.of(context).pop();
               })
         ],
       ),
