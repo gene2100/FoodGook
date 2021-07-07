@@ -62,6 +62,7 @@ Future<String> postRecipe() async{
       'Ingredient': ingList,
       'Level': page1String[2],
       'Rating': 0,
+      'RatingCount': 0,
       'Recipe_Name': page1String[0],
       'Tag': tagList,
       'UserUID': _auth.currentUser.uid,

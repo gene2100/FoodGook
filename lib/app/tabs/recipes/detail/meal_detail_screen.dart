@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:foodgook/app/tabs/profile/profilepageOther.dart';
+import 'package:foodgook/app/tabs/stepByStep/stepByStepPage.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -670,36 +671,50 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
                                                 padding:
                                                     const EdgeInsets.fromLTRB(
                                                         20, 20, 0, 0),
-                                                child: Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width -
-                                                      40,
-                                                  height: 60,
-                                                  decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xFFFF6240),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15)),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: <Widget>[
-                                                      Icon(Icons.play_arrow,
-                                                          size: 36,
-                                                          color: Colors.white),
-                                                      Text('Step-by-step',
-                                                          style: TextStyle(
-                                                              fontFamily:
-                                                                  'Rubik',
-                                                              fontSize: 16,
+                                                child: GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.of(context).push(
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  StepbyStep(
+                                                                  snapshot.data[
+                                                                      'Direction'],
+                                                                  snapshot.data[
+                                                                      'Ingredient'],snapshot.data['Recipe_Name'],snapshot.data.id)));
+                                                    },
+                                                    child: Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width -
+                                                              40,
+                                                      height: 60,
+                                                      decoration: BoxDecoration(
+                                                          color: const Color(
+                                                              0xFFFF6240),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15)),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: <Widget>[
+                                                          Icon(Icons.play_arrow,
+                                                              size: 36,
                                                               color:
-                                                                  Colors.white))
-                                                    ],
-                                                  ),
-                                                )),
+                                                                  Colors.white),
+                                                          Text('Step-by-step',
+                                                              style: TextStyle(
+                                                                  fontFamily:
+                                                                      'Rubik',
+                                                                  fontSize: 16,
+                                                                  color: Colors
+                                                                      .white))
+                                                        ],
+                                                      ),
+                                                    ))),
                                             Padding(
                                                 padding:
                                                     const EdgeInsets.fromLTRB(

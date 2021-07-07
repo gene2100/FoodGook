@@ -10,6 +10,7 @@ MERGED from [:firebase_storage] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build
 MERGED from [:sqflite] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:image_picker] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-22:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_tts] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\flutter_tts\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:shared_preferences] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -159,6 +160,8 @@ MERGED from [:image_picker] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\ima
 MERGED from [:image_picker] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_tts] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\flutter_tts\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_tts] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\flutter_tts\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\Users\Gene-PC\Documents\GitHub\FoodGook\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

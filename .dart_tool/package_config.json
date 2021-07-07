@@ -200,6 +200,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "flutter_countdown_timer",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_countdown_timer-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.11",
       "packageUri": "lib/",
@@ -482,6 +488,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "smooth_star_rating",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/smooth_star_rating-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.1",
       "packageUri": "lib/",
@@ -596,7 +608,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-07-01T12:13:12.356223Z",
+  "generated": "2021-07-07T14:13:13.201376Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }
