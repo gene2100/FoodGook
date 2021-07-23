@@ -60,7 +60,7 @@ class _NestedTabBarState extends State<NestedTabBar>
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(10.0),
                   color: Colors.orange[50],
                 ),
                 //child: LiveshowView(),
